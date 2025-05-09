@@ -82,3 +82,25 @@ Weitere optionale Ziele für die App:
 | 9–10      | Verbesserung der App-Visualisierung, Statistiken, Abschluss der Datenbankfunktionalität |
 | 11        | Vollendung der Dokumentation                                                    |
 | 12        | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                  |
+
+
+
+```mermaid
+graph TD
+    User[User Browser] -->|HTTP Requests| Flask[Flask Application]
+    
+    subgraph "Application"
+        Flask --> Controllers[Routes & Controllers]
+        Controllers --> Models[Data Models]
+        Controllers --> Views[Templates & UI]
+        
+        Models -->|ORM| Database[(SQLite Database)]
+        
+        Views --> Static[Static Assets<br>CSS, JS, Charts]
+    end
+    
+    classDef primary fill:#0d6efd,stroke:#0d6efd,color:white;
+    classDef secondary fill:#6c757d,stroke:#6c757d,color:white;
+    
+    class User,Flask primary;
+    class Controllers,Models,Views,Database,Static secondary;
