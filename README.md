@@ -4,14 +4,14 @@ Semesterarbeit 3
 ## :page_with_curl: Semesterarbeit 3
 
 
-| :ticket: Titel:                   | Self-Hosted ITSM mit Systemüberwachung via automatischer Tickets |
+| :ticket: Titel:                   | TrackMyGym: Tracke. Wachse. Gewinne.  |
 | --------------------------------- | ---------------------------------------------------------------- |
 | :bust_in_silhouette: Studierende: | Lilia Mechani                                                    |
-| :busts_in_silhouette: Dozenten:   | (PRJ) Philipp Rohr (ITSM) Ceasar Roth                            |
+| :busts_in_silhouette: Dozenten:   | (PRJ) Corrado Parisi (MSVC) Boris Langer                        |
 
 | :round_pushpin: Topics:               |
 | ------------------------------------- |
-| -  :computer: ITSM                    |
+| -  :computer: Microservices                    |
 | - :paperclip: PRJ (Projektmanagement) |
 |                                       |
 
