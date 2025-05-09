@@ -69,3 +69,16 @@ Weitere optionale Ziele für die App:
 - Gruppen: Bildung von Trainingsgruppen 
 
 - Leaderboards: Freundschaftliche Wettkämpfe zwischen Nutzern/Gruppen          |
+
+
+## Zeitplan
+
+| Woche     | Arbeitsschritte                                                                 |
+|-----------|----------------------------------------------------------------------------------|
+| 1–2       | GitHub–Obsidian Setup, Architekturplanung                                       |
+| 3–4       | Start Entwicklung der Grundarchitektur                                          |
+| 5–6       | GUI-Planung, Erste Umsetzung der GUI                                            |
+| 7–8       | Verknüpfung der Elemente, API Push-Notifications, Erste Testphase               |
+| 9–10      | Verbesserung der App-Visualisierung, Statistiken, Abschluss der Datenbankfunktionalität |
+| 11        | Vollendung der Dokumentation                                                    |
+| 12        | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                  |
