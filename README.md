@@ -109,7 +109,7 @@ graph TD
 # Projekt Gantt-Diagramm
 # Project Timeline
 
-    ```mermaid
+```mermaid
     gantt
         dateFormat YYYY-MM-DD
         title Fitness Tracker Project Timeline
