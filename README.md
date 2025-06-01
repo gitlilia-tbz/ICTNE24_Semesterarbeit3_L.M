@@ -107,42 +107,42 @@ graph TD
 
 
 gantt
-    title Fitness Tracker Projekt - Zeitplan
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d.%m
+    title Fitness Tracker Projekt Zeitplan
+    dateFormat YYYY-MM-DD
+    axisFormat %d.%m
     
     section Projektphasen
-    Github & Obsidian Setup           :done, setup, 2025-05-05, 2025-05-18
-    Architekturplanung               :done, arch, 2025-05-05, 2025-05-18
+    Github und Obsidian Setup :done, setup, 2025-05-05, 2025-05-18
+    Architekturplanung :done, arch, 2025-05-05, 2025-05-18
     
-    Grundarchitektur Entwicklung     :active, dev1, 2025-05-19, 2025-06-01
+    Grundarchitektur Entwicklung :active, dev1, 2025-05-19, 2025-06-01
     
-    GUI Planung                      :gui1, 2025-06-02, 2025-06-08
-    GUI Umsetzung                    :gui2, 2025-06-09, 2025-06-15
+    GUI Planung :gui1, 2025-06-02, 2025-06-08
+    GUI Umsetzung :gui2, 2025-06-09, 2025-06-15
     
-    Verknüpfung der Elemente         :connect, 2025-06-16, 2025-06-22
-    API Push-Notifications          :api, 2025-06-16, 2025-06-22
-    Erste Testphase                  :test1, 2025-06-23, 2025-06-29
+    Verknuepfung der Elemente :connect, 2025-06-16, 2025-06-22
+    API Push Notifications :api, 2025-06-16, 2025-06-22
+    Erste Testphase :test1, 2025-06-23, 2025-06-29
     
-    App Visualisierung verbessern    :visual, 2025-06-30, 2025-07-06
-    Statistiken implementieren       :stats, 2025-06-30, 2025-07-06
-    Datenbankfunktionalität         :db, 2025-07-07, 2025-07-13
+    App Visualisierung verbessern :visual, 2025-06-30, 2025-07-06
+    Statistiken implementieren :stats, 2025-06-30, 2025-07-06
+    Datenbankfunktionalitaet :db, 2025-07-07, 2025-07-13
     
-    Dokumentation vollenden          :docs, 2025-07-14, 2025-07-20
+    Dokumentation vollenden :docs, 2025-07-14, 2025-07-20
     
-    Präsentation vorbereiten         :prep, 2025-07-21, 2025-07-24
-    Projekt vollenden               :final, 2025-07-21, 2025-07-27
-    Abgabe                          :milestone, delivery, 2025-07-27, 0d
+    Praesentation vorbereiten :prep, 2025-07-21, 2025-07-24
+    Projekt vollenden :final, 2025-07-21, 2025-07-27
+    Abgabe :milestone, delivery, 2025-07-27, 0d
     
     section Agile Sprints
-    Sprint 1                        :crit, sprint1, 2025-05-05, 2025-05-09
-    Sprint 2                        :crit, sprint2, 2025-05-09, 2025-06-02
-    Sprint 3                        :crit, sprint3, 2025-06-02, 2025-06-20
+    Sprint 1 :crit, sprint1, 2025-05-05, 2025-05-09
+    Sprint 2 :crit, sprint2, 2025-05-09, 2025-06-02
+    Sprint 3 :crit, sprint3, 2025-06-02, 2025-06-20
     
     section Meilensteine
-    Projektstart                    :milestone, start, 2025-05-05, 0d
-    Architektur fertig              :milestone, arch_done, 2025-06-01, 0d
-    GUI Prototyp fertig             :milestone, gui_done, 2025-06-15, 0d
-    Testing abgeschlossen           :milestone, test_done, 2025-06-29, 0d
-    Finale Version                  :milestone, final_version, 2025-07-20, 0d
-    Projektende                     :milestone, end, 2025-06-20, 0d
+    Projektstart :milestone, start, 2025-05-05, 0d
+    Architektur fertig :milestone, arch_done, 2025-06-01, 0d
+    GUI Prototyp fertig :milestone, gui_done, 2025-06-15, 0d
+    Testing abgeschlossen :milestone, test_done, 2025-06-29, 0d
+    Finale Version :milestone, final_version, 2025-07-20, 0d
+    Projektende :milestone, end, 2025-06-20, 0d
