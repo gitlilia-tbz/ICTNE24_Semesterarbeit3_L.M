@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - user-service
+      - workout-service
+      - stats-service
+    networks:
+      - fitness-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5000:5000"
+    environment:
+      - USER_SERVICE_URL=http://user-service:5001
+      - WORKOUT_SERVICE_URL=http://workout-service:5002
+      - STATS_SERVICE_URL=http://stats-service:5003
+    networks:
+      - fitness-network
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - user_data:/app/data
+    networks:
+      - fitness-network
+
+  workout-service:
+    build: ./workout-service
+    ports:
+      - "5002:5002"
+    environment:
+      - FLASK_ENV=development
+      - USER_SERVICE_URL=http://user-service:5001
+    volumes:
+      - workout_data:/app/data
+    networks:
+      - fitness-network
+
+  stats-service:
+    build: ./stats-service
+    ports:
+      - "5003:5003"
+    environment:
+      - FLASK_ENV=development
+      - WORKOUT_SERVICE_URL=http://workout-service:5002
+    volumes:
+      - stats_data:/app/data
+    networks:
+      - fitness-network
+
+volumes:
+  user_data:
+  workout_data:
+  stats_data:
+
+networks:
+  fitness-network:
+    driver: bridge

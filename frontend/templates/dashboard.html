@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.name }} - Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1>{{ user.name }}'s Fitness Dashboard</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">Track your progress and achievements</p>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Overview
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card stats-card">
+            <i class="fas fa-chart-bar metric-icon"></i>
+            <div class="metric-number">{{ stats.total_workouts or 0 }}</div>
+            <div class="metric-label">Total Workouts</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stats-card success">
+            <i class="fas fa-clock metric-icon"></i>
+            <div class="metric-number">
+                {% if stats.total_duration %}
+                    {% set hours = (stats.total_duration / 60) | round(1) %}
+                    {{ hours }}<span style="font-size: 1.2rem;">hrs</span>
+                {% else %}
+                    0<span style="font-size: 1.2rem;">hrs</span>
+                {% endif %}
+            </div>
+            <div class="metric-label">Total Duration</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stats-card warning">
+            <i class="fas fa-fire metric-icon"></i>
+            <div class="metric-number">{{ stats.total_calories or 0 }}</div>
+            <div class="metric-label">Calories Burned</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Recent Workouts</h3>
+                <button class="btn btn-success btn-sm" onclick="showAddWorkoutModal()">
+                    <i class="fas fa-plus me-2"></i>Add Workout
+                </button>
+            </div>
+            <div class="card-body p-0">
+                {% if workouts %}
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Exercise</th>
+                                    <th>Duration</th>
+                                    <th>Calories</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for workout in workouts[-10:] %}
+                                <tr>
+                                    <td style="font-weight: 500;">{{ workout.date }}</td>
+                                    <td>
+                                        <span class="badge workout-badge bg-{{ workout.exercise_type.lower() }}">
+                                            {{ workout.exercise_type }}
+                                        </span>
+                                    </td>
+                                    <td>{{ workout.duration }} min</td>
+                                    <td>{{ workout.calories_burned }} cal</td>
+                                    <td style="color: var(--text-secondary);">{{ workout.notes or '-' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-dumbbell text-muted" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h4 style="color: var(--text-secondary);">No Workouts Yet</h4>
+                        <p style="color: var(--text-secondary);">Start by adding your first workout!</p>
+                        <button class="btn btn-success" onclick="showAddWorkoutModal()">
+                            <i class="fas fa-plus me-2"></i>Add First Workout
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="mb-0">Profile</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <div class="user-avatar mx-auto" style="width: 80px; height: 80px; font-size: 2rem;">
+                        {{ user.name[:2].upper() }}
+                    </div>
+                    <h5 class="mb-1">{{ user.name }}</h5>
+                    <p style="color: var(--text-secondary);">{{ user.email }}</p>
+                </div>
+                
+                <div class="row g-3 text-center">
+                    <div class="col-4">
+                        <div style="color: var(--text-secondary); font-size: 0.875rem;">Age</div>
+                        <div style="font-weight: 600; font-size: 1.1rem;">{{ user.age or '-' }}</div>
+                    </div>
+                    <div class="col-4">
+                        <div style="color: var(--text-secondary); font-size: 0.875rem;">Weight</div>
+                        <div style="font-weight: 600; font-size: 1.1rem;">{{ user.weight or '-' }}{% if user.weight %}kg{% endif %}</div>
+                    </div>
+                    <div class="col-4">
+                        <div style="color: var(--text-secondary); font-size: 0.875rem;">Height</div>
+                        <div style="font-weight: 600; font-size: 1.1rem;">{{ user.height or '-' }}{% if user.height %}cm{% endif %}</div>
+                    </div>
+                </div>
+
+                {% if stats.average_duration %}
+                <hr style="border-color: var(--border-color);">
+                
+                <div class="row g-3 text-center">
+                    <div class="col-6">
+                        <div style="color: var(--text-secondary); font-size: 0.875rem;">Avg Duration</div>
+                        <div style="font-weight: 600;">{{ stats.average_duration }} min</div>
+                    </div>
+                    <div class="col-6">
+                        <div style="color: var(--text-secondary); font-size: 0.875rem;">Avg Calories</div>
+                        <div style="font-weight: 600;">{{ stats.average_calories }} cal</div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Analytics</h3>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary btn-sm" onclick="loadWeeklyStats()">
+                        <i class="fas fa-calendar-week me-2"></i>Weekly Trends
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="loadExerciseStats()">
+                        <i class="fas fa-chart-pie me-2"></i>Exercise Breakdown
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="loadRecentStats()">
+                        <i class="fas fa-trending-up me-2"></i>Recent Performance
+                    </button>
+                </div>
+                
+                <div id="additional-stats" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Workout Modal -->
+<div class="modal fade" id="addWorkoutModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Workout</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addWorkoutForm">
+                    <div class="mb-3">
+                        <label class="form-label">Exercise Type</label>
+                        <select class="form-control" id="exerciseType" required>
+                            <option value="">Select exercise type...</option>
+                            <option value="Running">Running</option>
+                            <option value="Cycling">Cycling</option>
+                            <option value="Weightlifting">Weightlifting</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Walking">Walking</option>
+                            <option value="Tennis">Tennis</option>
+                            <option value="Basketball">Basketball</option>
+                        </select>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Duration (minutes)</label>
+                            <input type="number" class="form-control" id="workoutDuration" placeholder="Duration" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Calories Burned</label>
+                            <input type="number" class="form-control" id="workoutCalories" placeholder="Calories" required>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-control" id="workoutDate">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Notes (optional)</label>
+                        <textarea class="form-control" id="workoutNotes" rows="3" placeholder="Add any notes about your workout..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="addWorkout()">Add Workout</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const userId = "{{ user.id }}";
+
+function showAddWorkoutModal() {
+    new bootstrap.Modal(document.getElementById('addWorkoutModal')).show();
+    // Set today's date as default
+    document.getElementById('workoutDate').value = new Date().toISOString().split('T')[0];
+}
+
+function addWorkout() {
+    const exerciseType = document.getElementById('exerciseType').value;
+    const duration = document.getElementById('workoutDuration').value;
+    const calories = document.getElementById('workoutCalories').value;
+    const notes = document.getElementById('workoutNotes').value;
+    const date = document.getElementById('workoutDate').value;
+
+    if (!exerciseType || !duration || !calories) {
+        alert('❌ Please fill in all required fields');
+        return;
+    }
+
+    const workoutData = {
+        user_id: userId,
+        exercise_type: exerciseType,
+        duration: parseInt(duration),
+        calories_burned: parseInt(calories),
+        notes: notes || '',
+    };
+
+    if (date) {
+        workoutData.date = date;
+    }
+
+    fetch('/api/workouts/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(workoutData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert('❌ Error: ' + data.error);
+        } else {
+            alert('✅ Workout added successfully!');
+            bootstrap.Modal.getInstance(document.getElementById('addWorkoutModal')).hide();
+            document.getElementById('addWorkoutForm').reset();
+            location.reload();
+        }
+    })
+    .catch(error => {
+        alert('❌ Error adding workout: ' + error);
+    });
+}
+
+function loadWeeklyStats() {
+    fetch(`/api/stats/${userId}/weekly`)
+        .then(response => response.json())
+        .then(data => {
+            let html = '<div class="alert alert-info">';
+            html += '<h6><i class="fas fa-calendar-week"></i> Weekly Stats:</h6>';
+            
+            if (Object.keys(data).length === 0) {
+                html += 'No weekly data available yet.';
+            } else {
+                const sortedWeeks = Object.entries(data).sort().slice(-3);
+                for (const [week, stats] of sortedWeeks) {
+                    const weekDate = new Date(week);
+                    const weekStr = weekDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    html += `<strong>Week of ${weekStr}:</strong> ${stats.workouts} workouts, ${stats.duration}min, ${stats.calories}cal<br>`;
+                }
+            }
+            html += '</div>';
+            document.getElementById('additional-stats').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('additional-stats').innerHTML = 
+                '<div class="alert alert-danger">Error loading stats: ' + error + '</div>';
+        });
+}
+
+function loadExerciseStats() {
+    fetch(`/api/stats/${userId}/exercise-types`)
+        .then(response => response.json())
+        .then(data => {
+            let html = '<div class="alert alert-info">';
+            html += '<h6><i class="fas fa-chart-pie"></i> Exercise Breakdown:</h6>';
+            
+            if (Object.keys(data).length === 0) {
+                html += 'No exercise data available yet.';
+            } else {
+                for (const [exercise, stats] of Object.entries(data)) {
+                    html += `<strong>${exercise}:</strong> ${stats.count} sessions, avg ${stats.avg_duration}min<br>`;
+                }
+            }
+            html += '</div>';
+            document.getElementById('additional-stats').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('additional-stats').innerHTML = 
+                '<div class="alert alert-danger">Error loading stats: ' + error + '</div>';
+        });
+}
+
+function loadRecentStats() {
+    fetch(`/api/stats/${userId}/recent?days=30`)
+        .then(response => response.json())
+        .then(data => {
+            let html = '<div class="alert alert-info">';
+            html += `<h6><i class="fas fa-trending-up"></i> ${data.period}:</h6>`;
+            html += `${data.workouts} workouts<br>`;
+            html += `${data.duration} minutes total<br>`;
+            html += `${data.calories} calories burned<br>`;
+            if (data.workouts > 0) {
+                html += '<small class="text-success">Great progress! 🎉</small>';
+            }
+            html += '</div>';
+            document.getElementById('additional-stats').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('additional-stats').innerHTML = 
+                '<div class="alert alert-danger">Error loading stats: ' + error + '</div>';
+        });
+}
+</script>
+{% endblock %}
