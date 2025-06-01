@@ -113,30 +113,33 @@ gantt
 dateFormat YYYY-MM-DD
 title Fitness Tracker Projekt Zeitplan
 
-section Sprint 1 (Woche 1)
-Github Setup :done, s1t1, 2025-05-05, 4d
+section Woche 1-2
+Github Setup :done, w1, 2025-05-05, 7d
+Architektur :done, w2, 2025-05-12, 7d
 
-section Sprint 2 (Woche 2-7)
-Architektur :done, s2t1, 2025-05-09, 7d
-Grundarch Start :active, s2t2, 2025-05-16, 7d
-Grundarch :s2t3, 2025-05-23, 7d
-Arch Ende :s2t4, 2025-05-30, 3d
+section Woche 3-4
+Grundarch Start :active, w3, 2025-05-19, 7d
+Grundarch :w4, 2025-05-26, 7d
 
-section Sprint 3 (Woche 8-12)
-GUI Plan :s3t1, 2025-06-02, 7d
-GUI Umsetz :s3t2, 2025-06-09, 7d
-Verknuepfung :s3t3, 2025-06-16, 7d
-API Push :s3t4, 2025-06-16, 7d
-Testphase :s3t5, 2025-06-23, 7d
+section Woche 5-6
+GUI Plan :w5, 2025-06-02, 7d
+GUI Umsetz :w6, 2025-06-09, 7d
 
-section Finale Phase
-Visualisierung :f1, 2025-06-30, 7d
-Statistiken :f2, 2025-07-07, 7d
-Dokumentation :f3, 2025-07-14, 7d
-Praesentation :f4, 2025-07-21, 7d
+section Woche 7-8
+Verknuepfung :w7, 2025-06-16, 7d
+API Test :w8, 2025-06-23, 7d
 
-section Meilensteine
-Sprint 1 Ende :milestone, m1, 2025-05-09, 0d
-Sprint 2 Ende :milestone, m2, 2025-06-02, 0d
-Sprint 3 Ende :milestone, m3, 2025-06-20, 0d
-Projektabgabe :milestone, m4, 2025-06-20, 0d
+section Woche 9-10
+Visualisierung :w9, 2025-06-30, 7d
+Statistiken :w10, 2025-07-07, 7d
+
+section Woche 11
+Dokumentation :w11, 2025-07-14, 7d
+
+section Woche 12
+Praesentation :w12, 2025-07-21, 7d
+
+section Sprint Meilensteine
+Sprint 1 Ende :milestone, s1, 2025-05-09, 0d
+Sprint 2 Ende :milestone, s2, 2025-06-02, 0d
+Sprint 3 Ende :milestone, s3, 2025-06-20, 0d
