@@ -107,40 +107,30 @@ graph TD
 
 
 # Projekt Gantt-Diagramm
+# Project Timeline
 
 ```mermaid
 gantt
-    title Fitness Tracker Projekt
     dateFormat YYYY-MM-DD
-    axisFormat %d.%m
+    title Fitness Tracker Project Timeline
     
-    section Setup Phase
-    Github Obsidian Setup     :done, setup, 2025-05-05, 2025-05-12
-    Architekturplanung        :done, arch, 2025-05-12, 2025-05-19
+    section Week 1-2
+    Setup and Planning :a1, 2025-05-05, 14d
     
-    section Entwicklung
-    Grundarchitektur          :active, dev1, 2025-05-19, 2025-05-26
-    Core Entwicklung          :dev2, 2025-05-26, 2025-06-02
+    section Week 3-4
+    Core Architecture :a2, 2025-05-19, 14d
     
-    section GUI
-    GUI Planung              :gui1, 2025-06-02, 2025-06-09
-    GUI Umsetzung            :gui2, 2025-06-09, 2025-06-16
+    section Week 5-6
+    GUI Development :a3, 2025-06-02, 14d
     
-    section Integration
-    Verknuepfung Elemente    :int1, 2025-06-16, 2025-06-23
-    API Push Notifications   :api, 2025-06-16, 2025-06-23
-    Erste Testphase          :test1, 2025-06-23, 2025-06-30
+    section Week 7-8
+    Integration and Testing :a4, 2025-06-16, 14d
     
-    section Finalisierung
-    App Visualisierung       :vis, 2025-06-30, 2025-07-07
-    Statistiken              :stats, 2025-06-30, 2025-07-07
-    Datenbankfunktionalitaet :db, 2025-07-07, 2025-07-14
+    section Week 9-10
+    Visualization and Statistics :a5, 2025-06-30, 14d
     
-    section Abschluss
-    Dokumentation            :docs, 2025-07-14, 2025-07-21
-    Praesentation            :pres, 2025-07-21, 2025-07-28
+    section Week 11
+    Documentation :a6, 2025-07-14, 7d
     
-    section Sprints
-    Sprint 1                 :crit, sprint1, 2025-05-05, 2025-05-09
-    Sprint 2                 :crit, sprint2, 2025-05-09, 2025-06-02
-    Sprint 3                 :crit, sprint3, 2025-06-02, 2025-06-20
+    section Week 12
+    Presentation and Delivery :a7, 2025-07-21, 7d
