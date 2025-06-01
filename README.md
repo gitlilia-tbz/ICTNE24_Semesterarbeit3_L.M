@@ -109,29 +109,29 @@ graph TD
 # Projekt Gantt-Diagramm
 # Project Timeline
 
-```mermaid
-gantt
-    dateFormat YYYY-MM-DD
-    title Fitness Tracker Project Timeline
-    
-    section Week 1-2
-    Setup and Planning :a1, 2025-05-05, 14d
-    
-    section Week 3-4
-    Core Architecture :a2, 2025-05-19, 14d
-    
-    section Week 5-6
-    GUI Development :a3, 2025-06-02, 14d
-    
-    section Week 7-8
-    Integration and Testing :a4, 2025-06-16, 14d
-    
-    section Week 9-10
-    Visualization and Statistics :a5, 2025-06-30, 14d
-    
-    section Week 11
-    Documentation :a6, 2025-07-14, 7d
-    
-    section Week 12
-    Presentation and Delivery :a7, 2025-07-21, 7d
+    ```mermaid
+    gantt
+        dateFormat YYYY-MM-DD
+        title Fitness Tracker Project Timeline
+        
+        section Week 1-2
+        Setup and Planning :a1, 2025-05-05, 14d
+        
+        section Week 3-4
+        Core Architecture :a2, 2025-05-19, 14d
+        
+        section Week 5-6
+        GUI Development :a3, 2025-06-02, 14d
+        
+        section Week 7-8
+        Integration and Testing :a4, 2025-06-16, 14d
+        
+        section Week 9-10
+        Visualization and Statistics :a5, 2025-06-30, 14d
+        
+        section Week 11
+        Documentation :a6, 2025-07-14, 7d
+        
+        section Week 12
+        Presentation and Delivery :a7, 2025-07-21, 7d
     ```
