@@ -104,7 +104,7 @@ graph TD
     
     class User,Flask primary;
     class Controllers,Models,Views,Database,Static secondary;
-
+```
 
 # Projekt Gantt-Diagramm
 # Project Timeline
@@ -134,3 +134,4 @@ gantt
     
     section Week 12
     Presentation and Delivery :a7, 2025-07-21, 7d
+    ```
