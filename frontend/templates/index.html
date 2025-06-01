@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - FitTracker Pro{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Dashboard Overview</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Manage your fitness journey and track progress</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 section-spacing">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Active Users</h3>
+                <button class="btn btn-primary btn-sm" onclick="showCreateUserModal()">
+                    <i class="fas fa-plus me-2"></i>Add User
+                </button>
+            </div>
+            <div class="card-body">
+                {% if users %}
+                    <div class="row g-4">
+                        {% for user in users %}
+                        <div class="col-md-6">
+                            <div class="user-card">
+                                <div class="user-avatar">{{ user.name[:2].upper() }}</div>
+                                <h5 class="mb-2">{{ user.name }}</h5>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">{{ user.email }}</p>
+                                
+                                <div class="row g-2 mb-3" style="font-size: 0.875rem;">
+                                    <div class="col-4">
+                                        <div style="color: var(--text-secondary);">Age</div>
+                                        <div style="font-weight: 600;">{{ user.age or '-' }}</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div style="color: var(--text-secondary);">Weight</div>
+                                        <div style="font-weight: 600;">{{ user.weight or '-' }}{% if user.weight %}kg{% endif %}</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div style="color: var(--text-secondary);">Height</div>
+                                        <div style="font-weight: 600;">{{ user.height or '-' }}{% if user.height %}cm{% endif %}</div>
+                                    </div>
+                                </div>
+                                
+                                <a href="{{ url_for('user_dashboard', user_id=user.id) }}" class="btn btn-primary w-100">
+                                    <i class="fas fa-chart-line me-2"></i>View Dashboard
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-users text-muted" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h4 style="color: var(--text-secondary);">No Users Yet</h4>
+                        <p style="color: var(--text-secondary);">Create your first user to get started with fitness tracking</p>
+                        <button class="btn btn-primary" onclick="showCreateUserModal()">
+                            <i class="fas fa-user-plus me-2"></i>Create First User
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="mb-0">Quick Actions</h3>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-3">
+                    <button class="btn btn-success" onclick="showCreateUserModal()">
+                        <i class="fas fa-user-plus me-2"></i>Create New User
+                    </button>
+                    <button class="btn btn-outline-primary" onclick="checkHealth()">
+                        <i class="fas fa-heartbeat me-2"></i>System Health
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">System Status</h3>
+            </div>
+            <div class="card-body" id="health-status">
+                <div class="d-flex flex-column gap-2">
+                    <div class="service-status healthy">
+                        <div class="service-status-dot"></div>
+                        User Service
+                    </div>
+                    <div class="service-status healthy">
+                        <div class="service-status-dot"></div>
+                        Workout Service
+                    </div>
+                    <div class="service-status healthy">
+                        <div class="service-status-dot"></div>
+                        Stats Service
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create User Modal -->
+<div class="modal fade" id="createUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createUserForm">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="userEmail" placeholder="Enter email address" required>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" id="userAge" placeholder="Age">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Weight (kg)</label>
+                            <input type="number" class="form-control" id="userWeight" placeholder="Weight">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Height (cm)</label>
+                            <input type="number" class="form-control" id="userHeight" placeholder="Height">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="createUser()">Create User</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showCreateUserModal() {
+    new bootstrap.Modal(document.getElementById('createUserModal')).show();
+}
+
+function createUser() {
+    const name = document.getElementById('userName').value;
+    const email = document.getElementById('userEmail').value;
+    const age = document.getElementById('userAge').value;
+    const weight = document.getElementById('userWeight').value;
+    const height = document.getElementById('userHeight').value;
+
+    if (!name || !email) {
+        alert('❌ Please fill in required fields (Name and Email)');
+        return;
+    }
+
+    const userData = {
+        name: name,
+        email: email
+    };
+
+    if (age) userData.age = parseInt(age);
+    if (weight) userData.weight = parseFloat(weight);
+    if (height) userData.height = parseInt(height);
+
+    fetch('/api/users/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert('❌ Error: ' + data.error);
+        } else {
+            alert('✅ User "' + name + '" created successfully!');
+            bootstrap.Modal.getInstance(document.getElementById('createUserModal')).hide();
+            document.getElementById('createUserForm').reset();
+            location.reload();
+        }
+    })
+    .catch(error => {
+        alert('❌ Error creating user: ' + error);
+    });
+}
+
+function checkHealth() {
+    fetch('/api/health')
+        .then(response => response.json())
+        .then(data => {
+            let html = '<div class="d-flex flex-column gap-2">';
+            for (const [service, status] of Object.entries(data)) {
+                const statusClass = status === 'healthy' ? 'healthy' : 'unhealthy';
+                html += `
+                    <div class="service-status ${statusClass}">
+                        <div class="service-status-dot"></div>
+                        ${service.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}: ${status}
+                    </div>
+                `;
+            }
+            html += '<small class="text-muted mt-2">Last checked: ' + new Date().toLocaleTimeString() + '</small>';
+            html += '</div>';
+            document.getElementById('health-status').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('health-status').innerHTML = 
+                '<div class="alert alert-danger">Error checking health: ' + error + '</div>';
+        });
+}
+
+// Auto-check health on page load
+document.addEventListener('DOMContentLoaded', function() {
+    checkHealth();
+});
+</script>
+{% endblock %}
