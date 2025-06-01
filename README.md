@@ -111,32 +111,32 @@ graph TD
 ```mermaid
 gantt
 dateFormat YYYY-MM-DD
-title Fitness Tracker Project Timeline
+title Fitness Tracker Projekt Zeitplan
 
-section Sprint 1 (Week 1)
-Setup :done, s1t1, 2025-05-05, 4d
+section Sprint 1 (Woche 1)
+Github Setup :done, s1t1, 2025-05-05, 4d
 
-section Sprint 2 (Week 2-7)
-Architecture :done, s2t1, 2025-05-09, 7d
-Core Dev Start :active, s2t2, 2025-05-16, 7d
-Basic Arch :s2t3, 2025-05-23, 7d
-Arch Complete :s2t4, 2025-05-30, 3d
+section Sprint 2 (Woche 2-7)
+Architektur :done, s2t1, 2025-05-09, 7d
+Grundarch Start :active, s2t2, 2025-05-16, 7d
+Grundarch :s2t3, 2025-05-23, 7d
+Arch Ende :s2t4, 2025-05-30, 3d
 
-section Sprint 3 (Week 8-12)
-GUI Planning :s3t1, 2025-06-02, 7d
-GUI Implementation :s3t2, 2025-06-09, 7d
-Integration :s3t3, 2025-06-16, 7d
+section Sprint 3 (Woche 8-12)
+GUI Plan :s3t1, 2025-06-02, 7d
+GUI Umsetz :s3t2, 2025-06-09, 7d
+Verknuepfung :s3t3, 2025-06-16, 7d
 API Push :s3t4, 2025-06-16, 7d
-Testing :s3t5, 2025-06-23, 7d
+Testphase :s3t5, 2025-06-23, 7d
 
-section Final Phase
-Visualization :f1, 2025-06-30, 7d
-Stats Database :f2, 2025-07-07, 7d
-Documentation :f3, 2025-07-14, 7d
-Presentation :f4, 2025-07-21, 7d
+section Finale Phase
+Visualisierung :f1, 2025-06-30, 7d
+Statistiken :f2, 2025-07-07, 7d
+Dokumentation :f3, 2025-07-14, 7d
+Praesentation :f4, 2025-07-21, 7d
 
-section Milestones
-Sprint 1 Done :milestone, m1, 2025-05-09, 0d
-Sprint 2 Done :milestone, m2, 2025-06-02, 0d
-Sprint 3 Done :milestone, m3, 2025-06-20, 0d
-Project Delivery :milestone, m4, 2025-07-28, 0d
+section Meilensteine
+Sprint 1 Ende :milestone, m1, 2025-05-09, 0d
+Sprint 2 Ende :milestone, m2, 2025-06-02, 0d
+Sprint 3 Ende :milestone, m3, 2025-06-20, 0d
+Projektabgabe :milestone, m4, 2025-06-20, 0d
