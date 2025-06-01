@@ -114,29 +114,29 @@ dateFormat YYYY-MM-DD
 title Fitness Tracker Project Timeline
 
 section Sprint 1 (Week 1)
-Github Obsidian Setup :done, s1t1, 2025-05-05, 4d
+Setup :done, s1t1, 2025-05-05, 4d
 
 section Sprint 2 (Week 2-7)
-Architecture Planning :done, s2t1, 2025-05-09, 7d
-Core Development Start :active, s2t2, 2025-05-16, 7d
-Basic Architecture :s2t3, 2025-05-23, 7d
-Architecture Complete :s2t4, 2025-05-30, 3d
+Architecture :done, s2t1, 2025-05-09, 7d
+Core Dev Start :active, s2t2, 2025-05-16, 7d
+Basic Arch :s2t3, 2025-05-23, 7d
+Arch Complete :s2t4, 2025-05-30, 3d
 
 section Sprint 3 (Week 8-12)
 GUI Planning :s3t1, 2025-06-02, 7d
 GUI Implementation :s3t2, 2025-06-09, 7d
-Integration Work :s3t3, 2025-06-16, 7d
-API and Push Notifications :s3t4, 2025-06-16, 7d
-Testing Phase :s3t5, 2025-06-23, 7d
+Integration :s3t3, 2025-06-16, 7d
+API Push :s3t4, 2025-06-16, 7d
+Testing :s3t5, 2025-06-23, 7d
 
 section Final Phase
-Visualization Improvements :f1, 2025-06-30, 7d
-Statistics and Database :f2, 2025-07-07, 7d
+Visualization :f1, 2025-06-30, 7d
+Stats Database :f2, 2025-07-07, 7d
 Documentation :f3, 2025-07-14, 7d
-Presentation Preparation :f4, 2025-07-21, 7d
+Presentation :f4, 2025-07-21, 7d
 
 section Milestones
-Sprint 1 Complete :milestone, m1, 2025-05-09, 0d
-Sprint 2 Complete :milestone, m2, 2025-06-02, 0d
-Sprint 3 Complete :milestone, m3, 2025-06-20, 0d
+Sprint 1 Done :milestone, m1, 2025-05-09, 0d
+Sprint 2 Done :milestone, m2, 2025-06-02, 0d
+Sprint 3 Done :milestone, m3, 2025-06-20, 0d
 Project Delivery :milestone, m4, 2025-07-28, 0d
