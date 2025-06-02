@@ -92,36 +92,37 @@ graph TB
             H2["Grundarchitektur<br/>Technische Schulden"]
             H3["API Integration<br/>Service Kommunikation"]
         end
-        
         subgraph Mittel["🟡 MITTLERE AUSWIRKUNG"]
             M1["GUI Planung<br/>Design Iterationen"]
             M2["Verknuepfung Elemente<br/>Integration Probleme"]
             M3["App Visualisierung<br/>Performance Issues"]
         end
-        
         subgraph Niedrig["🟢 NIEDRIGE AUSWIRKUNG"]
             N1["GitHub Setup<br/>Tool Probleme"]
             N2["Dokumentation<br/>Unvollständigkeit"]
             N3["Präsentation<br/>Zeitverzug"]
         end
-        
         subgraph Wahrscheinlichkeit["📊 Wahrscheinlichkeit"]
             W1["Hoch: Zeitdruck, Komplexität"]
             W2["Mittel: Design Änderungen"]
             W3["Niedrig: Setup, Dokumentation"]
         end
     end
-    
+
     classDef hoch fill:#ff4757,stroke:#ff3742,stroke-width:2px,color:#fff
     classDef mittel fill:#ffa502,stroke:#ff9f43,stroke-width:2px,color:#fff
     classDef niedrig fill:#2ed573,stroke:#20bf6b,stroke-width:2px,color:#fff
     classDef info fill:#3742fa,stroke:#2f3542,stroke-width:1px,color:#fff
-    
+
     class H1,H2,H3 hoch
     class M1,M2,M3 mittel
     class N1,N2,N3 niedrig
     class W1,W2,W3 info
 ```
+Fabrkodierung:
+🔴 Hohe Auswirkung (Kritisch)
+🟡 Mittlere Auswirkung (Überwachen)
+🟢 Niedrige Auswirkung (Akzeptabel)
 
 ## Projekt Gantt-Diagramm
 
