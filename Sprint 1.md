@@ -104,6 +104,3 @@ PLANNER FOTO EINFÜGEN
 - Wechsel / Migration des KanBan-Board
 - Start Entwicklung der Grundarchitektur
 - GUI Planung und erste Umsetzung
-
-
-test test
