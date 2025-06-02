@@ -90,6 +90,12 @@ PLANNER FOTO EINFÜGEN
 - Erster Entwurf einer groben Architekturplanung
 - KanBan Board wurde erstellt - Microsoft Lists
 
+![alt text](image-2.png)
+*_KanBan Angfangs Sprint_
+
+![alt text](image-3.png)
+*_KanBan Ende Sprint_
+
 ### Herausforderungen
 
 - Microsoft Lists bietet nicht alle benötigten Funktionen an. Es wurde am Anfang des 2. Sprints eine Ausweichmöglichkeit definiert
