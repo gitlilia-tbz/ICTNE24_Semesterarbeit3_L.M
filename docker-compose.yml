@@ -21,6 +21,8 @@ services:
       - USER_SERVICE_URL=http://user-service:5001
       - WORKOUT_SERVICE_URL=http://workout-service:5002
       - STATS_SERVICE_URL=http://stats-service:5003
+    volumes:
+      - ./frontend:/app
     networks:
       - fitness-network
 

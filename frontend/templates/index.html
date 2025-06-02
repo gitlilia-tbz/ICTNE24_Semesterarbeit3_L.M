@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row mb-4">
     <div class="col-12">
-        <h1>Dashboard Overview</h1>
+        <h1>TEST Dashboard Overview</h1>
         <p style="color: var(--text-secondary); font-size: 1.1rem;">Manage your fitness journey and track progress</p>
     </div>
 </div>
@@ -76,7 +76,7 @@
                         <i class="fas fa-user-plus me-2"></i>Create New User
                     </button>
                     <button class="btn btn-outline-primary" onclick="checkHealth()">
-                        <i class="fas fa-heartbeat me-2"></i>System Health
+                        <i class="fas fa-heartbeat me-2"></i>Refresh System Health
                     </button>
                 </div>
             </div>
@@ -200,6 +200,10 @@ function createUser() {
 }
 
 function checkHealth() {
+    // Show loading indicator
+    document.getElementById('health-status').innerHTML = 
+        '<div class="text-center"><i class="fas fa-spinner fa-spin"></i> Checking services...</div>';
+    
     fetch('/api/health')
         .then(response => response.json())
         .then(data => {
