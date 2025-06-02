@@ -90,6 +90,13 @@ PLANNER FOTO EINFÜGEN
 - Erster Entwurf einer groben Architekturplanung
 - App GUI attraktiver gestalten mit positivem User-Feedback
 
+![alt text](image-4.png)
+*_KanBan Angfangs Sprint_
+
+![alt text](image-5.png)
+*_KanBan Ende Sprint_
+
+
 ![alt text](image-1.png)
 *_Vorgänger der aktuellen Version_
 
