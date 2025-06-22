@@ -3,7 +3,7 @@ import requests
 import os
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-fallback-key')
 
 USER_SERVICE_URL = os.getenv('USER_SERVICE_URL', 'http://localhost:5001')
 WORKOUT_SERVICE_URL = os.getenv('WORKOUT_SERVICE_URL', 'http://localhost:5002')
