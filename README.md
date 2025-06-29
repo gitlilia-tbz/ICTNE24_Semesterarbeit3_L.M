@@ -80,11 +80,7 @@ Weitere optionale Ziele für die App:
 | 3      | Vollendung der Dokumentation                                                             |
 | 3      | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
 
-<<<<<<< HEAD
 ## Risiko-Matrix
-=======
-## Risiko-Evaluation
->>>>>>> c13263d5fc614adf6fc7b4dbf232207a5a4260d9
 
 Um das Risiko des Projektes richtig einschätzen zu können, habe ich untenstehend eine Risiko-Matrix erstellt mit den allfälligen Projekt-Risiken.
 
@@ -129,16 +125,10 @@ Fabrkodierung:
 🟡 Mittlere Auswirkung (Überwachen)
 🟢 Niedrige Auswirkung (Akzeptabel)
 
-<<<<<<< HEAD
 
 ## SEUSAG-Diagramm
 
 ![](assets/20250629_152902_image.png)
-=======
-## Risiko-Matrix
-
-![](assets/20250629_144721_image.png)
->>>>>>> c13263d5fc614adf6fc7b4dbf232207a5a4260d9
 
 ## Projekt Gantt-Diagramm
 
