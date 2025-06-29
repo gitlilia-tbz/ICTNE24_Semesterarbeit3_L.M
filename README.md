@@ -80,8 +80,8 @@ Weitere optionale Ziele für die App:
 | 3      | Vollendung der Dokumentation                                                             |
 | 3      | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
 
-
 ## Risiko-Matrix
+
 Um das Risiko des Projektes richtig einschätzen zu können, habe ich untenstehend eine Risiko-Matrix erstellt mit den allfälligen Projekt-Risiken.
 
 ```mermaid
@@ -119,10 +119,16 @@ graph TB
     class N1,N2,N3 niedrig
     class W1,W2,W3 info
 ```
+
 Fabrkodierung:
 🔴 Hohe Auswirkung (Kritisch)
 🟡 Mittlere Auswirkung (Überwachen)
 🟢 Niedrige Auswirkung (Akzeptabel)
+
+
+## SEUSAG-Diagramm
+
+![](assets/20250629_152902_image.png)
 
 ## Projekt Gantt-Diagramm
 
