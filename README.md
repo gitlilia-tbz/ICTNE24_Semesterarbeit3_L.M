@@ -154,7 +154,8 @@ Hierbei wurde
 
 ## Neue Struktur
 
-![](assets/20250629_152902_image.png)
+
+![](assets/20250629_170604_image.png)
 
 ## 1.6 Projekt Gantt-Diagramm
 
