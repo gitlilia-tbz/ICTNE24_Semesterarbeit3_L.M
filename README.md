@@ -15,11 +15,15 @@ Semesterarbeit 3
 
 | :round_pushpin: Topics:              |
 | -------------------------------------- |
-| -:computer: Microservices            |
+| - :computer: Microservices           |
 | -:paperclip: PRJ (Projektmanagement) |
 |                                      |
 
-## :pencil2: Beschreibung
+## Inhaltsverzeichnis
+
+# 1. Projektmanagement
+
+## :pencil2: 1.1 Projektbeschreibung
 
 TrackMyGym: Tracke. Wachse. Gewinne.
 Projektplanung
@@ -45,19 +49,19 @@ Als regelmässiger Gym-Besucher fehlt mir eine einfache App, die meine Fortschri
 TrackMyGym – Fortschritt messbar machen!
 
 
-| :checkered_flag: Ziele                                                                    |
+| :checkered_flag: Angezielte Kernfunktionen der App                                        |
 | ------------------------------------------------------------------------------------------- |
 | Für die erste Beta-Version von TrackMyGym sollte die App folgende Kernfunktionen bieten: |
 
-Grundlegendes Tracking von Gym-Besuchen (Check-in-System)
+- Grundlegendes Tracking von Gym-Besuchen (Check-in-System)
 
-Einfache Erfassung von Übungen und Gewichten
+- Einfache Erfassung von Übungen und Gewichten
 
-Individuelle Fortschrittsanzeige für den Nutzer
+- Individuelle Fortschrittsanzeige für den Nutzer
 
-Einfache Benutzeroberfläche für die Eingabe und Anzeige der Daten
+- Einfache Benutzeroberfläche für die Eingabe und Anzeige der Daten
 
-Grundlegende Benutzerprofilverwaltung
+- Grundlegende Benutzerprofilverwaltung
 
 Die sozialen Funktionen wie Freunde hinzufügen, Gruppenbildung und Leaderboards könnten für spätere Versionen geplant werden, nachdem die Kernfunktionen stabil laufen. Der technische Aufbau mit Python/Flask und Docker-Deployment sollte bereits in der Beta umgesetzt sein.
 
@@ -67,7 +71,7 @@ Weitere optionale Ziele für die App:
 - Gruppen: Bildung von Trainingsgruppen
 - Leaderboards: Freundschaftliche Wettkämpfe zwischen Nutzern/Gruppen          |
 
-## Zeitplan
+## 1.2 Zeitplan
 
 
 | Sprint | Arbeitsschritte                                                                          |
@@ -80,7 +84,7 @@ Weitere optionale Ziele für die App:
 | 3      | Vollendung der Dokumentation                                                             |
 | 3      | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
 
-## Risiko-Evaluation
+## 1.3 Risiko-Evaluation
 
 Um das Risiko des Projektes richtig einschätzen zu können, habe ich untenstehend eine Risiko-Matrix erstellt mit den allfälligen Projekt-Risiken.
 
@@ -126,15 +130,32 @@ Fabrkodierung:
 🟢 Niedrige Auswirkung (Akzeptabel)
 
 
-## Risiko-Matrix
+## 1.4 Risiko-Matrix
 
 ![](assets/20250629_161158_image.png)
 
-## SEUSAG-Diagramm
+## 1.5 Projekterweiterung
+
+### 1.5.1 Beschrieb zur Projekterweiterung
+
+Da die nötigsten Projektziele vorzeitig erreicht wurden; habe ich zusammen mit Corrado Parisi entschieden, das Projekt zu erweitern um meine Microservice-Kompetenzen optimal zu demonstrieren.
+
+Die Projekterweiterung beinhaltete
+
+- Die Push-Benachrichtigungen-Funktionalität zu de-priorisieren und allfällig zu überspringen
+- Die Fitness-Tracker Applikation auf einer EC2 Instanz zur Verfügung zu stellen für die Erreichbarkeit via Internet
+
+Hierbei wurde
+
+- Eine EC2 Inszanz erstellt
+- Eine GitHub CI/CD Pipeline erstellt
+- Die Pipeline auf ihre Funktionalität getestet
+
+### SEUSAG-Diagramm
 
 ![](assets/20250629_152902_image.png)
 
-## Projekt Gantt-Diagramm
+## 1.6 Projekt Gantt-Diagramm
 
 Dieses Diagramm zeigt die Projekt-Tätigkeiten und dessen Zeitfenster
 
