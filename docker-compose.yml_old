@@ -12,55 +12,54 @@ services:
       - stats-service
     networks:
       - fitness-network
-    restart: unless-stopped
 
   frontend:
     build: ./frontend
+    ports:
+      - "5000:5000"
     environment:
-      - FLASK_ENV=production
-      - FLASK_DEBUG=False
-      - SECRET_KEY=${SECRET_KEY}
       - USER_SERVICE_URL=http://user-service:5001
       - WORKOUT_SERVICE_URL=http://workout-service:5002
       - STATS_SERVICE_URL=http://stats-service:5003
+    volumes:
+      - ./frontend:/app
     networks:
       - fitness-network
-    restart: unless-stopped
 
   user-service:
     build: ./user-service
+    ports:
+      - "5001:5001"
     environment:
-      - FLASK_ENV=production
-      - FLASK_DEBUG=False
+      - FLASK_ENV=development
     volumes:
       - user_data:/app/data
     networks:
       - fitness-network
-    restart: unless-stopped
 
   workout-service:
     build: ./workout-service
+    ports:
+      - "5002:5002"
     environment:
-      - FLASK_ENV=production
-      - FLASK_DEBUG=False
+      - FLASK_ENV=development
       - USER_SERVICE_URL=http://user-service:5001
     volumes:
       - workout_data:/app/data
     networks:
       - fitness-network
-    restart: unless-stopped
 
   stats-service:
     build: ./stats-service
+    ports:
+      - "5003:5003"
     environment:
-      - FLASK_ENV=production
-      - FLASK_DEBUG=False
+      - FLASK_ENV=development
       - WORKOUT_SERVICE_URL=http://workout-service:5002
     volumes:
       - stats_data:/app/data
     networks:
       - fitness-network
-    restart: unless-stopped
 
 volumes:
   user_data:
