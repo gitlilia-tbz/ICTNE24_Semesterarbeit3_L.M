@@ -15,7 +15,7 @@ Semesterarbeit 3
 
 | :round_pushpin: Topics:              |
 | -------------------------------------- |
-| - :computer: Microservices           |
+| -:computer: Microservices            |
 | -:paperclip: PRJ (Projektmanagement) |
 |                                      |
 
@@ -54,13 +54,9 @@ TrackMyGym – Fortschritt messbar machen!
 | Für die erste Beta-Version von TrackMyGym sollte die App folgende Kernfunktionen bieten: |
 
 - Grundlegendes Tracking von Gym-Besuchen (Check-in-System)
-
 - Einfache Erfassung von Übungen und Gewichten
-
 - Individuelle Fortschrittsanzeige für den Nutzer
-
 - Einfache Benutzeroberfläche für die Eingabe und Anzeige der Daten
-
 - Grundlegende Benutzerprofilverwaltung
 
 Die sozialen Funktionen wie Freunde hinzufügen, Gruppenbildung und Leaderboards könnten für spätere Versionen geplant werden, nachdem die Kernfunktionen stabil laufen. Der technische Aufbau mit Python/Flask und Docker-Deployment sollte bereits in der Beta umgesetzt sein.
@@ -129,7 +125,6 @@ Fabrkodierung:
 🟡 Mittlere Auswirkung (Überwachen)
 🟢 Niedrige Auswirkung (Akzeptabel)
 
-
 ## 1.4 Risiko-Matrix
 
 ![](assets/20250629_161158_image.png)
@@ -152,6 +147,12 @@ Hierbei wurde
 - Die Pipeline auf ihre Funktionalität getestet
 
 ### SEUSAG-Diagramm
+
+## Alte Struktur
+
+![](assets/20250629_165627_image.png)
+
+## Neue Struktur
 
 ![](assets/20250629_152902_image.png)
 
