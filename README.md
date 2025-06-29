@@ -80,7 +80,7 @@ Weitere optionale Ziele für die App:
 | 3      | Vollendung der Dokumentation                                                             |
 | 3      | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
 
-## Risiko-Matrix
+## Risiko-Evaluation
 
 Um das Risiko des Projektes richtig einschätzen zu können, habe ich untenstehend eine Risiko-Matrix erstellt mit den allfälligen Projekt-Risiken.
 
@@ -125,6 +125,10 @@ Fabrkodierung:
 🟡 Mittlere Auswirkung (Überwachen)
 🟢 Niedrige Auswirkung (Akzeptabel)
 
+
+## Risiko-Matrix
+
+![](assets/20250629_161158_image.png)
 
 ## SEUSAG-Diagramm
 
