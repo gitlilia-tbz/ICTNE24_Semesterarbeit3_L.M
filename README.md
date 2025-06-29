@@ -157,6 +157,19 @@ Hierbei wurde
 
 ![](assets/20250629_170604_image.png)
 
+**Wichtige architektonische Verbesserungen:**
+
+1. **Skalierbarkeit** : Von lokaler Maschine zu Cloud-Infrastruktur
+2. **Automatisierung** : CI/CD Pipeline für automatische Deployments
+3. **Accessibility** : Von localhost zu öffentlich zugänglicher App
+4. **Professional Deployment** : Docker-Compose jetzt innerhalb der AWS-Umgebung
+
+**Das zeigt den Übergang von:**
+
+* 🔧**Development** → 🌐**Production**
+* 🏠**Local** → ☁️**Cloud**
+* 👨‍💻**Manual** → 🤖**Automated**
+
 ## 1.6 Projekt Gantt-Diagramm
 
 Dieses Diagramm zeigt die Projekt-Tätigkeiten und dessen Zeitfenster
