@@ -19,7 +19,79 @@ Semesterarbeit 3
 | -:paperclip: PRJ (Projektmanagement) |
 |                                      |
 
+# TrackMyGym: Tracke. Wachse. Gewinne.
+
 ## Inhaltsverzeichnis
+
+### 📋 Projektübersicht
+
+* [Einführung / README](platzhalter)
+* [Projektinformationen](platzhalter)
+
+### 1. 📊 Projektmanagement
+
+* [1.1 Projektbeschreibung](platzhalter)
+* [1.2 Zeitplan](platzhalter)
+* [1.3 Risiko-Evaluation](platzhalter)
+* [1.4 Risiko-Matrix](platzhalter)
+* [1.5 Sprint-Dokumentation](platzhalter)
+  * [1.5.1 Sprint 1](platzhalter)
+  * [1.5.2 Sprint 2](platzhalter)
+  * [1.5.3 Sprint 3](platzhalter)
+* [1.6 Projekterweiterung](platzhalter)
+  * [1.6.1 Beschrieb zur Projekterweiterung](platzhalter)
+  * [1.6.2 SEUSAG-Diagramm - Alte Struktur](platzhalter)
+  * [1.6.3 Neue Struktur](platzhalter)
+* [1.7 Projekt Gantt-Diagramm](platzhalter)
+
+### 2. 🛠️ Technische Dokumentation
+
+* [2.1 Architektur-Übersicht](platzhalter)
+* [2.2 Microservices](platzhalter)
+
+  * Frontend Service
+  * User Service
+  * Workout Service
+  * Stats Service
+
+### 3. ☁️ Deployment & DevOps
+
+* [3.1 AWS EC2 Setup](platzhalter)
+* [3.2 CI/CD Pipeline](platzhalter)
+* [3.3 GitHub Actions](platzhalter)
+* [3.4 Produktionsumgebung](platzhalter)
+
+### 4. 🧪 Testing & Qualitätssicherung
+
+* [4.1 Pipeline-Testing](platzhalter)
+* [4.1 User-Testing](platzhalter)
+
+### 5. 📱 User Interface
+
+* [5.1 Frontend Design](platzhalter)
+* [5.2 User Experience](platzhalter)
+* [5.3 Screenshots](platzhalter)
+
+### 6. 📈 Ergebnisse & Reflexion
+
+* [6.1 Erreichte Ziele](platzhalter)
+* [6.2 Herausforderungen](platzhalter)
+* [6.3 Lessons Learned](platzhalter)
+* [6.4 Ausblick](platzhalter)
+
+### 7. 📚 Anhang
+
+* [7.1 Code-Repository](platzhalter)
+* [7.2 Verwendete Technologien](platzhalter)
+* [7.3 Quellen](platzhalter)
+
+---
+
+## Quick Navigation
+
+* 🚀[Live Demo](platzhalter)
+* 💻[GitHub Repository](platzhalter)
+* 📊[KanBan Projekt Board](platzhalter)
 
 # 1. Projektmanagement
 
@@ -146,13 +218,13 @@ Hierbei wurde
 - Eine GitHub CI/CD Pipeline erstellt
 - Die Pipeline auf ihre Funktionalität getestet
 
-### SEUSAG-Diagramm
+### 1.5.2 SEUSAG-Diagramm
 
 ## Alte Struktur
 
 ![](assets/20250629_165627_image.png)
 
-## Neue Struktur
+## 1.5.3 Neue Struktur
 
 
 ![](assets/20250629_170604_image.png)
