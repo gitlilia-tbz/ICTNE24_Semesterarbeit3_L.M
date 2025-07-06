@@ -25,7 +25,7 @@
 
 ### [1. 📊 Projektmanagement]()
 
-* [1.1 Projektbeschreibung](##:pencil2:-1.1-Projektbeschreibung##1.1-Projektbeschreibung)
+* [1.1 Projektbeschreibung](#11-projektbeschreibung)
 * [1.2 Zeitplan](platzhalter)
 * [1.3 Risiko-Evaluation](platzhalter)
 * [1.4 Risiko-Matrix](platzhalter)
