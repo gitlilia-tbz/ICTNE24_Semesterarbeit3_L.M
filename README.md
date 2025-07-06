@@ -1,6 +1,6 @@
 # README
 
-## :page_with_curl: Semesterarbeit 3
+## :page_with_curl: Semesterarbeit 3 - test-push-2
 
 
 | :ticket: Titel:                   | TrackMyGym: Tracke. Wachse. Gewinne.     |
