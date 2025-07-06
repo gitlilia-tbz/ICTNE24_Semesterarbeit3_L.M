@@ -103,6 +103,93 @@
     </div>
 
     <div class="col-lg-4">
+        <!-- Weather Widget -->
+        {% if weather %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="mb-0">
+                    <i class="fas fa-cloud-sun me-2"></i>Weather & Workout
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Current Weather -->
+                <div class="text-center mb-3">
+                    <div class="weather-temp" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color);">
+                        {{ weather.temperature }}°C
+                    </div>
+                    <div style="color: var(--text-secondary); font-weight: 500;">
+                        {{ weather.weather_description }}
+                    </div>
+                    <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                        <i class="fas fa-eye me-1"></i>Feels like {{ weather.feels_like }}°C
+                    </div>
+                    {% if weather.city %}
+                    <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                        <i class="fas fa-map-marker-alt me-1"></i>{{ weather.city }}{% if weather.country %}, {{ weather.country }}{% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Weather Details -->
+                <div class="row g-2 mb-3" style="font-size: 0.875rem;">
+                    <div class="col-6">
+                        <div style="color: var(--text-secondary);">Humidity</div>
+                        <div style="font-weight: 600;"><i class="fas fa-tint me-1"></i>{{ weather.humidity }}%</div>
+                    </div>
+                    <div class="col-6">
+                        <div style="color: var(--text-secondary);">Wind</div>
+                        <div style="font-weight: 600;"><i class="fas fa-wind me-1"></i>{{ weather.wind_speed }} m/s</div>
+                    </div>
+                    <div class="col-6">
+                        <div style="color: var(--text-secondary);">Visibility</div>
+                        <div style="font-weight: 600;"><i class="fas fa-eye me-1"></i>{{ weather.visibility }} km</div>
+                    </div>
+                    <div class="col-6">
+                        <div style="color: var(--text-secondary);">Conditions</div>
+                        <div style="font-weight: 600;">
+                            {% if weather.workout_conditions == 'excellent' %}
+                                <span style="color: var(--success-color);">Excellent</span>
+                            {% elif weather.workout_conditions == 'good' %}
+                                <span style="color: var(--primary-color);">Good</span>
+                            {% elif weather.workout_conditions == 'fair' %}
+                                <span style="color: var(--warning-color);">Fair</span>
+                            {% else %}
+                                <span style="color: var(--danger-color);">Poor</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workout Suitability -->
+                {% if weather.outdoor_suitable %}
+                    <div class="alert alert-success mb-3" style="padding: 0.75rem; margin-bottom: 1rem;">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>Great for outdoor workouts!</strong>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning mb-3" style="padding: 0.75rem; margin-bottom: 1rem;">
+                        <i class="fas fa-home me-2"></i>
+                        <strong>Better to exercise indoors today</strong>
+                    </div>
+                {% endif %}
+
+                <!-- Workout Advice Button -->
+                <button class="btn btn-outline-primary btn-sm w-100" onclick="loadWorkoutAdvice()">
+                    <i class="fas fa-lightbulb me-2"></i>Get Workout Advice
+                </button>
+                
+                <div id="workout-advice" class="mt-3"></div>
+
+                {% if weather.demo_mode %}
+                <small class="text-muted d-block mt-2">
+                    <i class="fas fa-info-circle me-1"></i>Demo weather data (API key not configured)
+                </small>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Profile Card -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="mb-0">Profile</h3>
@@ -148,6 +235,7 @@
             </div>
         </div>
 
+        <!-- Analytics Card -->
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0">Analytics</h3>
@@ -162,6 +250,9 @@
                     </button>
                     <button class="btn btn-outline-primary btn-sm" onclick="loadRecentStats()">
                         <i class="fas fa-trending-up me-2"></i>Recent Performance
+                    </button>
+                    <button class="btn btn-outline-success btn-sm" onclick="loadPersonalRecords()">
+                        <i class="fas fa-trophy me-2"></i>Personal Records
                     </button>
                 </div>
                 
@@ -281,6 +372,52 @@ function addWorkout() {
     });
 }
 
+// Weather Functions
+function loadWorkoutAdvice() {
+    const adviceContainer = document.getElementById('workout-advice');
+    adviceContainer.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin"></i> Getting advice...</div>';
+    
+    fetch('/api/weather/workout-advice')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                adviceContainer.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                return;
+            }
+            
+            const advice = data.advice;
+            let html = `
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-brain me-2"></i>${advice.primary_message}</h6>
+                    
+                    <strong>Recommended Activities:</strong>
+                    <ul class="mb-2">
+                        ${advice.activity_suggestions.map(activity => `<li>${activity}</li>`).join('')}
+                    </ul>
+                    
+                    ${advice.safety_tips.length > 0 ? `
+                    <strong>Safety Tips:</strong>
+                    <ul class="mb-2">
+                        ${advice.safety_tips.map(tip => `<li>${tip}</li>`).join('')}
+                    </ul>
+                    ` : ''}
+                    
+                    ${advice.gear_recommendations.length > 0 ? `
+                    <strong>Gear Recommendations:</strong>
+                    <ul class="mb-0">
+                        ${advice.gear_recommendations.map(gear => `<li>${gear}</li>`).join('')}
+                    </ul>
+                    ` : ''}
+                </div>
+            `;
+            adviceContainer.innerHTML = html;
+        })
+        .catch(error => {
+            adviceContainer.innerHTML = `<div class="alert alert-danger">Error loading advice: ${error}</div>`;
+        });
+}
+
+// Analytics Functions
 function loadWeeklyStats() {
     fetch(`/api/stats/${userId}/weekly`)
         .then(response => response.json())
@@ -350,5 +487,57 @@ function loadRecentStats() {
                 '<div class="alert alert-danger">Error loading stats: ' + error + '</div>';
         });
 }
+
+function loadPersonalRecords() {
+    fetch(`/api/stats/${userId}/personal-records`)
+        .then(response => response.json())
+        .then(data => {
+            let html = '<div class="alert alert-success">';
+            html += '<h6><i class="fas fa-trophy"></i> Personal Records:</h6>';
+            
+            if (data.longest_workout && data.longest_workout.duration > 0) {
+                html += `<strong>Longest Workout:</strong> ${data.longest_workout.duration}min (${data.longest_workout.exercise_type})<br>`;
+            }
+            
+            if (data.highest_calories && data.highest_calories.calories > 0) {
+                html += `<strong>Most Calories:</strong> ${data.highest_calories.calories}cal (${data.highest_calories.exercise_type})<br>`;
+            }
+            
+            if (data.favorite_exercise && data.favorite_exercise.type) {
+                html += `<strong>Favorite Exercise:</strong> ${data.favorite_exercise.type} (${data.favorite_exercise.count} times)<br>`;
+            }
+            
+            if (data.current_streak && data.current_streak.days > 0) {
+                html += `<strong>Current Streak:</strong> ${data.current_streak.days} days 🔥<br>`;
+            }
+            
+            if (!data.longest_workout || data.longest_workout.duration === 0) {
+                html += 'Add more workouts to see your personal records!';
+            }
+            
+            html += '</div>';
+            document.getElementById('additional-stats').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('additional-stats').innerHTML = 
+                '<div class="alert alert-danger">Error loading records: ' + error + '</div>';
+        });
+}
+
+// Auto-refresh weather every 30 minutes
+setInterval(function() {
+    if (window.location.pathname.includes('/user/')) {
+        // Refresh only weather data, not the whole page
+        fetch('/api/weather/current')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.error) {
+                    // Could update weather display here without full page reload
+                    console.log('Weather data refreshed');
+                }
+            })
+            .catch(error => console.log('Weather refresh failed'));
+    }
+}, 30 * 60 * 1000);
 </script>
 {% endblock %}
