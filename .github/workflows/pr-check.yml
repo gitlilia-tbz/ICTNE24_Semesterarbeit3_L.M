@@ -1,4 +1,3 @@
-
 name: PR Health Check
 
 on:
@@ -13,13 +12,40 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     
+    - name: Create test environment file
+      run: |
+        echo "DB_PASSWORD=test_password_123" > .env
+        echo "SECRET_KEY=test_secret_key" >> .env
+    
     - name: Build Docker images
       run: |
-        docker-compose build
+        docker-compose build --no-cache
     
     - name: Test containers start
       run: |
+        # Start all services
         docker-compose up -d
-        sleep 30
+        
+        # Wait for PostgreSQL to be ready
+        echo "Waiting for services to start..."
+        sleep 45
+        
+        # Check container status
         docker-compose ps
-        docker-compose down
+        
+        # Test PostgreSQL connection
+        docker-compose exec -T postgres pg_isready -U trackmygym_user -d trackmygym
+        
+        # Test service health endpoints
+        docker-compose exec -T user-service curl -f http://localhost:5001/health || echo "User service health check failed"
+        docker-compose exec -T workout-service curl -f http://localhost:5002/health || echo "Workout service health check failed"
+        docker-compose exec -T stats-service curl -f http://localhost:5003/health || echo "Stats service health check failed"
+        
+        # Check logs for errors
+        docker-compose logs --tail=50
+    
+    - name: Cleanup
+      if: always()
+      run: |
+        docker-compose down -v
+        docker system prune -f

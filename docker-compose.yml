@@ -1,6 +1,24 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: trackmygym
+      POSTGRES_USER: trackmygym_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secure_password_123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - fitness-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trackmygym_user -d trackmygym"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   nginx:
     build: ./nginx
     ports:
@@ -23,6 +41,9 @@ services:
       - USER_SERVICE_URL=http://user-service:5001
       - WORKOUT_SERVICE_URL=http://workout-service:5002
       - STATS_SERVICE_URL=http://stats-service:5003
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - fitness-network
     restart: unless-stopped
@@ -32,8 +53,10 @@ services:
     environment:
       - FLASK_ENV=production
       - FLASK_DEBUG=False
-    volumes:
-      - user_data:/app/data
+      - DATABASE_URL=postgresql://trackmygym_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/trackmygym
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - fitness-network
     restart: unless-stopped
@@ -44,8 +67,10 @@ services:
       - FLASK_ENV=production
       - FLASK_DEBUG=False
       - USER_SERVICE_URL=http://user-service:5001
-    volumes:
-      - workout_data:/app/data
+      - DATABASE_URL=postgresql://trackmygym_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/trackmygym
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - fitness-network
     restart: unless-stopped
@@ -56,16 +81,16 @@ services:
       - FLASK_ENV=production
       - FLASK_DEBUG=False
       - WORKOUT_SERVICE_URL=http://workout-service:5002
-    volumes:
-      - stats_data:/app/data
+      - DATABASE_URL=postgresql://trackmygym_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/trackmygym
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - fitness-network
     restart: unless-stopped
 
 volumes:
-  user_data:
-  workout_data:
-  stats_data:
+  postgres_data:
 
 networks:
   fitness-network:

@@ -464,7 +464,7 @@ Dritte Sprint-Iteration...
 
 ## 1.7 Projekterweiterung
 
-Erweiterungen und Anpassungen des ursprünglichen Projektumfangs...
+Erweiterungen und Anpassungen des ursprünglichen Projektumfangs.
 
 ### 1.7.1 Beschrieb zur Projekterweiterung
 
@@ -489,11 +489,37 @@ Ursprüngliche Systemarchitektur
 
 ![](assets/20250629_165627_image.png)
 
+***Aussenwelt:*** Der User greift auf die Nginx Instanz, um die Applikation via Localhost IP-Adresse zu erreichen.
+
+Das Docker Compose wird manuell ausgeführt, um die Docker-Container zu initialisieren
+
+***Rote Schicht:*** Auf dieser Schicht verweilt der Localhost (In diesem Szenario, eine Windows-Maschine)
+
+***Grüne Schicht:*** Auf dieser Schicht operiert Docker;
+
+Docker ist hierbei auf der lokalen Maschine aktiv und (noch) nicht auf der Cloud.
+
+***Gelbe Schicht:***
+
+Hier befinden sich die Container der verschiedenen Microservices der Fitness-Tracker Applikation. Die Informationen der Microservices befinden sich in einem JSON Storage-File.
+
 ### 1.7.3 Neue Struktur
 
 Überarbeitete Systemarchitektur
 
 ![](assets/20250629_170604_image.png)
+
+***Blaue Schicht:*** Auf dieser Schicht befindet sich der Entwicker, der via CI/CD Pipeline den Code auf die Lila Schicht pusht.
+
+Der User greift wie gewohnt via Nginx auf die Applikation zu
+
+***Lila Schicht:*** hier befindet sich die Amazon EC2 Instanz
+
+***Grüne Schicht:*** Unterhalb der EC2 Instanz befindet sich die aktive Docker-Applikation
+
+***Gelbe Schicht:*** Hier befinden sich die Mikroservices.
+
+
 
 **Wichtige architektonische Verbesserungen:**
 

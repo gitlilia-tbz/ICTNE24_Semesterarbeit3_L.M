@@ -21,7 +21,29 @@ jobs:
         script: |
           cd ICTNE24_Semesterarbeit3_L.M
           git pull origin main
+          
+          # Stop all services
           docker-compose down
-          docker-compose build --no-cache
-          docker-compose up -d
+          
+          # Clean up old containers and images
           docker system prune -f
+          
+          # Build new images (PostgreSQL needs fresh build)
+          docker-compose build --no-cache
+          
+          # Start services with PostgreSQL health checks
+          docker-compose up -d
+          
+          # Wait for PostgreSQL to be ready
+          echo "Waiting for PostgreSQL to be ready..."
+          sleep 30
+          
+          # Check if all services are healthy
+          docker-compose ps
+          
+          # Test database connection
+          docker-compose exec -T postgres pg_isready -U trackmygym_user -d trackmygym || echo "PostgreSQL not ready yet"
+          
+          # Optional: Test health endpoints
+          sleep 10
+          curl -f http://localhost/api/health || echo "Health check failed"
