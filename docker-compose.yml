@@ -28,6 +28,7 @@ services:
       - user-service
       - workout-service
       - stats-service
+      - weather-service
     networks:
       - fitness-network
     restart: unless-stopped
