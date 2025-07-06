@@ -54,7 +54,7 @@ services:
     environment:
       - FLASK_ENV=production
       - FLASK_DEBUG=False
-      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+      - OPENWEATHER_API_KEY=${c4de5e30ea416197f65dcbffb43c0fb2
     networks:
       - fitness-network
     restart: unless-stopped
