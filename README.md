@@ -13,7 +13,6 @@
 | ------------------------------------- |
 | :computer: Microservices            |
 | :paperclip: PRJ (Projektmanagement) |
-|                                     |
 
 # TrackMyGym: Tracke. Wachse. Gewinne.
 
@@ -21,16 +20,16 @@
 
 ### 📋 Projektübersicht
 
-* [Einführung / README](platzhalter)
+* [Einführung / README](#einführung--readme)
 * [Projektinformationen](platzhalter)
 
-### 1. 📊 Projektmanagement
+### [1. 📊 Projektmanagement]()
 
-* [1.1 Projektbeschreibung](platzhalter)
+* [1.1 Projektbeschreibung](##:pencil2:-1.1-Projektbeschreibung##1.1-Projektbeschreibung)
 * [1.2 Zeitplan](platzhalter)
 * [1.3 Risiko-Evaluation](platzhalter)
 * [1.4 Risiko-Matrix](platzhalter)
-* 1.5 SWOT-Analyse
+* [1.5 SWOT-Analyse]()
 * [1.6 Sprint-Dokumentation](platzhalter) + Userstories / Retros
   * [1.6.1 Sprint 1](platzhalter)
   * [1.6.2 Sprint 2](platzhalter)
@@ -41,47 +40,49 @@
   * [1.7.3 Neue Struktur](platzhalter)
 * [1.8 Projekt Gantt-Diagramm](platzhalter)
 
-### 2. 🛠️ Technische Dokumentation
+### [2. 🛠️ Technische Dokumentation]()
 
 * [2.1 Architektur-Übersicht](platzhalter)
 * [2.2 Microservices](platzhalter)
 
-  * Frontend Service
-  * User Service
-  * Workout Service
-  * Stats Service
+  * [2.2.1 Frontend Service]()
+  * [2.2.2 User Service]()
+  * [2.2.3 Workout Service]()
+  * [2.2.4 Stats Service]()
 
-### 3. ☁️ Deployment & DevOps
+### [3. ☁️ Deployment & DevOps]()
 
 * [3.1 AWS EC2 Setup](platzhalter)
 * [3.2 CI/CD Pipeline](platzhalter)
 * [3.3 GitHub Actions](platzhalter)
 * [3.4 Produktionsumgebung](platzhalter)
 
-### 4. 📱 User Interface
+### [4. 📱 User Interface]()
 
 * [4.1 Frontend Design](platzhalter)
 * [4.2 User Experience](platzhalter)
 * [4.3 Screenshots](platzhalter)
 
-### 5. 🧪 Testing & Qualitätssicherung
+### [5. 🧪 Testing & Qualitätssicherung]()
 
 * [5.1 Pipeline-Testing](platzhalter)
 * [5.2 User-Testing](platzhalter)
 * 5.3 10 Testfälle
 
-### 6. 📈 Ergebnisse & Reflexion
+### [6. 📈 Ergebnisse & Reflexion]()
 
 * [6.1 Erreichte Ziele](platzhalter)
 * [6.2 Herausforderungen](platzhalter)
 * [6.3 Lessons Learned](platzhalter)
 * [6.4 Ausblick](platzhalter)
 
-### 7. 📚 Anhang
+### [7. 📚 Anhang]()
 
 * [7.1 Code-Repository](platzhalter)
 * [7.2 Verwendete Technologien](platzhalter)
 * [7.3 Quellen](platzhalter)
+* [7.4 Glossar]()
+* [7.5 Kontaktangaben]()
 
 ---
 
