@@ -1,8 +1,4 @@
-# ICTNE24_Semesterarbeit3_L.M
-
-Semesterarbeit 3
-
-# Einführung / README
+# README
 
 ## :page_with_curl: Semesterarbeit 3
 
@@ -13,11 +9,11 @@ Semesterarbeit 3
 | :busts_in_silhouette: Dozenten:   | (PRJ) Corrado Parisi (MSVC) Boris Langer |
 
 
-| :round_pushpin: Topics:              |
-| -------------------------------------- |
-| -:computer: Microservices            |
-| -:paperclip: PRJ (Projektmanagement) |
-|                                      |
+| :round_pushpin: Topics:             |
+| ------------------------------------- |
+| :computer: Microservices            |
+| :paperclip: PRJ (Projektmanagement) |
+|                                     |
 
 # TrackMyGym: Tracke. Wachse. Gewinne.
 
