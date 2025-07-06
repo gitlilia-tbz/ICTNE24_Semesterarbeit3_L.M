@@ -41,9 +41,20 @@ services:
       - USER_SERVICE_URL=http://user-service:5001
       - WORKOUT_SERVICE_URL=http://workout-service:5002
       - STATS_SERVICE_URL=http://stats-service:5003
+      - WEATHER_SERVICE_URL=http://weather-service:5004
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - fitness-network
+    restart: unless-stopped
+
+  weather-service:
+    build: ./weather-service
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=False
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
     networks:
       - fitness-network
     restart: unless-stopped
