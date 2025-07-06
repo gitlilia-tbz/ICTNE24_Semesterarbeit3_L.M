@@ -34,15 +34,16 @@ Semesterarbeit 3
 * [1.2 Zeitplan](platzhalter)
 * [1.3 Risiko-Evaluation](platzhalter)
 * [1.4 Risiko-Matrix](platzhalter)
-* [1.5 Sprint-Dokumentation](platzhalter)
-  * [1.5.1 Sprint 1](platzhalter)
-  * [1.5.2 Sprint 2](platzhalter)
-  * [1.5.3 Sprint 3](platzhalter)
-* [1.6 Projekterweiterung](platzhalter)
-  * [1.6.1 Beschrieb zur Projekterweiterung](platzhalter)
-  * [1.6.2 SEUSAG-Diagramm - Alte Struktur](platzhalter)
-  * [1.6.3 Neue Struktur](platzhalter)
-* [1.7 Projekt Gantt-Diagramm](platzhalter)
+* 1.5 SWOT-Analyse
+* [1.6 Sprint-Dokumentation](platzhalter) + Userstories / Retros
+  * [1.6.1 Sprint 1](platzhalter)
+  * [1.6.2 Sprint 2](platzhalter)
+  * [1.6.3 Sprint 3](platzhalter)
+* [1.7 Projekterweiterung](platzhalter)
+  * [1.7.1 Beschrieb zur Projekterweiterung](platzhalter)
+  * [1.7.2 SEUSAG-Diagramm - Alte Struktur](platzhalter)
+  * [1.7.3 Neue Struktur](platzhalter)
+* [1.8 Projekt Gantt-Diagramm](platzhalter)
 
 ### 2. 🛠️ Technische Dokumentation
 
@@ -61,16 +62,17 @@ Semesterarbeit 3
 * [3.3 GitHub Actions](platzhalter)
 * [3.4 Produktionsumgebung](platzhalter)
 
-### 4. 🧪 Testing & Qualitätssicherung
+### 4. 📱 User Interface
 
-* [4.1 Pipeline-Testing](platzhalter)
-* [4.1 User-Testing](platzhalter)
+* [4.1 Frontend Design](platzhalter)
+* [4.2 User Experience](platzhalter)
+* [4.3 Screenshots](platzhalter)
 
-### 5. 📱 User Interface
+### 5. 🧪 Testing & Qualitätssicherung
 
-* [5.1 Frontend Design](platzhalter)
-* [5.2 User Experience](platzhalter)
-* [5.3 Screenshots](platzhalter)
+* [5.1 Pipeline-Testing](platzhalter)
+* [5.2 User-Testing](platzhalter)
+* 5.3 10 Testfälle
 
 ### 6. 📈 Ergebnisse & Reflexion
 
@@ -225,7 +227,6 @@ Hierbei wurde
 ![](assets/20250629_165627_image.png)
 
 ## 1.5.3 Neue Struktur
-
 
 ![](assets/20250629_170604_image.png)
 
