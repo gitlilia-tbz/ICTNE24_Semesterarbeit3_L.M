@@ -619,7 +619,7 @@ Live-System und Monitoring...
 
 ## 4.1 Frontend Design
 
-Designkonzept und visuelle Gestaltung...
+Designkonzept und visuelle Gestaltung
 
 ## 4.2 User Experience
 
