@@ -676,6 +676,7 @@ def create_user():
 **Port:** 5002 | **Tech:** Flask + SQLAlchemy + PostgreSQL
 
 **Funktionen:**
+
 - Workout-Erfassung (Typ, Dauer, Kalorien)
 - User-Validation über User Service
 - Foreign Key Relationships zu Users
@@ -687,7 +688,7 @@ def create_workout():
     data = request.get_json()
     if not verify_user_exists(data['user_id']):
         return jsonify({"error": "User not found"}), 404
-    
+  
     workout = Workout(user_id=data['user_id'], exercise_type=data['exercise_type'])
     db.session.add(workout)
     db.session.commit()
@@ -721,7 +722,7 @@ def get_user_stats_summary(user_id):
         "total_duration": result.total_duration,
         "average_calories": round(float(result.avg_calories or 0), 2)
     })
-    ´´´
+```
 
 ### 2.2.5 Weather Service
 
@@ -753,7 +754,7 @@ def get_workout_advice():
         advice = "Perfect weather for outdoor activities!"
   
     return jsonify({"advice": advice, "weather": weather_data})
-´´´
+```
 
 # 3. ☁️ Deployment & DevOps
 
@@ -848,3 +849,7 @@ Definitionen wichtiger Begriffe...
 ## 7.5 Kontaktangaben
 
 Projektteam und Ansprechpartner...
+
+```
+
+```
