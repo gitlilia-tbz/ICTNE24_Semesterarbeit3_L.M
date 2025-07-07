@@ -721,6 +721,8 @@ def get_user_stats_summary(user_id):
         "total_duration": result.total_duration,
         "average_calories": round(float(result.avg_calories or 0), 2)
     })
+    ´´´
+
 ### 2.2.5 Weather Service
 
 ## 🌤️ Wetter-basierte Workout-Empfehlungen
@@ -751,7 +753,7 @@ def get_workout_advice():
         advice = "Perfect weather for outdoor activities!"
   
     return jsonify({"advice": advice, "weather": weather_data})
----
+´´´
 
 # 3. ☁️ Deployment & DevOps
 
