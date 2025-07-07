@@ -38,6 +38,7 @@
   * [1.7.1 Beschrieb zur Projekterweiterung](#171-beschrieb-zur-projekterweiterung)
   * [1.7.2 SEUSAG-Diagramm - Alte Struktur](#172-seusag-diagramm---alte-struktur)
   * [1.7.3 Neue Struktur](#173-neue-struktur)
+  * [1.7.4 Neue Struktur ()](#174-neue-struktur)
 * [1.8 Projekt Gantt-Diagramm](#18-projekt-gantt-diagramm)
 
 ### [2. 🛠️ Technische Dokumentation](#2-️-technische-dokumentation)
@@ -519,8 +520,6 @@ Der User greift wie gewohnt via Nginx auf die Applikation zu
 
 ***Gelbe Schicht:*** Hier befinden sich die Mikroservices.
 
-
-
 **Wichtige architektonische Verbesserungen:**
 
 1. **Skalierbarkeit** : Von lokaler Maschine zu Cloud-Infrastruktur
@@ -533,6 +532,49 @@ Der User greift wie gewohnt via Nginx auf die Applikation zu
 * 🔧**Development** → 🌐**Production**
 * 🏠**Local** → ☁️**Cloud**
 * 👨‍💻**Manual** → 🤖**Automated**
+
+
+### 1.7.4 Neue Struktur (Persistent + Weather API)
+
+![](assets/20250707_190323_image.png)
+
+Für bessere/stabilere persistenz innerhalb der Umgebung habe ich mich dazu entschieden, von einem simplen JSON-File als storage-solution für die Daten, zu einer Datenbank zu wechseln.
+
+Dies sind die risiken des JSON-Files:
+
+#### ⚠️ **Weniger robust als echte DBs**
+
+**Risiken deiner File-Lösung:**
+
+* **Corruption** : JSON-File kann bei unvollständigem Write corrumpiert werden
+* **No Transactions** : Kein Rollback bei Fehlern
+* **Race Conditions** : Gleichzeitige Writes können Daten zerstören
+* **No Backup** : Keine automatischen Backups
+
+Dies sind die Vorteile der SQL-Migration:
+
+#### **🐘 PostgreSQL Integration:**
+
+* **Von JSON-Files zu echter Datenbank** - Data Persistence
+* **SQLAlchemy ORM** - Objekt-relationale Mappings für Python
+* **ACID-Transactions** - Datenintegrität und Konsistenz garantiert
+* **Foreign Key Relationships** - Users ↔ Workouts Verknüpfungen
+* **Performance Optimierung** - SQL-Indexes und Aggregationen
+
+Zudem, wurde für eine vollständige Demonstration für die Kommunikation meiner Microservices in die Aussenwelt, ein ***Weather Microservice*** hinzugefügt:
+
+#### **🌤️ Weather Service Integration:**
+
+* **Neuer Microservice** - Externe API Integration
+* **OpenWeatherMap API** - Live Wetter-Daten für Workout-Planung
+* **Graceful Degradation / Error Resilience** - Demo-Mode Fallback bei API-Ausfall
+* **Personalisierte Empfehlungen** - Workout-Advice basierend auf Wetter
+
+#### **🏗️ Architektur-Verbesserungen:**
+
+* **4 Microservices** statt 3
+* **Shared Database** - Konsistente Datenarchitektur
+* **External API** - Real-Life Anwendungszweck
 
 ## 1.8 Projekt Gantt-Diagramm
 
