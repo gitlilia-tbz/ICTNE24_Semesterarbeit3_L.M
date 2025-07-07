@@ -614,7 +614,6 @@ Projektende :milestone, m3, 2025-06-20, 0d
 
 Gesamtarchitektur des Systems
 
-
 ![](assets/20250707_200029_image.png)
 
 ## 2.2 Microservices
@@ -794,14 +793,9 @@ sudo usermod -aG docker ubuntu
 # Logout/Login für Docker Permissions
 ```
 
-
-
 ![](assets/20250707_201427_image.png)
 
-
 ![](assets/20250707_201452_image.png)
-
-
 
 #### 📦 Code Deployment
 
@@ -843,14 +837,11 @@ OPENWEATHER_API_KEY=your_openweather_api_key
 docker-compose up -d
 ```
 
-
 ![](assets/20250707_201524_image.png)
 
 Spätere Korrekturen: SSH Port 22 auf "Anywhere" (0.0.0.0/0) erweitert
 
 ![](assets/20250707_201656_image.png)
-
-
 
 ## 3.2 CI/CD Pipeline
 
@@ -865,7 +856,6 @@ GitHub Secrets:
 * `HOST` = EC2 Public IP Address
 * `USERNAME` = ubuntu
 * `PRIVATE_KEY` = Complete SSH private key (.pem file content)
-
 
   ![](assets/20250707_203650_image.png)
 
@@ -922,10 +912,7 @@ jobs:
         docker-compose down
 ```
 
-
-
 ## 3.4 Produktionsumgebung
-
 
 #### 🛡️Production
 
@@ -964,22 +951,22 @@ Weather Service Integration:
 
 ## Bonus: Weather App Setup:
 
-## 📋 Phase 1: API Account & Key Setup
+#### 📋 API Account & Key Setup
 
-### **1. OpenWeatherMap Account erstellen**
+#### 1. OpenWeatherMap Account erstellen:
 
 - **Website**: https://openweathermap.org/api
 - **Sign Up**: Kostenloser Account (keine Kreditkarte nötig)
 - **Free Tier**: 1,000 API calls/Tag, 60 calls/Minute
 
-### **2. API Key generieren**
+#### 2. API Key generieren**
 
 - **Dashboard** → **"My API Keys"**
 - **Create Key** → Name: "TrackMyGym"
 - **Key erhalten**: `BEISPIELKEY`
 - **⏰ Aktivierung**: 10-15 Minuten warten -> WICHTIG
 
-### **3. API Key testen**
+#### 3. API Key testen
 
 ```bash
 # Direct API test
@@ -991,7 +978,7 @@ curl "https://api.openweathermap.org/data/2.5/weather?lat=47.3769&lon=8.5417&app
 
 ---
 
-## 🏗️ Phase 2: Weather Service Development
+#### 🏗️ Zweite Phase: Weather Service Development
 
 ### **4. Service Directory erstellen**
 
@@ -1063,9 +1050,9 @@ def get_current_weather():
             'appid': WEATHER_API_KEY,
             'units': 'metric'
         }
-      
+    
         response = requests.get(WEATHER_URL, params=params, timeout=10)
-      
+    
         # API Key invalid/not configured
         if response.status_code == 401:
             return jsonify({
@@ -1073,13 +1060,13 @@ def get_current_weather():
                 "demo_mode": True,
                 "weather_data": get_demo_weather()
             }), 200
-      
+    
         if response.status_code == 200:
             weather_data = response.json()
             return jsonify(process_weather_data(weather_data))
         else:
             return jsonify({"error": "Weather service unavailable"}), 503
-          
+        
     except Exception as e:
         return jsonify({
             "error": "Weather service error",
@@ -1122,15 +1109,15 @@ def get_workout_advice():
         # Get current weather
         weather_response = requests.get("http://localhost:5004/weather/current")
         weather_data = weather_response.json()
-      
+    
         if weather_data.get('demo_mode'):
             weather_info = weather_data['weather_data']
         else:
             weather_info = weather_data
-      
+    
         advice = generate_workout_advice(weather_info)
         return jsonify({"weather": weather_info, "advice": advice})
-      
+    
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -1174,9 +1161,9 @@ if __name__ == '__main__':
 
 ---
 
-## 🔗 Phase 3: Frontend Integration
+#### 🔗 Frontend Integration
 
-#### Frontend Service erweitern
+#### 8. Frontend Service erweitern
 
 **`frontend/app.py` - Weather Integration hinzufügen:**
 
@@ -1226,7 +1213,7 @@ def weather_workout_advice():
 
 ---
 
-#### 🐳 Docker Integration
+#### 🐳 9. Docker Integration
 
 Docker-Compose erweitern:
 
@@ -1259,7 +1246,7 @@ services:
     restart: unless-stopped
 ```
 
-#### Environment Configuration
+#### 10. Environment Configuration
 
 **`.env` file erweitern:**
 
@@ -1275,7 +1262,7 @@ OPENWEATHER_API_KEY=BEISPIELKEY  # ← API Key hinzufügen
 
 ---
 
-#### 🖥️ UI Integration
+#### 🖥️ 11. UI Integration
 
 Dashboard Template erweitern:
 
@@ -1293,19 +1280,19 @@ Dashboard Template erweitern:
             <div class="weather-temp">{{ weather.temperature }}°C</div>
             <div>{{ weather.weather_description }}</div>
         </div>
-      
+    
         {% if weather.outdoor_suitable %}
             <div class="alert alert-success">Great for outdoor workouts!</div>
         {% else %}
             <div class="alert alert-warning">Better to exercise indoors</div>
         {% endif %}
-      
+    
         <button class="btn btn-outline-primary btn-sm w-100" onclick="loadWorkoutAdvice()">
             <i class="fas fa-lightbulb me-2"></i>Get Workout Advice
         </button>
-      
+    
         <div id="workout-advice" class="mt-3"></div>
-      
+    
         {% if weather.demo_mode %}
         <small class="text-muted">Demo weather data (API key not configured)</small>
         {% endif %}
@@ -1314,7 +1301,7 @@ Dashboard Template erweitern:
 {% endif %}
 ```
 
-#### JavaScript für Workout Advice
+#### 12. JavaScript für Workout Advice
 
 ```javascript
 function loadWorkoutAdvice() {
@@ -1326,7 +1313,7 @@ function loadWorkoutAdvice() {
                     `<div class="alert alert-danger">Error: ${data.error}</div>`;
                 return;
             }
-          
+        
             const advice = data.advice;
             let html = `
                 <div class="alert alert-info">
@@ -1342,7 +1329,7 @@ function loadWorkoutAdvice() {
 
 ---
 
-#### 🚀 Deployment
+#### 🚀 13. Deployment
 
 Build & Deploy:
 
@@ -1383,7 +1370,118 @@ docker-compose exec weather-service env | grep OPENWEATHER
 - ✅ **UI Integration** im User Dashboard, auch für Mobil
 - ✅ **Environment Configuration** für API Keys
 
+# TrackMyGym - Projekt Ordnerstruktur
+
+<pre><div class="relative group/copy rounded-lg"><div class="sticky opacity-0 group-hover/copy:opacity-100 top-2 py-2 h-12 w-0 float-right"><div class="absolute right-0 h-8 px-2 items-center inline-flex"><button class="inline-flex
+  items-center
+  justify-center
+  relative
+  shrink-0
+  can-focus
+  select-none
+  disabled:pointer-events-none
+  disabled:opacity-50
+  disabled:shadow-none
+  disabled:drop-shadow-none text-text-300
+          border-transparent
+          transition
+          font-ui
+          tracking-tight
+          duration-300
+          ease-[cubic-bezier(0.165,0.85,0.45,1)]
+          hover:bg-bg-400
+          aria-pressed:bg-bg-400
+          aria-checked:bg-bg-400
+          aria-expanded:bg-bg-300
+          hover:text-text-100
+          aria-pressed:text-text-100
+          aria-checked:text-text-100
+          aria-expanded:text-text-100 h-8 w-8 rounded-md active:scale-95 backdrop-blur-md" type="button" aria-label="In die Zwischenablage kopieren" data-state="closed"><div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="transition-all opacity-100 scale-100"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="absolute top-0 left-0 transition-all opacity-0 scale-50"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg></div></button></div></div><div class=""><pre class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed"><code><span><span>ICTNE24_Semesterarbeit3_L.M/
+</span></span><span>│
+</span><span>├── 📄 docker-compose.yml              # Orchestrierung aller Services
+</span><span>├── 📄 init.sql                        # PostgreSQL Schema & Sample Data
+</span><span>├── 📄 .env                           # Environment Variables (nicht in Git!)
+</span><span>├── 📄 .gitignore                     # Git ignore rules
+</span><span>├── 📄 README.md                      # Projekt Dokumentation
+</span><span>│
+</span><span>├── 📁 .github/                       # GitHub Actions CI/CD
+</span><span>│   └── 📁 workflows/
+</span><span>│       ├── 📄 deploy.yml             # Production Deployment Pipeline
+</span><span>│       └── 📄 pr-check.yml           # Pull Request Health Checks
+</span><span>│
+</span><span>├── 📁 frontend/                      # Frontend Service (Port 5000)
+</span><span>│   ├── 📄 app.py                     # Flask App + Templates + API Gateway
+</span><span>│   ├── 📄 Dockerfile                 # Container Definition
+</span><span>│   ├── 📄 requirements.txt           # Python Dependencies
+</span><span>│   ├── 📁 templates/                 # Jinja2 HTML Templates
+</span><span>│   │   ├── 📄 base.html              # Base Template Layout
+</span><span>│   │   ├── 📄 index.html             # Homepage mit User Overview
+</span><span>│   │   └── 📄 dashboard.html         # User Dashboard mit Weather Widget
+</span><span>│   └── 📁 static/                    # CSS, JavaScript, Images
+</span><span>│       ├── 📁 css/
+</span><span>│       │   └── 📄 style.css          # Custom Styling + Bootstrap
+</span><span>│       └── 📁 js/
+</span><span>│           └── 📄 app.js             # Frontend JavaScript Logic
+</span><span>│
+</span><span>├── 📁 user-service/                  # User Service (Port 5001)
+</span><span>│   ├── 📄 app.py                     # Flask API + SQLAlchemy User Model
+</span><span>│   ├── 📄 Dockerfile                 # Container mit PostgreSQL Support
+</span><span>│   └── 📄 requirements.txt           # Flask + SQLAlchemy + psycopg2
+</span><span>│
+</span><span>├── 📁 workout-service/               # Workout Service (Port 5002)
+</span><span>│   ├── 📄 app.py                     # Flask API + SQLAlchemy Workout Model
+</span><span>│   ├── 📄 Dockerfile                 # Container mit PostgreSQL Support
+</span><span>│   └── 📄 requirements.txt           # Flask + SQLAlchemy + psycopg2 + requests
+</span><span>│
+</span><span>├── 📁 stats-service/                 # Stats Service (Port 5003)
+</span><span>│   ├── 📄 app.py                     # Flask API + SQL Aggregations
+</span><span>│   ├── 📄 Dockerfile                 # Container mit PostgreSQL Support
+</span><span>│   └── 📄 requirements.txt           # Flask + SQLAlchemy + psycopg2 + requests
+</span><span>│
+</span><span>├── 📁 weather-service/               # Weather Service (Port 5004)
+</span><span>│   ├── 📄 app.py                     # Flask API + OpenWeatherMap Integration
+</span><span>│   ├── 📄 Dockerfile                 # Container Definition
+</span><span>│   └── 📄 requirements.txt           # Flask + requests
+</span><span>│
+</span><span>└── 📁 nginx/                         # Reverse Proxy
+</span><span>    ├── 📄 Dockerfile                 # Nginx Container
+</span><span>    └── 📄 nginx.conf                 # Proxy Configuration</span></code></pre></div></div></pre>
+
+🔗 Service Dependencies
+
+````mermaid
+
+
+graph TD
+    Frontend --> UserService
+    Frontend --> WorkoutService  
+    Frontend --> StatsService
+    Frontend --> WeatherService
+  
+    WorkoutService -.-> UserService
+    StatsService -.-> WorkoutService
+    WeatherService --> OpenWeatherAPI
+  
+    UserService --> PostgreSQL
+    WorkoutService --> PostgreSQL
+    StatsService --> PostgreSQL
+````
+
+
+#### 📊 File Count Summary
+
+<pre class="font-styrene border-border-100/50 overflow-x-scroll w-full rounded border-[0.5px] shadow-[0_2px_12px_hsl(var(--always-black)/5%)]"><table class="bg-bg-100 min-w-full border-separate border-spacing-0 text-sm leading-[1.88888] whitespace-normal"><thead class="border-b-border-100/50 border-b-[0.5px] text-left"><tr class="[tbody>&]:odd:bg-bg-500/10"><th class="text-text-000 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] font-400 px-2 [&:not(:first-child)]:border-l-[0.5px]">Kategorie</th><th class="text-text-000 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] font-400 px-2 [&:not(:first-child)]:border-l-[0.5px]">Anzahl Dateien</th></tr></thead><tbody><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Python Apps</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (1 Frontend + 4 Microservices)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Dockerfiles</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (alle Services + nginx)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Requirements</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (Python Dependencies)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Templates</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">3 (HTML Jinja2 Templates)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Static Files</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">2 (CSS + JavaScript)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Config Files</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">4 (docker-compose, nginx, init.sql, .env)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>CI/CD</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">2 (GitHub Actions Workflows)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Documentation</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">1 (README.md)</td></tr></tbody></table></pre>
+
+**Total: ~27 Dateien für komplette Enterprise-Level Application** 🎯
+
 ---
+
+#### 🎨 Code Distribution
+
+* **~60% Backend Logic** (Flask APIs, SQLAlchemy Models, Database Integration)
+* **~20% Infrastructure** (Docker, CI/CD, Database Schema)
+* **~15% Frontend** (Templates, CSS, JavaScript)
+* **~5% Configuration** (Environment, Nginx, Documentation)
 
 # 4. 📱 User Interface
 
@@ -1458,3 +1556,5 @@ Definitionen wichtiger Begriffe...
 ## 7.5 Kontaktangaben
 
 Projektteam und Ansprechpartner:
+
+<style>#mermaid-1751916093942{font-family:"trebuchet ms",verdana,arial;font-size:16px;fill:#ccc;}#mermaid-1751916093942 .error-icon{fill:#a44141;}#mermaid-1751916093942 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1751916093942 .edge-thickness-normal{stroke-width:2px;}#mermaid-1751916093942 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1751916093942 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1751916093942 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1751916093942 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1751916093942 .marker{fill:lightgrey;}#mermaid-1751916093942 .marker.cross{stroke:lightgrey;}#mermaid-1751916093942 svg{font-family:"trebuchet ms",verdana,arial;font-size:16px;}#mermaid-1751916093942 .label{font-family:"trebuchet ms",verdana,arial;color:#ccc;}#mermaid-1751916093942 .label text{fill:#ccc;}#mermaid-1751916093942 .node rect,#mermaid-1751916093942 .node circle,#mermaid-1751916093942 .node ellipse,#mermaid-1751916093942 .node polygon,#mermaid-1751916093942 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1751916093942 .node .label{text-align:center;}#mermaid-1751916093942 .node.clickable{cursor:pointer;}#mermaid-1751916093942 .arrowheadPath{fill:lightgrey;}#mermaid-1751916093942 .edgePath .path{stroke:lightgrey;stroke-width:1.5px;}#mermaid-1751916093942 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1751916093942 .edgeLabel{background-color:hsl(0,0%,34.4117647059%);text-align:center;}#mermaid-1751916093942 .edgeLabel rect{opacity:0.5;background-color:hsl(0,0%,34.4117647059%);fill:hsl(0,0%,34.4117647059%);}#mermaid-1751916093942 .cluster rect{fill:hsl(180,1.5873015873%,28.3529411765%);stroke:rgba(255,255,255,0.25);stroke-width:1px;}#mermaid-1751916093942 .cluster text{fill:#F9FFFE;}#mermaid-1751916093942 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial;font-size:12px;background:hsl(20,1.5873015873%,12.3529411765%);border:1px solid rgba(255,255,255,0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1751916093942:root{--mermaid-font-family:sans-serif;}#mermaid-1751916093942:root{--mermaid-alt-font-family:sans-serif;}#mermaid-1751916093942 flowchart{fill:apa;}</style>
