@@ -612,7 +612,10 @@ Projektende :milestone, m3, 2025-06-20, 0d
 
 ## 2.1 Architektur-Übersicht
 
-Gesamtarchitektur des Systems...
+Gesamtarchitektur des Systems
+
+
+![](assets/20250707_200029_image.png)
 
 ## 2.2 Microservices
 
@@ -760,19 +763,140 @@ def get_workout_advice():
 
 ## 3.1 AWS EC2 Setup
 
-Konfiguration der AWS-Infrastruktur...
+Konfiguration der AWS-Infrastruktur:
+
+
+
+![](assets/20250707_201347_image.png)
+
+
+![](assets/20250707_201411_image.png)
+
+
+![](assets/20250707_201427_image.png)
+
+
+![](assets/20250707_201452_image.png)
+
+
+![](assets/20250707_201524_image.png)
+
+
+![](assets/20250707_201656_image.png)
+
+
 
 ## 3.2 CI/CD Pipeline
 
-Continuous Integration und Deployment-Prozesse...
+#### 🔄 Pipeline Setup GitHub Secrets Config
+
+GitHub Secrets:
+
+**Repository Settings** → **Secrets and Variables** → **Actions**
+
+**Secrets hinzugefügt:**
+
+* `HOST` = EC2 Public IP Address
+* `USERNAME` = ubuntu
+* `PRIVATE_KEY` = Complete SSH private key (.pem file content)
+
+
+  ![](assets/20250707_203650_image.png)
 
 ## 3.3 GitHub Actions
 
-Automatisierte Workflows und Tests...
+
+
+**`.github/workflows/deploy.yml`:**
+
+```yaml
+name: Deploy TrackMyGym to AWS EC2
+on:
+  push:
+    branches: [ main, master ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          cd ICTNE24_Semesterarbeit3_L.M
+          git pull origin main
+          docker-compose down
+          docker-compose build --no-cache
+          docker-compose up -d
+          docker system prune -f
+```
+
+**`.github/workflows/pr-check.yml`:**
+
+```yaml
+name: PR Health Check
+on:
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Build Docker images
+      run: docker-compose build
+    - name: Test containers start
+      run: |
+        docker-compose up -d
+        sleep 45
+        docker-compose ps
+        docker-compose down
+```
+
+
 
 ## 3.4 Produktionsumgebung
 
-Live-System und Monitoring...
+
+#### 🛡️Production
+
+Security Group Update:
+
+**Problem** : SSH nur von eigener IP → GitHub Actions kann nicht deployen
+
+**Lösung** : SSH Port 22 auf "Anywhere" (0.0.0.0/0) erweitert
+
+Optimierungen für Produktion:
+
+* **Frontend app.py** : SECRET_KEY aus Environment Variable
+* **Docker-compose** : Production Environment Variables
+* **No Volumes** : Code in Container images (immutable deployment)
+* **Health Checks** : PostgreSQL health checks für Service Dependencies
+
+---
+
+📊 PostgreSQL Migration:
+
+Database Upgrade;
+
+**Von JSON Files zu PostgreSQL:**
+
+* **init.sql** : Database Schema mit Sample Data
+* **SQLAlchemy Models** : User & Workout Entities
+* **All Services** : Umstellung auf PostgreSQL
+* **Requirements.txt** : psycopg2-binary + Flask-SQLAlchemy
+
+Weather Service Integration:
+
+* **Neuer Microservice** : External API Integration
+* **OpenWeatherMap API** : Live Weather Data
+* **Fallback Strategy** : Demo Data bei API-Ausfall
+* **Docker-compose Extension** : weather-service hinzugefüg
 
 ---
 
@@ -853,3 +977,5 @@ Projektteam und Ansprechpartner...
 ```
 
 ```
+
+<style>#mermaid-1751910516117{font-family:"trebuchet ms",verdana,arial;font-size:16px;fill:#ccc;}#mermaid-1751910516117 .error-icon{fill:#a44141;}#mermaid-1751910516117 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1751910516117 .edge-thickness-normal{stroke-width:2px;}#mermaid-1751910516117 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1751910516117 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1751910516117 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1751910516117 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1751910516117 .marker{fill:lightgrey;}#mermaid-1751910516117 .marker.cross{stroke:lightgrey;}#mermaid-1751910516117 svg{font-family:"trebuchet ms",verdana,arial;font-size:16px;}#mermaid-1751910516117 .label{font-family:"trebuchet ms",verdana,arial;color:#ccc;}#mermaid-1751910516117 .label text{fill:#ccc;}#mermaid-1751910516117 .node rect,#mermaid-1751910516117 .node circle,#mermaid-1751910516117 .node ellipse,#mermaid-1751910516117 .node polygon,#mermaid-1751910516117 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1751910516117 .node .label{text-align:center;}#mermaid-1751910516117 .node.clickable{cursor:pointer;}#mermaid-1751910516117 .arrowheadPath{fill:lightgrey;}#mermaid-1751910516117 .edgePath .path{stroke:lightgrey;stroke-width:1.5px;}#mermaid-1751910516117 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1751910516117 .edgeLabel{background-color:hsl(0,0%,34.4117647059%);text-align:center;}#mermaid-1751910516117 .edgeLabel rect{opacity:0.5;background-color:hsl(0,0%,34.4117647059%);fill:hsl(0,0%,34.4117647059%);}#mermaid-1751910516117 .cluster rect{fill:hsl(180,1.5873015873%,28.3529411765%);stroke:rgba(255,255,255,0.25);stroke-width:1px;}#mermaid-1751910516117 .cluster text{fill:#F9FFFE;}#mermaid-1751910516117 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial;font-size:12px;background:hsl(20,1.5873015873%,12.3529411765%);border:1px solid rgba(255,255,255,0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1751910516117:root{--mermaid-font-family:sans-serif;}#mermaid-1751910516117:root{--mermaid-alt-font-family:sans-serif;}#mermaid-1751910516117 flowchart{fill:apa;}</style>
