@@ -38,7 +38,7 @@
   * [1.7.1 Beschrieb zur Projekterweiterung](#171-beschrieb-zur-projekterweiterung)
   * [1.7.2 SEUSAG-Diagramm - Alte Struktur](#172-seusag-diagramm---alte-struktur)
   * [1.7.3 Neue Struktur](#173-neue-struktur)
-  * [1.7.4 Neue Struktur ()](#174-neue-struktur)
+  * [1.7.4 Neue Struktur ()](#174-neue-struktur) LIIIIIIIIIIIIINK
 * [1.8 Projekt Gantt-Diagramm](#18-projekt-gantt-diagramm)
 
 ### [2. 🛠️ Technische Dokumentation](#2-️-technische-dokumentation)
@@ -49,6 +49,7 @@
   * [2.2.2 User Service](#222-user-service)
   * [2.2.3 Workout Service](#223-workout-service)
   * [2.2.4 Stats Service](#224-stats-service)
+  * [2.2.5 Weather Service](#224-stats-service) LIIIIIIIIIIIIIIIIIINK
 
 ### [3. ☁️ Deployment & DevOps](#3-️-deployment--devops)
 
@@ -533,7 +534,6 @@ Der User greift wie gewohnt via Nginx auf die Applikation zu
 * 🏠**Local** → ☁️**Cloud**
 * 👨‍💻**Manual** → 🤖**Automated**
 
-
 ### 1.7.4 Neue Struktur (Persistent + Weather API)
 
 ![](assets/20250707_190323_image.png)
@@ -549,7 +549,6 @@ Dies sind die risiken des JSON-Files:
 * **Corruption** : JSON-File kann bei unvollständigem Write corrumpiert werden
 * **No Transactions** : Kein Rollback bei Fehlern
 * **Race Conditions** : Gleichzeitige Writes können Daten zerstören
-* **No Backup** : Keine automatischen Backups
 
 Dies sind die Vorteile der SQL-Migration:
 
@@ -617,24 +616,140 @@ Gesamtarchitektur des Systems...
 
 ## 2.2 Microservices
 
-Beschreibung der einzelnen Services...
+**Jeder Service hat eine klare Rolle:**
+
+* 🖥️**Frontend** = UI & Orchestrierung
+* 👤**User** = Profile Management
+* 💪**Workout** = Exercise Logging
+* 📊**Stats** = Analytics & Insights
+* 🌤️**Weather** = External Integratio
 
 ### 2.2.1 Frontend Service
 
-Client-seitige Anwendungslogik...
+## 🖥️ Web-Interface und API-Gateway für alle anderen Services
+
+**Port:** 5000 | **Tech:** Flask + Templates + Bootstrap
+
+**Funktionen:**
+
+* User Dashboard mit Workout-Historie
+* Responsive UI mit Bootstrap-Design
+* Service-übergreifende API-Orchestrierung
+* Health-Check Monitoring aller Services
+
+```python
+@app.route('/user/<user_id>')
+def user_dashboard(user_id):
+    user = requests.get(f"{USER_SERVICE_URL}/users/{user_id}")
+    workouts = requests.get(f"{WORKOUT_SERVICE_URL}/workouts?user_id={user_id}")
+    stats = requests.get(f"{STATS_SERVICE_URL}/stats/{user_id}/summary")
+    return render_template('dashboard.html', user=user, workouts=workouts, stats=stats)
+```
 
 ### 2.2.2 User Service
 
-Benutzerverwaltung und Authentifizierung...
+## 👤 Benutzerverwaltung und Profil-Management
+
+**Port:** 5001 | **Tech:** Flask + SQLAlchemy + PostgreSQL
+
+Funktionen:**
+
+* CRUD-Operationen für User-Profile
+* Email-Uniqueness Validation
+* User-Authentifizierung Vorbereitung
+* Basis für alle anderen Service
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    user = User(name=data['name'], email=data['email'], age=data.get('age'))
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+```
 
 ### 2.2.3 Workout Service
 
-Workout-Management und -logik...
+## 💪 Workout-Logging und Exercise-Management
 
+**Port:** 5002 | **Tech:** Flask + SQLAlchemy + PostgreSQL
+
+**Funktionen:**
+
+- Workout-Erfassung (Typ, Dauer, Kalorien)
+- User-Validation über User Service
+- Foreign Key Relationships zu Users
+- Basis-Daten für Statistics Service
+
+```python
+@app.route('/workouts', methods=['POST'])
+def create_workout():
+    data = request.get_json()
+    if not verify_user_exists(data['user_id']):
+        return jsonify({"error": "User not found"}), 404
+  
+    workout = Workout(user_id=data['user_id'], exercise_type=data['exercise_type'])
+    db.session.add(workout)
+    db.session.commit()
+    return jsonify(workout.to_dict()), 201
 ### 2.2.4 Stats Service
 
-Statistiken und Auswertungen...
+## 📊 Analytics und Performance-Tracking
 
+**Port:** 5003 | **Tech:** Flask + SQLAlchemy + PostgreSQL
+
+**Funktionen:**
+
+- SQL-Aggregationen für Workout-Statistiken
+- Personal Records Tracking
+- Weekly/Monthly Trends
+- Read-Only Database Access
+
+```python
+@app.route('/stats/<user_id>/summary', methods=['GET'])
+def get_user_stats_summary(user_id):
+    result = db.session.query(
+        func.count(Workout.id).label('total_workouts'),
+        func.sum(Workout.duration).label('total_duration'),
+        func.avg(Workout.calories_burned).label('avg_calories')
+    ).filter(Workout.user_id == user_id).first()
+  
+    return jsonify({
+        "total_workouts": result.total_workouts,
+        "total_duration": result.total_duration,
+        "average_calories": round(float(result.avg_calories or 0), 2)
+    })
+### 2.2.5 Weather Service
+
+## 🌤️ Wetter-basierte Workout-Empfehlungen
+
+**Port:** 5004 | **Tech:** Flask + External API Integration
+
+**Funktionen:**
+
+- OpenWeatherMap API Integration
+- Personalisierte Workout-Advice
+- Demo-Mode Fallback
+- External API Error Handling
+
+```python
+@app.route('/weather/workout-advice', methods=['GET'])
+def get_workout_advice():
+    weather_data = get_current_weather()
+  
+    if weather_data.get('demo_mode'):
+        return jsonify({"advice": "Demo mode - indoor workouts recommended"})
+  
+    temp = weather_data['temperature']
+    if temp > 25:
+        advice = "Hot weather - stay hydrated, prefer early morning workouts!"
+    elif temp < 5:
+        advice = "Cold weather - warm up thoroughly, layer clothing!"
+    else:
+        advice = "Perfect weather for outdoor activities!"
+  
+    return jsonify({"advice": advice, "weather": weather_data})
 ---
 
 # 3. ☁️ Deployment & DevOps
