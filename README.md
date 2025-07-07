@@ -542,7 +542,7 @@ Für bessere/stabilere persistenz innerhalb der Umgebung habe ich mich dazu ents
 
 Dies sind die risiken des JSON-Files:
 
-#### ⚠️ **Weniger robust als echte DBs**
+⚠️ **Weniger robust als echte DBs**
 
 **Risiken deiner File-Lösung:**
 
@@ -552,7 +552,7 @@ Dies sind die risiken des JSON-Files:
 
 Dies sind die Vorteile der SQL-Migration:
 
-#### **🐘 PostgreSQL Integration:**
+**🐘 PostgreSQL Integration:**
 
 * **Von JSON-Files zu echter Datenbank** - Data Persistence
 * **SQLAlchemy ORM** - Objekt-relationale Mappings für Python
@@ -562,14 +562,14 @@ Dies sind die Vorteile der SQL-Migration:
 
 Zudem, wurde für eine vollständige Demonstration für die Kommunikation meiner Microservices in die Aussenwelt, ein ***Weather Microservice*** hinzugefügt:
 
-#### **🌤️ Weather Service Integration:**
+**🌤️ Weather Service Integration:**
 
 * **Neuer Microservice** - Externe API Integration
 * **OpenWeatherMap API** - Live Wetter-Daten für Workout-Planung
 * **Graceful Degradation / Error Resilience** - Demo-Mode Fallback bei API-Ausfall
 * **Personalisierte Empfehlungen** - Workout-Advice basierend auf Wetter
 
-#### **🏗️ Architektur-Verbesserungen:**
+**🏗️ Architektur-Verbesserungen:**
 
 * **4 Microservices** statt 3
 * **Shared Database** - Konsistente Datenarchitektur
@@ -628,7 +628,7 @@ Gesamtarchitektur des Systems
 
 ### 2.2.1 Frontend Service
 
-## 🖥️ Web-Interface und API-Gateway für alle anderen Services
+🖥️ Web-Interface und API-Gateway für alle anderen Services
 
 **Port:** 5000 | **Tech:** Flask + Templates + Bootstrap
 
@@ -650,7 +650,7 @@ def user_dashboard(user_id):
 
 ### 2.2.2 User Service
 
-## 👤 Benutzerverwaltung und Profil-Management
+👤 Benutzerverwaltung und Profil-Management
 
 **Port:** 5001 | **Tech:** Flask + SQLAlchemy + PostgreSQL
 
@@ -673,7 +673,7 @@ def create_user():
 
 ### 2.2.3 Workout Service
 
-## 💪 Workout-Logging und Exercise-Management
+💪 Workout-Logging und Exercise-Management
 
 **Port:** 5002 | **Tech:** Flask + SQLAlchemy + PostgreSQL
 
@@ -699,7 +699,7 @@ def create_workout():
 
 ### 2.2.4 Stats Service
 
-## 📊 Analytics und Performance-Tracking
+📊 Analytics und Performance-Tracking
 
 **Port:** 5003 | **Tech:** Flask + SQLAlchemy + PostgreSQL
 
@@ -728,7 +728,7 @@ def get_user_stats_summary(user_id):
 
 ### 2.2.5 Weather Service
 
-## 🌤️ Wetter-basierte Workout-Empfehlungen
+🌤️ Wetter-basierte Workout-Empfehlungen
 
 **Port:** 5004 | **Tech:** Flask + External API Integration
 
@@ -762,7 +762,7 @@ def get_workout_advice():
 
 ## 3.1 AWS EC2 Setup
 
-#### 🚀 EC2 Instance Erstellen:
+🚀 EC2 Instance Erstellen:
 
 - **AWS Console** → EC2 Dashboard → "Launch Instance"
 - **Image**: Ubuntu Server 22.04 LTS (free tier eligible)
@@ -777,14 +777,14 @@ def get_workout_advice():
   ![](assets/20250707_201347_image.png)
 - ![](assets/20250707_201411_image.png)
 
-#### SSH Connection:
+SSH Connection:
 
 ```bash
 chmod 400 your-key.pem
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
 ```
 
-#### Dependencies Installation:
+Dependencies Installation:
 
 ```bash
 sudo apt update
@@ -797,16 +797,16 @@ sudo usermod -aG docker ubuntu
 
 ![](assets/20250707_201452_image.png)
 
-#### 📦 Code Deployment
+📦 Code Deployment
 
-#### Repository Clone:
+Repository Clone:
 
 ```bash
 git clone https://github.com/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M.git
 cd ICTNE24_Semesterarbeit3_L.M
 ```
 
-#### Environment Configuration:
+Environment Configuration:
 
 ```bash
 nano .env
@@ -831,7 +831,7 @@ DATABASE_URL=postgresql://trackmygym_user:secure_production_password_456@postgre
 OPENWEATHER_API_KEY=your_openweather_api_key
 ```
 
-#### Initial Deployment:
+Initial Deployment:
 
 ```bash
 docker-compose up -d
@@ -845,7 +845,7 @@ Spätere Korrekturen: SSH Port 22 auf "Anywhere" (0.0.0.0/0) erweitert
 
 ## 3.2 CI/CD Pipeline
 
-#### 🔄 Pipeline Setup GitHub Secrets Config
+🔄 Pipeline Setup GitHub Secrets Config
 
 GitHub Secrets:
 
@@ -914,7 +914,7 @@ jobs:
 
 ## 3.4 Produktionsumgebung
 
-#### 🛡️Production
+🛡️Production
 
 Security Group Update:
 
@@ -949,24 +949,25 @@ Weather Service Integration:
 * **Fallback Strategy** : Demo Data bei API-Ausfall
 * **Docker-compose Extension** : weather-service hinzugefüg
 
-## Bonus: Weather App Setup:
++++ Bonus: Weather App Setup: +++
 
-#### 📋 API Account & Key Setup
 
-#### 1. OpenWeatherMap Account erstellen:
+📋 API Account & Key Setup
+
+1. OpenWeatherMap Account erstellen:
 
 - **Website**: https://openweathermap.org/api
 - **Sign Up**: Kostenloser Account (keine Kreditkarte nötig)
 - **Free Tier**: 1,000 API calls/Tag, 60 calls/Minute
 
-#### 2. API Key generieren**
+2. API Key generieren**
 
 - **Dashboard** → **"My API Keys"**
 - **Create Key** → Name: "TrackMyGym"
 - **Key erhalten**: `BEISPIELKEY`
 - **⏰ Aktivierung**: 10-15 Minuten warten -> WICHTIG
 
-#### 3. API Key testen
+3. API Key testen
 
 ```bash
 # Direct API test
@@ -978,16 +979,16 @@ curl "https://api.openweathermap.org/data/2.5/weather?lat=47.3769&lon=8.5417&app
 
 ---
 
-#### 🏗️ Zweite Phase: Weather Service Development
+🏗️ Zweite Phase: Weather Service Development
 
-### **4. Service Directory erstellen**
+**4. Service Directory erstellen**
 
 ```bash
 mkdir weather-service
 cd weather-service
 ```
 
-### **5. Requirements definieren**
+**5. Requirements definieren**
 
 **`weather-service/requirements.txt`:**
 
@@ -997,7 +998,7 @@ Flask-CORS==4.0.0
 requests==2.31.0
 ```
 
-### **6. Dockerfile erstellen**
+**6. Dockerfile erstellen**
 
 **`weather-service/Dockerfile`:**
 
@@ -1015,7 +1016,7 @@ EXPOSE 5004
 CMD ["python", "app.py"]
 ```
 
-### **7. Weather Service Logic entwickeln**
+**7. Weather Service Logic entwickeln**
 
 **`weather-service/app.py`:**
 
@@ -1161,9 +1162,9 @@ if __name__ == '__main__':
 
 ---
 
-#### 🔗 Frontend Integration
+🔗 Frontend Integration
 
-#### 8. Frontend Service erweitern
+8. Frontend Service erweitern
 
 **`frontend/app.py` - Weather Integration hinzufügen:**
 
@@ -1213,7 +1214,7 @@ def weather_workout_advice():
 
 ---
 
-#### 🐳 9. Docker Integration
+🐳 9. Docker Integration
 
 Docker-Compose erweitern:
 
@@ -1246,7 +1247,7 @@ services:
     restart: unless-stopped
 ```
 
-#### 10. Environment Configuration
+10. Environment Configuration
 
 **`.env` file erweitern:**
 
@@ -1262,7 +1263,7 @@ OPENWEATHER_API_KEY=BEISPIELKEY  # ← API Key hinzufügen
 
 ---
 
-#### 🖥️ 11. UI Integration
+🖥️ 11. UI Integration
 
 Dashboard Template erweitern:
 
@@ -1301,7 +1302,7 @@ Dashboard Template erweitern:
 {% endif %}
 ```
 
-#### 12. JavaScript für Workout Advice
+12. JavaScript für Workout Advice
 
 ```javascript
 function loadWorkoutAdvice() {
@@ -1329,7 +1330,7 @@ function loadWorkoutAdvice() {
 
 ---
 
-#### 🚀 13. Deployment
+🚀 13. Deployment
 
 Build & Deploy:
 
@@ -1346,7 +1347,7 @@ docker-compose ps
 curl http://localhost/api/weather/current
 ```
 
-#### 14. Testing & Verification
+14. Testing & Verification
 
 ```bash
 # Test weather service health
@@ -1362,7 +1363,7 @@ curl http://localhost/api/weather/workout-advice
 docker-compose exec weather-service env | grep OPENWEATHER
 ```
 
-#### Features, welche neu dazugekommen sind::
+Features, welche neu dazugekommen sind::
 
 - ✅ **Live Wetter-Daten** für Zürich
 - ✅ **Workout Recommendations** basierend auf Wetter
@@ -1468,15 +1469,15 @@ graph TD
 ````
 
 
-#### 📊 File Count Summary
+📊 File Count Summary
 
 <pre class="font-styrene border-border-100/50 overflow-x-scroll w-full rounded border-[0.5px] shadow-[0_2px_12px_hsl(var(--always-black)/5%)]"><table class="bg-bg-100 min-w-full border-separate border-spacing-0 text-sm leading-[1.88888] whitespace-normal"><thead class="border-b-border-100/50 border-b-[0.5px] text-left"><tr class="[tbody>&]:odd:bg-bg-500/10"><th class="text-text-000 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] font-400 px-2 [&:not(:first-child)]:border-l-[0.5px]">Kategorie</th><th class="text-text-000 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] font-400 px-2 [&:not(:first-child)]:border-l-[0.5px]">Anzahl Dateien</th></tr></thead><tbody><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Python Apps</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (1 Frontend + 4 Microservices)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Dockerfiles</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (alle Services + nginx)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Requirements</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (Python Dependencies)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Templates</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">3 (HTML Jinja2 Templates)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Static Files</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">2 (CSS + JavaScript)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Config Files</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">4 (docker-compose, nginx, init.sql, .env)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>CI/CD</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">2 (GitHub Actions Workflows)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Documentation</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">1 (README.md)</td></tr></tbody></table></pre>
 
-**Total: ~27 Dateien für komplette Enterprise-Level Application** 🎯
+**Total: ~27 Dateien**
 
 ---
 
-#### 🎨 Code Distribution
+🎨 Code Distribution
 
 * **~60% Backend Logic** (Flask APIs, SQLAlchemy Models, Database Integration)
 * **~20% Infrastructure** (Docker, CI/CD, Database Schema)
