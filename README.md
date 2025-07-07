@@ -763,14 +763,37 @@ def get_workout_advice():
 
 ## 3.1 AWS EC2 Setup
 
-Konfiguration der AWS-Infrastruktur:
+#### 🚀 EC2 Instance Erstellen:
 
+- **AWS Console** → EC2 Dashboard → "Launch Instance"
+- **Image**: Ubuntu Server 22.04 LTS (free tier eligible)
+- **Instance Type**: t2.micro (free tier)
+- **Key Pair**: ED25519 (moderne Verschlüsselung)
+- **Security Group**:
 
+  - SSH (Port 22) - Your IP only (später auf 0.0.0.0/0 erweitert)
+  - HTTP (Port 80) - Anywhere (0.0.0.0/0)
+  - HTTPS (Port 443) - Anywhere (0.0.0.0/0)
 
-![](assets/20250707_201347_image.png)
+  ![](assets/20250707_201347_image.png)
+- ![](assets/20250707_201411_image.png)
 
+#### SSH Connection:
 
-![](assets/20250707_201411_image.png)
+```bash
+chmod 400 your-key.pem
+ssh -i your-key.pem ubuntu@your-ec2-public-ip
+```
+
+#### Dependencies Installation:
+
+```bash
+sudo apt update
+sudo apt install docker.io docker-compose git -y
+sudo usermod -aG docker ubuntu
+# Logout/Login für Docker Permissions
+```
+
 
 
 ![](assets/20250707_201427_image.png)
@@ -779,8 +802,51 @@ Konfiguration der AWS-Infrastruktur:
 ![](assets/20250707_201452_image.png)
 
 
+
+#### 📦 Code Deployment
+
+#### Repository Clone:
+
+```bash
+git clone https://github.com/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M.git
+cd ICTNE24_Semesterarbeit3_L.M
+```
+
+#### Environment Configuration:
+
+```bash
+nano .env
+```
+
+**Inhalt:**
+
+```
+FLASK_ENV=production
+FLASK_DEBUG=False
+SECRET_KEY=your-super-secret-production-key
+USER_SERVICE_URL=http://user-service:5001
+WORKOUT_SERVICE_URL=http://workout-service:5002
+STATS_SERVICE_URL=http://stats-service:5003
+WEATHER_SERVICE_URL=http://weather-service:5004
+
+# PostgreSQL Configuration
+DB_PASSWORD=secure_production_password_456
+DATABASE_URL=postgresql://trackmygym_user:secure_production_password_456@postgres:5432/trackmygym
+
+# Weather API
+OPENWEATHER_API_KEY=your_openweather_api_key
+```
+
+#### Initial Deployment:
+
+```bash
+docker-compose up -d
+```
+
+
 ![](assets/20250707_201524_image.png)
 
+Spätere Korrekturen: SSH Port 22 auf "Anywhere" (0.0.0.0/0) erweitert
 
 ![](assets/20250707_201656_image.png)
 
@@ -804,8 +870,6 @@ GitHub Secrets:
   ![](assets/20250707_203650_image.png)
 
 ## 3.3 GitHub Actions
-
-
 
 **`.github/workflows/deploy.yml`:**
 
@@ -972,10 +1036,4 @@ Definitionen wichtiger Begriffe...
 
 ## 7.5 Kontaktangaben
 
-Projektteam und Ansprechpartner...
-
-```
-
-```
-
-<style>#mermaid-1751910516117{font-family:"trebuchet ms",verdana,arial;font-size:16px;fill:#ccc;}#mermaid-1751910516117 .error-icon{fill:#a44141;}#mermaid-1751910516117 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1751910516117 .edge-thickness-normal{stroke-width:2px;}#mermaid-1751910516117 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1751910516117 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1751910516117 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1751910516117 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1751910516117 .marker{fill:lightgrey;}#mermaid-1751910516117 .marker.cross{stroke:lightgrey;}#mermaid-1751910516117 svg{font-family:"trebuchet ms",verdana,arial;font-size:16px;}#mermaid-1751910516117 .label{font-family:"trebuchet ms",verdana,arial;color:#ccc;}#mermaid-1751910516117 .label text{fill:#ccc;}#mermaid-1751910516117 .node rect,#mermaid-1751910516117 .node circle,#mermaid-1751910516117 .node ellipse,#mermaid-1751910516117 .node polygon,#mermaid-1751910516117 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1751910516117 .node .label{text-align:center;}#mermaid-1751910516117 .node.clickable{cursor:pointer;}#mermaid-1751910516117 .arrowheadPath{fill:lightgrey;}#mermaid-1751910516117 .edgePath .path{stroke:lightgrey;stroke-width:1.5px;}#mermaid-1751910516117 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1751910516117 .edgeLabel{background-color:hsl(0,0%,34.4117647059%);text-align:center;}#mermaid-1751910516117 .edgeLabel rect{opacity:0.5;background-color:hsl(0,0%,34.4117647059%);fill:hsl(0,0%,34.4117647059%);}#mermaid-1751910516117 .cluster rect{fill:hsl(180,1.5873015873%,28.3529411765%);stroke:rgba(255,255,255,0.25);stroke-width:1px;}#mermaid-1751910516117 .cluster text{fill:#F9FFFE;}#mermaid-1751910516117 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial;font-size:12px;background:hsl(20,1.5873015873%,12.3529411765%);border:1px solid rgba(255,255,255,0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1751910516117:root{--mermaid-font-family:sans-serif;}#mermaid-1751910516117:root{--mermaid-alt-font-family:sans-serif;}#mermaid-1751910516117 flowchart{fill:apa;}</style>
+Projektteam und Ansprechpartner:
