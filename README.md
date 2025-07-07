@@ -962,6 +962,427 @@ Weather Service Integration:
 * **Fallback Strategy** : Demo Data bei API-Ausfall
 * **Docker-compose Extension** : weather-service hinzugefüg
 
+## Bonus: Weather App Setup:
+
+## 📋 Phase 1: API Account & Key Setup
+
+### **1. OpenWeatherMap Account erstellen**
+
+- **Website**: https://openweathermap.org/api
+- **Sign Up**: Kostenloser Account (keine Kreditkarte nötig)
+- **Free Tier**: 1,000 API calls/Tag, 60 calls/Minute
+
+### **2. API Key generieren**
+
+- **Dashboard** → **"My API Keys"**
+- **Create Key** → Name: "TrackMyGym"
+- **Key erhalten**: `BEISPIELKEY`
+- **⏰ Aktivierung**: 10-15 Minuten warten -> WICHTIG
+
+### **3. API Key testen**
+
+```bash
+# Direct API test
+curl "https://api.openweathermap.org/data/2.5/weather?lat=47.3769&lon=8.5417&appid=YOUR_API_KEY&units=metric"
+
+# Expected Response:
+{"coord":{"lon":8.54,"lat":47.38},"weather":[...],"main":{"temp":15.2}}
+```
+
+---
+
+## 🏗️ Phase 2: Weather Service Development
+
+### **4. Service Directory erstellen**
+
+```bash
+mkdir weather-service
+cd weather-service
+```
+
+### **5. Requirements definieren**
+
+**`weather-service/requirements.txt`:**
+
+```txt
+Flask==2.3.3
+Flask-CORS==4.0.0
+requests==2.31.0
+```
+
+### **6. Dockerfile erstellen**
+
+**`weather-service/Dockerfile`:**
+
+```dockerfile
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app.py .
+
+EXPOSE 5004
+CMD ["python", "app.py"]
+```
+
+### **7. Weather Service Logic entwickeln**
+
+**`weather-service/app.py`:**
+
+```python
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+import requests
+import os
+from datetime import datetime
+
+app = Flask(__name__)
+CORS(app)
+
+WEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY', 'demo_key')
+WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
+
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({
+        "status": "healthy", 
+        "service": "weather-service",
+        "api_key_configured": WEATHER_API_KEY != 'demo_key'
+    })
+
+@app.route('/weather/current', methods=['GET'])
+def get_current_weather():
+    try:
+        # Zürich coordinates
+        params = {
+            'lat': 47.3769,
+            'lon': 8.5417,
+            'appid': WEATHER_API_KEY,
+            'units': 'metric'
+        }
+      
+        response = requests.get(WEATHER_URL, params=params, timeout=10)
+      
+        # API Key invalid/not configured
+        if response.status_code == 401:
+            return jsonify({
+                "error": "Weather API key not configured or invalid",
+                "demo_mode": True,
+                "weather_data": get_demo_weather()
+            }), 200
+      
+        if response.status_code == 200:
+            weather_data = response.json()
+            return jsonify(process_weather_data(weather_data))
+        else:
+            return jsonify({"error": "Weather service unavailable"}), 503
+          
+    except Exception as e:
+        return jsonify({
+            "error": "Weather service error",
+            "demo_mode": True,
+            "weather_data": get_demo_weather()
+        }), 200
+
+def get_demo_weather():
+    """Fallback demo data when API unavailable"""
+    return {
+        "temperature": 18.5,
+        "feels_like": 17.8,
+        "humidity": 65,
+        "weather_main": "Clouds",
+        "weather_description": "Partly Cloudy",
+        "wind_speed": 2.1,
+        "city": "Zurich",
+        "country": "CH",
+        "demo_mode": True
+    }
+
+def process_weather_data(raw_data):
+    """Process API response into app-friendly format"""
+    return {
+        "temperature": round(raw_data['main']['temp'], 1),
+        "feels_like": round(raw_data['main']['feels_like'], 1),
+        "humidity": raw_data['main']['humidity'],
+        "weather_main": raw_data['weather'][0]['main'],
+        "weather_description": raw_data['weather'][0]['description'].title(),
+        "wind_speed": raw_data.get('wind', {}).get('speed', 0),
+        "city": raw_data.get('name', 'Zurich'),
+        "country": raw_data.get('sys', {}).get('country', 'CH'),
+        "demo_mode": False
+    }
+
+@app.route('/weather/workout-advice', methods=['GET'])
+def get_workout_advice():
+    """Generate workout recommendations based on weather"""
+    try:
+        # Get current weather
+        weather_response = requests.get("http://localhost:5004/weather/current")
+        weather_data = weather_response.json()
+      
+        if weather_data.get('demo_mode'):
+            weather_info = weather_data['weather_data']
+        else:
+            weather_info = weather_data
+      
+        advice = generate_workout_advice(weather_info)
+        return jsonify({"weather": weather_info, "advice": advice})
+      
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+def generate_workout_advice(weather_info):
+    """Smart workout recommendations based on conditions"""
+    temp = weather_info['temperature']
+    weather_main = weather_info['weather_main']
+  
+    advice = {
+        "primary_message": "",
+        "activity_suggestions": [],
+        "safety_tips": [],
+        "gear_recommendations": []
+    }
+  
+    # Weather-based recommendations
+    if weather_main in ['Rain', 'Drizzle']:
+        advice["primary_message"] = "🏠 Better to exercise indoors today"
+        advice["activity_suggestions"] = ["Indoor gym session", "Home yoga", "Treadmill running"]
+        advice["gear_recommendations"] = ["Yoga mat", "Indoor shoes"]
+    elif temp > 25:
+        advice["primary_message"] = "☀️ Hot weather - stay hydrated!"
+        advice["activity_suggestions"] = ["Early morning runs", "Swimming", "Water sports"]
+        advice["safety_tips"] = ["Stay hydrated", "Avoid midday sun", "Take breaks"]
+        advice["gear_recommendations"] = ["Sun hat", "Extra water", "SPF 30+"]
+    elif temp < 5:
+        advice["primary_message"] = "❄️ Cold weather - warm up thoroughly!"
+        advice["activity_suggestions"] = ["Indoor workouts", "Hot yoga", "Gym sessions"]
+        advice["safety_tips"] = ["Warm up indoors", "Layer clothing", "Protect extremities"]
+        advice["gear_recommendations"] = ["Thermal layers", "Gloves", "Warm hat"]
+    else:
+        advice["primary_message"] = "🌟 Perfect weather for outdoor workouts!"
+        advice["activity_suggestions"] = ["Running", "Cycling", "Outdoor sports", "Hiking"]
+        advice["gear_recommendations"] = ["Comfortable athletic wear", "Running shoes"]
+  
+    return advice
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5004, debug=False)
+```
+
+---
+
+## 🔗 Phase 3: Frontend Integration
+
+#### Frontend Service erweitern
+
+**`frontend/app.py` - Weather Integration hinzufügen:**
+
+```python
+WEATHER_SERVICE_URL = os.getenv('WEATHER_SERVICE_URL', 'http://localhost:5004')
+
+@app.route('/user/<user_id>')
+def user_dashboard(user_id):
+    # ... existing code ...
+  
+    # Get weather info for workout planning
+    weather_info = get_weather_info()
+  
+    return render_template('dashboard.html', 
+                         user=user, 
+                         workouts=workouts, 
+                         stats=stats,
+                         weather=weather_info)  # ← New weather data
+
+def get_weather_info():
+    """Get current weather information"""
+    try:
+        response = requests.get(f"{WEATHER_SERVICE_URL}/weather/current", timeout=5)
+        if response.status_code == 200:
+            return response.json()
+    except Exception as e:
+        logger.warning(f"Weather service unavailable: {e}")
+    return None
+
+# Weather API proxy endpoints
+@app.route('/api/weather/current')
+def weather_current():
+    try:
+        response = requests.get(f"{WEATHER_SERVICE_URL}/weather/current", timeout=5)
+        return response.json(), response.status_code
+    except:
+        return {"error": "Weather service unavailable"}, 503
+
+@app.route('/api/weather/workout-advice')
+def weather_workout_advice():
+    try:
+        response = requests.get(f"{WEATHER_SERVICE_URL}/weather/workout-advice", timeout=5)
+        return response.json(), response.status_code
+    except:
+        return {"error": "Weather advice unavailable"}, 503
+```
+
+---
+
+#### 🐳 Docker Integration
+
+Docker-Compose erweitern:
+
+**`docker-compose.yml` - Weather Service hinzufügen:**
+
+```yaml
+services:
+  # ... existing services ...
+  
+  weather-service:
+    build: ./weather-service
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=False
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}  # ← Environment Variable
+    networks:
+      - fitness-network
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    environment:
+      # ... existing vars ...
+      - WEATHER_SERVICE_URL=http://weather-service:5004  # ← Service URL
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - fitness-network
+    restart: unless-stopped
+```
+
+#### Environment Configuration
+
+**`.env` file erweitern:**
+
+```bash
+# Existing variables...
+FLASK_ENV=production
+SECRET_KEY=your-secret-key
+DB_PASSWORD=secure_password
+
+# Weather API Configuration
+OPENWEATHER_API_KEY=BEISPIELKEY  # ← API Key hinzufügen
+```
+
+---
+
+#### 🖥️ UI Integration
+
+Dashboard Template erweitern:
+
+**`templates/dashboard.html` - Weather Widget hinzufügen:**
+
+```html
+<!-- Weather Widget in Right Sidebar -->
+{% if weather %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h3 class="mb-0"><i class="fas fa-cloud-sun me-2"></i>Weather & Workout</h3>
+    </div>
+    <div class="card-body">
+        <div class="text-center mb-3">
+            <div class="weather-temp">{{ weather.temperature }}°C</div>
+            <div>{{ weather.weather_description }}</div>
+        </div>
+      
+        {% if weather.outdoor_suitable %}
+            <div class="alert alert-success">Great for outdoor workouts!</div>
+        {% else %}
+            <div class="alert alert-warning">Better to exercise indoors</div>
+        {% endif %}
+      
+        <button class="btn btn-outline-primary btn-sm w-100" onclick="loadWorkoutAdvice()">
+            <i class="fas fa-lightbulb me-2"></i>Get Workout Advice
+        </button>
+      
+        <div id="workout-advice" class="mt-3"></div>
+      
+        {% if weather.demo_mode %}
+        <small class="text-muted">Demo weather data (API key not configured)</small>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+```
+
+#### JavaScript für Workout Advice
+
+```javascript
+function loadWorkoutAdvice() {
+    fetch('/api/weather/workout-advice')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                document.getElementById('workout-advice').innerHTML = 
+                    `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                return;
+            }
+          
+            const advice = data.advice;
+            let html = `
+                <div class="alert alert-info">
+                    <h6>${advice.primary_message}</h6>
+                    <strong>Recommended Activities:</strong>
+                    <ul>${advice.activity_suggestions.map(a => `<li>${a}</li>`).join('')}</ul>
+                </div>
+            `;
+            document.getElementById('workout-advice').innerHTML = html;
+        });
+}
+```
+
+---
+
+#### 🚀 Deployment
+
+Build & Deploy:
+
+```bash
+# Build new weather service
+docker-compose build weather-service
+
+# Deploy complete stack
+docker-compose down
+docker-compose up -d
+
+# Verify deployment
+docker-compose ps
+curl http://localhost/api/weather/current
+```
+
+#### 14. Testing & Verification
+
+```bash
+# Test weather service health
+curl http://localhost:5004/health
+
+# Test weather data
+curl http://localhost/api/weather/current
+
+# Test workout advice
+curl http://localhost/api/weather/workout-advice
+
+# Check environment variable
+docker-compose exec weather-service env | grep OPENWEATHER
+```
+
+#### Features, welche neu dazugekommen sind::
+
+- ✅ **Live Wetter-Daten** für Zürich
+- ✅ **Workout Recommendations** basierend auf Wetter
+- ✅ **Demo Mode Fallback** bei API-Ausfall -> Demo Daten werden bei nicht-Erreichbarkeit angezeigt -> **Error Handling** für externe Dependencies
+- ✅ **UI Integration** im User Dashboard, auch für Mobil
+- ✅ **Environment Configuration** für API Keys
+
 ---
 
 # 4. 📱 User Interface
