@@ -676,7 +676,6 @@ def create_user():
 **Port:** 5002 | **Tech:** Flask + SQLAlchemy + PostgreSQL
 
 **Funktionen:**
-
 - Workout-Erfassung (Typ, Dauer, Kalorien)
 - User-Validation über User Service
 - Foreign Key Relationships zu Users
@@ -688,11 +687,13 @@ def create_workout():
     data = request.get_json()
     if not verify_user_exists(data['user_id']):
         return jsonify({"error": "User not found"}), 404
-  
+    
     workout = Workout(user_id=data['user_id'], exercise_type=data['exercise_type'])
     db.session.add(workout)
     db.session.commit()
     return jsonify(workout.to_dict()), 201
+```
+
 ### 2.2.4 Stats Service
 
 ## 📊 Analytics und Performance-Tracking
