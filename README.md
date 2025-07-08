@@ -510,11 +510,11 @@ PLANNER FOTO EINFÜGEN
 5. Präsentation vorbereiten
 6. Ende - Abgabe
 
-Projekterweiterungen:
+✨ Projekterweiterungen:
 
-7. PostgreSQL / SQLAlchemy Database
-8. Weather API
-9. AWS EC2 / CI/CD
+7. ✨ PostgreSQL / SQLAlchemy Database
+8. ✨ Weather API
+9. ✨ AWS EC2 / CI/CD
 
 ---
 
@@ -1714,19 +1714,90 @@ Detaillierte Testszenarien und -ergebnisse...
 
 ## 6.1 Erreichte Ziele
 
-Zusammenfassung der erfolgreich umgesetzten Projektziele...
+Das TrackMyGym Projekt hat alle ursprünglich definierten Ziele erreicht und sogar übertroffen:
+
+🎯 Kernfunktionalitäten 100% erreicht
+- ✅ Grundlegendes Tracking von Gym-Besuchen implementiert
+- ✅ Einfache Erfassung von Übungen und Gewichten
+- ✅ Individuelle Fortschrittsanzeige für jeden Nutzer
+- ✅ Benutzerfreundliche GUI mit responsivem Design
+- ✅ Benutzerprofilverwaltung vollständig funktional
+
+🚀 Projekterweiterungen Bonus-Ziele erreicht:
+- ✅ **PostgreSQL Migration** - Von JSON zu professioneller Datenbank
+- ✅ **Weather API Integration** - Live-Wetter mit Workout-Empfehlungen - Externe API
+- ✅ **AWS EC2 Deployment** - Cloud-native Lösung
+- ✅ **CI/CD Pipeline** - Automatisierte Deployments
+- ✅ **4 Microservices** - Skalierbare Architektur
+
 
 ## 6.2 Herausforderungen
 
-Schwierigkeiten und Hindernisse während der Entwicklung...
+
+Weather API
+- **Problem:** Es hat ungewöhnlich lange gedauert, bis die richtigen Daten auf dem Dashboard zu sehen waren
+- **Impact:** Ungewissheit ob die API tatsächlich funktioniert und Wartezeiten für die Tests
+- ✅**Lösung:** 1 Tag warten
+
+JSON-Storage
+
+- **Problem:** Keine "Richtige" Datenbanklösung für meine Microservices.
+- **Impact:** Erhebliches Risiko für die Datenintegrität, Datenkorruption möglich
+- ✅**Lösung:** Migration von JSON-Storage auf richtige Datenbank
+
+Cloud-Native Ansatz
+- **Problem:** Projekt-Scope lokal -> App nicht auf der Cloud
+- **Impact:** Keinen Zugriff aus dem Internet und keine automatischen Deployments via CI/CD Pipeline
+- ✅**Lösung:** Projekterweiterung -> Absprache mit dem Dozenten, Projektweiterung visualisieren und Umsetzen. EC2 Instanz, Pipeline, Datenbank und externe API hinzugefügt.
 
 ## 6.3 Lessons Learned
 
-Erkenntnisse und Lerneffekte aus dem Projekt...
+🛠️​**Technisch:**
+
+APIs: Immer Fallback-Strategien für externe Services.
+
+PostgreSQL > JSON: Echte Datenbanken schützen vor Korruption
+
+
+🔄**DevOps:**
+
+CI/CD: Automatisierte Tests sparen Zeit und Nerven
+
+AWS EC2: Einfacher als gedacht, aber Security beachten
+
+Environment Variables: Secrets nie ins Git!
+
+
+​📋​**Projektmanagement:**
+
+Früh testen: User-Feedback wichtig
+
+Scope Creep: Erweiterungen früh mit Stakeholdern besprechen. Speziell die Cloud-Native erweiterungen
+
+Dokumentation: Balance zwischen zu viel und zu wenig
+
+📐**UX/Design:**
+
+Attraktive GUI: Touch-freundliche Interfaces sind wichtig
+
+Error Handling: Demo Daten einsetzten
+
+🥏**​Fazit:** Externe Dependencies brauchen Fallbacks, frühe Tests sparen später Stress, und echte Datenbanken sind es Wert! Secrets am richtigen Ort halten.
 
 ## 6.4 Ausblick
 
-Zukünftige Entwicklungen und Verbesserungsmöglichkeiten...
+***Zukünftige Entwicklungen und Verbesserungsmöglichkeiten...***
+
+- Feature Ausbau: Neue Community Features hinzufügen
+- User-Access und Security: Kompatibilität für Passwörter / Login Credentials einbauen
+- User Feedback Funktion: Direkt über die Applikation Feedbacks an die Entwickler senden
+- FAQ-Section hinzufügen
+- Friends-Lists und Gamification
+- Option zur Anpassung des Farben-Themes
+- Personalisierung: Profilbilder und Benutzernamen
+- Motivierende Push-Notifications oder erinnerungen
+- Special Seasonal Events
+- **Cloud Native First!** Zukünftige Entwicklung in Cloud-Native-Philosophie beibehalten
 
 ---
 
