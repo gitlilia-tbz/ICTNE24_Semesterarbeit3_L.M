@@ -38,7 +38,7 @@
   * [1.7.1 Beschrieb zur Projekterweiterung](#171-beschrieb-zur-projekterweiterung)
   * [1.7.2 SEUSAG-Diagramm - Alte Struktur](#172-seusag-diagramm---alte-struktur)
   * [1.7.3 Neue Struktur](#173-neue-struktur)
-  * [1.7.4 Neue Struktur](#174-neue-struktur) 
+  * [1.7.4 Neue Struktur (Persistent + Weather API)](#174-neue-struktur-persistent--weather-api)
 * [1.8 Projekt Gantt-Diagramm](#18-projekt-gantt-diagramm)
 
 ### [2. 🛠️ Technische Dokumentation](#2-️-technische-dokumentation)
