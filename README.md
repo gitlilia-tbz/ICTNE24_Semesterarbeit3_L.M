@@ -1,6 +1,6 @@
 # README
 
-# 🏋️‍♀️ TrackMyGym: Tracke. Wachse. Gewinne.
+# 🏋️‍♀️ FitTracker Pro: Tracke. Wachse. Gewinne.
 
 ### Fitness Tracking Platform mit Microservices Architektur
 
@@ -211,9 +211,11 @@ Fabrkodierung:
 
 ## 1.5 SWOT-Analyse
 
-Stärken, Schwächen, Chancen und Risiken
+Stärken, Schwächen, Chancen und Risiken des Projektes innerhalb der SWOT Analyse:
 
 ![](assets/20250706_152917_image.png)
+
+Ziel ist es, bewusst mich primär an den Stärken zu orientieren um den positiven Fokus zu behalten und die schädlichen Aspekte der SWOT-Analyse präventiv anzugehen.
 
 ## 1.6 Sprint-Dokumentation
 
@@ -1962,16 +1964,27 @@ Dieses Projekt wurde in Zusammenarbeit mit Anthropic Claude (Sonnet 4) erstellt.
 
 
 [![Claude](https://img.shields.io/badge/AI-Claude-orange?style=for-the-badge)](https://claude.ai)
+
 [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org)
+
 [![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+
 [![PostgreSQL](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+
 [![AWS EC2](https://img.shields.io/badge/AWS%20EC2-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/ec2/).
+
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+
 [![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-%23FF6B35.svg?style=for-the-badge&logo=openweathermap&logoColor=white)](https://openweathermap.org)
+
 [![Scrum](https://img.shields.io/badge/Methodology-Scrum-blue?style=for-the-badge)](https://scrum.org)
+
 [![Agile](https://img.shields.io/badge/Development-Agile-brightgreen?style=for-the-badge)](https://agilemanifesto.org)
+
 [![SWOT Analysis](https://img.shields.io/badge/Analysis-SWOT-purple?style=for-the-badge)](https://en.wikipedia.org/wiki/SWOT_analysis)
+
 [![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)](https://www.atlassian.com/software/jira)
 
 ## 7.4 Glossar
