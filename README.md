@@ -17,7 +17,7 @@
 
 **Studierende:** Lilia Mechani | **Semester:** 3 | **Dozenten:** (PRJ) Corrado Parisi (MSVC) Boris Langer
 
-[🚀 Live Demo](http://52.202.224.208/) • [📖 Repo](https://github.com/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M) • [🏗️ KanBan](https://semesterarbeit3liliam.atlassian.net/jira/software/projects/KAN/boards/1)  LIIIIIIIIIIIIINKS
+[🚀 Live Demo](http://52.202.224.208/) • [📖 Repo](https://github.com/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M) • [🏗️ KanBan](https://semesterarbeit3liliam.atlassian.net/jira/software/projects/KAN/boards/1)
 
 ## Inhaltsverzeichnis
 
@@ -38,7 +38,7 @@
   * [1.7.1 Beschrieb zur Projekterweiterung](#171-beschrieb-zur-projekterweiterung)
   * [1.7.2 SEUSAG-Diagramm - Alte Struktur](#172-seusag-diagramm---alte-struktur)
   * [1.7.3 Neue Struktur](#173-neue-struktur)
-  * [1.7.4 Neue Struktur ()](#174-neue-struktur) LIIIIIIIIIIIIINK
+  * [1.7.4 Neue Struktur](#174-neue-struktur) 
 * [1.8 Projekt Gantt-Diagramm](#18-projekt-gantt-diagramm)
 
 ### [2. 🛠️ Technische Dokumentation](#2-️-technische-dokumentation)
@@ -49,7 +49,7 @@
   * [2.2.2 User Service](#222-user-service)
   * [2.2.3 Workout Service](#223-workout-service)
   * [2.2.4 Stats Service](#224-stats-service)
-  * [2.2.5 Weather Service](#224-stats-service) LIIIIIIIIIIIIIIIIIINK
+  * [2.2.5 Weather Service](#224-weather-service)
 
 ### [3. ☁️ Deployment & DevOps](#3-️-deployment--devops)
 
