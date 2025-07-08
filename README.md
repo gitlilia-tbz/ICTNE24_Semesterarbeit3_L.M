@@ -62,7 +62,6 @@
 
 * [4.1 Frontend Design](#41-frontend-design)
 * [4.2 User Experience](#42-user-experience)
-* [4.3 Screenshots](#43-screenshots)
 
 ### [5. 🧪 Testing & Qualitätssicherung](#5--testing--qualitätssicherung)
 
@@ -1766,11 +1765,6 @@ Bei bedarf kann man Anhand der Wetter-Vorschläge seine Workouts planen. Vorbere
 ***Weitere Workouts hinzufügen, Statistiken und Farb-Kodierungen:*** 
 Es können weitere Workouts im Dashboard hinterlegt werden. Für eine übersichtliche Darstellung hat jeder Workout-Typ einen eigenen Farbcode. Die Workouts werden analysiert und in der Statistik angezeigt / zusammengerechnet.
 
-## 4.3 Screenshots
-
-Visuelle Darstellung der Anwendung...
-
----
 
 # 5. 🧪 Testing & Qualitätssicherung
 
@@ -1780,13 +1774,75 @@ Automatisierte Tests in der CI/CD-Pipeline...
 
 ## 5.2 User-Testing
 
-Benutzertests und Feedback...
+**Benutzertests und Feedback:** Beta-Test
+
+📋 Beta-Test Phase Dokumentation
+
+
+
+**Zeitraum:** 3 Tage (6.7. - 8.7.2025)  
+**Testpersonen:** 2 (1 männlich/28J, 1 weiblich/31J) - beide sportlich aktiv  
+**Gesamtbewertung:** Sehr gut ⭐⭐⭐
+
+---
+
+**👥 Testpersonen**
+- **S. (M, 28):** Kraftsportler, 5x/Woche Training
+- **M. (W, 31):** Kickboxen und Joggen, , 1x/Woche Training
+---
+
+**✅ Positive Ergebnisse**
+- **Benutzerfreundlichkeit:** App ist übersichtlich und schnell bedienbar
+- **Weather-Feature:** Überraschend nützlich für Outdoor-Sport-Planung
+- **Design:** Moderne, ansprechende Optik
+
+
+---
+
+**🔧 Feedback & Verbesserungswünsche seitens Probanten**
+
+| Feature | Priorität | Details |
+|---------|-----------|---------|
+| **Schrittzähler Integration** | Hoch | Beide wünschen tägliche Schritte-Tracking |
+| **Eigene Tagesziele** | Hoch | Personalisierte Trainings-/Kalorienziele definieren |
+| **Anpassbare Themes** | Mittel | Dark Mode und Farbthemen-Auswahl |
+| **Dauerhafte Verfügbarkeit** | Kritisch | App war 2x offline (AWS Learner Lab Problem) |
+
+---
+
+**🐛 Identifizierte Probleme**
+- **Server Downtime:** App nicht erreichbar durch AWS Learner Lab Limitationen
+
+---
+
+**🎯 Nächste Schritte**
+1. **Kritisch:** Vielleicht eine Migration zu stabilerer Cloud-Infrastruktur
+2. **Hoch:** Schrittzähler + Tagesziele implementieren
+3. **Mittel:** Theme-System mit Dark Mode oder weiteren Farben
+
+**Fazit:** App ist grundsätzlich sehr gut, braucht aber stabile Hosting-Lösung und erweiterte Personalisierung für Produktiveinsatz.
+
++++ Feeback seitens Probanten:
+
+***"Nice", "Das einfache Dashboard gefällt mir mega" "Voll Geil", "Das Design gefällt mir"***
+
 
 ## 5.3 10 Testfälle
 
-Detaillierte Testszenarien und -ergebnisse...
+| Test # | Wenn das... | Dann das... | Status |
+|--------|-------------|-------------|---------|
+| 1 | User mit neuer Email registriert | Account wird erstellt und in PostgreSQL gespeichert | ✅ PASS |
+| 2 | User mit bereits existierender Email registriert | Fehlermeldung "Email bereits vorhanden" erscheint | ✅ PASS |
+| 3 | Workout mit gültigen Daten (Running, 30min, 300cal) erfasst | Workout wird gespeichert und im Dashboard angezeigt | ✅ PASS |
+| 4 | Mehrere Workouts erfassen | Werden aufgelistet | ✅ PASS |
+| 5 | User mit 3 Workouts (30, 45, 60 Min) hat | Stats zeigen Total: 3, Duration: 135 Min, Avg: 45 Min | ✅ PASS |
+| 6 | Weather API mit gültigem Key aufgerufen | Live-Wetter für Zürich wird korrekt angezeigt | ✅ PASS |
+| 7 | Weather API mit ungültigem Key aufgerufen | Demo-Mode aktiviert, Fallback-Daten angezeigt | ✅ PASS |
+| 8 | `docker-compose up -d` ausgeführt | Alle 5 Services (Frontend, User, Workout, Stats, Weather) laufen healthy | ✅ PASS |
+| 9 | Aufrufen der Mobile Version  | Website Mobil erreichbar | ✅ PASS |
+| 10 | App auf Mobile (375px) und Desktop (1920px) getestet | Layout passt sich responsive an, keine horizontalen Scrollbars | ✅ PASS |
 
----
+**Test Summary:** 10/10 PASS ✅ | **Success Rate:** 100%
 
 # 6. 📈 Ergebnisse & Reflexion
 
