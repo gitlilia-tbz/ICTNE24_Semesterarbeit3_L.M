@@ -1407,6 +1407,65 @@ def weather_workout_advice():
         return {"error": "Weather advice unavailable"}, 503
 ```
 
+🔗 dashboard.html 
+
+9. **Wettervorschläge / Workoutadvice für die Wettervorschläge / Workout-Advice ergänzen**
+    
+  ```html
+  // Add this to the <script> section in dashboard.html
+
+function loadWorkoutAdvice() {
+    const adviceContainer = document.getElementById('workout-advice');
+    adviceContainer.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin"></i> Getting advice...</div>';
+    
+    fetch('/api/weather/workout-advice')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                adviceContainer.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                return;
+            }
+            
+            const advice = data.advice;
+            let html = `
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-brain me-2"></i>${advice.primary_message}</h6>
+                    
+                    <strong>Recommended Activities:</strong>
+                    <ul class="mb-2">
+                        ${advice.activity_suggestions.map(activity => `<li>${activity}</li>`).join('')}
+                    </ul>
+                    
+                    ${advice.safety_tips.length > 0 ? `
+                    <strong>Safety Tips:</strong>
+                    <ul class="mb-2">
+                        ${advice.safety_tips.map(tip => `<li>${tip}</li>`).join('')}
+                    </ul>
+                    ` : ''}
+                    
+                    ${advice.gear_recommendations.length > 0 ? `
+                    <strong>Gear Recommendations:</strong>
+                    <ul class="mb-0">
+                        ${advice.gear_recommendations.map(gear => `<li>${gear}</li>`).join('')}
+                    </ul>
+                    ` : ''}
+                </div>
+            `;
+            adviceContainer.innerHTML = html;
+        })
+        .catch(error => {
+            adviceContainer.innerHTML = `<div class="alert alert-danger">Error loading advice: ${error}</div>`;
+        });
+}
+
+// Auto-refresh weather every 30 minutes
+setInterval(function() {
+    if (window.location.pathname.includes('/user/')) {
+        location.reload();
+    }
+}, 30 * 60 * 1000);
+  ```
+
 ---
 
 🐳 9. Docker Integration
@@ -1442,7 +1501,7 @@ services:
     restart: unless-stopped
 ```
 
-10. Environment Configuration
+10.  Environment Configuration
 
 **`.env` file erweitern:**
 
@@ -1682,11 +1741,26 @@ graph TD
 
 ## 4.1 Frontend Design
 
-Designkonzept und visuelle Gestaltung
+**Designkonzept und visuelle Gestaltung**
+![alt text](image-6.png)
 
 ## 4.2 User Experience
 
-Benutzerfreundlichkeit und Usability...
+
+![alt text](refresh.gif)
+***Quick Actions - Systemstatus:***
+Die Applikation bietet die Möglichkeitn an, den Systemhealth zu aktualisieren. Somit bleiben die User vortlaufend über den Service-Health informiert, ohne den Admin aufrufen zu müssen.
+
+![alt text](user_erstellen.gif)
+***User erstellen und User Dashboard:***
+Einen User ganz einfach und rasch erstellen: Name, Email und Angaben zur Person werden für die Usererstellung angefragt, aber nicht zwingend benötigt. Nach der erstellung kann man direkt auf das Dashboard zugreifen.
+
+![alt text](workout_hinterlegen.gif)
+***Wetter-Vorschläge und hinterlegen eines ersten Workouts:***
+Bei bedarf kann man Anhand der Wetter-Vorschläge seine Workouts planen. Vorbereitet auf jede Wetterbedingung! Anhand eines Scripts werden mit Hilfe der Wetter-Angaben personalisierte Vorschläge generiert.
+![alt text](weitere_workouts.gif)
+***Weitere Workouts hinzufügen, Statistiken und Farb-Kodierungen:*** 
+Es können weitere Workouts im Dashboard hinterlegt werden. Für eine übersichtliche Darstellung hat jeder Workout-Typ einen eigenen Farbcode. Die Workouts werden analysiert und in der Statistik angezeigt / zusammengerechnet.
 
 ## 4.3 Screenshots
 
