@@ -17,7 +17,7 @@
 
 **Studierende:** Lilia Mechani | **Semester:** 3 | **Dozenten:** (PRJ) Corrado Parisi (MSVC) Boris Langer
 
-[🚀 Live Demo](http://your-ec2-ip) • [📖 Repo](#Repo) • [🏗️ KanBan](#KanBan)  LIIIIIIIIIIIIINKS
+[🚀 Live Demo](http://52.202.224.208/) • [📖 Repo](https://github.com/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M) • [🏗️ KanBan](https://semesterarbeit3liliam.atlassian.net/jira/software/projects/KAN/boards/1)  LIIIIIIIIIIIIINKS
 
 ## Inhaltsverzeichnis
 
@@ -641,7 +641,8 @@ damit ich **meine Outdoor-Trainings besser planen kann.**
 - Datenbank wurde von JSON zu richtiger Datenbank migriert
 - Statistiken wurden eingebaut
 - Weather API eingebaut, zeigt aktuelles Wetter von Zürich an
-
+![alt text](image-9.png)
+![alt text](image-10.png)
 
 #### 🏔️​ **Herausforderungen**
 
@@ -663,7 +664,8 @@ damit ich **meine Outdoor-Trainings besser planen kann.**
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | Frühzeitige API-Integration planen<br /><br>Mehr Zeit für Datenmigration einplanen<br><br>Cloud-Native Ansatz konsequent verfolgen | **Zu späte Performance-Optimierung** <br>API-Wartezeiten nicht erst am Ende addressieren | **Fokus auf Datenpersistenz**<br>• Weiterhin auf robuste Datenbankintegration setzen | JSON-basierte Datenstrukturen für kritische Daten vermeiden, da sie anfällig für Korruption sind |
 
-
++++ Alle User Stories sind im KanBan ersichtlich
+https://semesterarbeit3liliam.atlassian.net/jira/software/projects/KAN/boards/1
 
 ## 1.7 Projekterweiterung
 
