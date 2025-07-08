@@ -89,16 +89,6 @@
 ---
 
 
-## Einführung / README
-
-Willkommen zum Sprint Elemente Projekt...
-
-## Projektinformationen
-
-Grundlegende Informationen zum Projekt...
-
----
-
 # 1. 📊 Projektmanagement
 
 ## 1.1 Projektbeschreibung
@@ -157,6 +147,10 @@ Projektzeitleiste und Meilensteine
 | 3      | 2.6. - 9.7.25 | Verbesserung der App-Visualisierung, Statistiken, Abschluss der Datenbankfunktionalität |
 | 3      | 2.6. - 9.7.25 | Vollendung der Dokumentation                                                             |
 | 3      | 2.6. - 9.7.25 | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
+
+
+![](assets/20250708_175314_image.png)
+
 
 ## 1.3 Risiko-Evaluation
 
