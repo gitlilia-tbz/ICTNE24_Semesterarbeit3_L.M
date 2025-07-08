@@ -9,8 +9,6 @@
 ![Flask](https://img.shields.io/badge/Flask-2.3.3-black?logo=flask&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker&logoColor=white)
-
-![Microservices](https://img.shields.io/badge/Architecture-Microservices-orange)
 ![AWS EC2](https://img.shields.io/badge/Deployed%20on-AWS%20EC2-orange?logo=amazon-aws&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-green?logo=github&logoColor=white)
 ![Weather API](https://img.shields.io/badge/Weather-OpenWeatherMap-blue?logo=openweathermap&logoColor=white)
@@ -19,7 +17,9 @@
 
 **Studierende:** Lilia Mechani | **Semester:** 3 | **Dozenten:** (PRJ) Corrado Parisi (MSVC) Boris Langer
 
-[🚀 Live Demo](http://your-ec2-ip) • [📖 Documentation](#documentation) • [🏗️ Architecture](#architecture)
+### Quick Navigation
+
+[🚀 Live Demo](http://your-ec2-ip) • [📖 Repo](#Repo) • [🏗️ KanBan](#KanBan)
 
 ## Inhaltsverzeichnis
 
@@ -92,13 +92,6 @@
 
 ---
 
-## Quick Navigation
-
-* 🚀[Live Demo](platzhalter)
-* 💻[GitHub Repository](platzhalter)
-* 📊[KanBan Projekt Board](platzhalter)
-
----
 
 ## Einführung / README
 
