@@ -17,16 +17,12 @@
 
 **Studierende:** Lilia Mechani | **Semester:** 3 | **Dozenten:** (PRJ) Corrado Parisi (MSVC) Boris Langer
 
-### Quick Navigation
-
-[🚀 Live Demo](http://your-ec2-ip) • [📖 Repo](#Repo) • [🏗️ KanBan](#KanBan)
+[🚀 Live Demo](http://your-ec2-ip) • [📖 Repo](#Repo) • [🏗️ KanBan](#KanBan)  LIIIIIIIIIIIIINKS
 
 ## Inhaltsverzeichnis
 
 ## 📋 Projektübersicht
 
-* [Einführung / README](#einführung--readme)
-* [Projektinformationen](#projektinformationen)
 
 ### [1. 📊 Projektmanagement](#1--projektmanagement)
 
@@ -222,7 +218,7 @@ Stärken, Schwächen, Chancen und Risiken
 
 ## 1.6 Sprint-Dokumentation
 
-Dokumentation aller Sprint-Aktivitäten inklusive Userstories und Retrospektiven...
+Dokumentation aller Sprint-Aktivitäten inklusive Userstories und Retrospektiven.
 
 ### 1.6.1 Sprint 1
 
