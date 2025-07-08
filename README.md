@@ -23,7 +23,6 @@
 
 ## 📋 Projektübersicht
 
-
 ### [1. 📊 Projektmanagement](#1--projektmanagement)
 
 * [1.1 Projektbeschreibung](#11-projektbeschreibung)
@@ -88,7 +87,6 @@
 
 ---
 
-
 # 1. 📊 Projektmanagement
 
 ## 1.1 Projektbeschreibung
@@ -131,7 +129,7 @@ Weitere optionale Ziele für die App:
 
 - Freunde hinzufügen: Verbindung mit anderen Nutzern
 - Gruppen: Bildung von Trainingsgruppen
-- Leaderboards: Freundschaftliche Wettkämpfe zwischen Nutzern/Gruppen          |
+- Leaderboards: Freundschaftliche Wettkämpfe zwischen Nutzern/Gruppen
 
 ## 1.2 Zeitplan
 
@@ -148,9 +146,17 @@ Projektzeitleiste und Meilensteine
 | 3      | 2.6. - 9.7.25 | Vollendung der Dokumentation                                                             |
 | 3      | 2.6. - 9.7.25 | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
 
-
 ![](assets/20250708_175314_image.png)
 
+***✨ Alle ✨ markierten Erweiterungen:***
+
+1. **🐘 PostgreSQL Database Migration** ✨ NEU
+2. **🔄 SQLAlchemy ORM Integration** ✨ NEU
+3. **🌤️ Weather API Service Development** ✨ NEU
+4. **☁️ AWS EC2 Deployment & CI/CD** ✨ NEU
+5. **🏗️ Microservices Architektur Erweiterung** ✨ NEU
+
+Bei diesen Erweiterungen handelt es sich um erreichte Ziele ausserhalb des Ursprünglichen Projektscopes. Diese Erweiterungen wurden nach Absprache mit dem Projektmanagement-Dozenten im Sprint 3 implementiert, um das Projekt in Sachen Cloud-Native zu festigen.
 
 ## 1.3 Risiko-Evaluation
 
@@ -216,79 +222,85 @@ Dokumentation aller Sprint-Aktivitäten inklusive Userstories und Retrospektiven
 
 ### 1.6.1 Sprint 1
 
-# Sprint 1 – Planung & Review
 
-## Zeitraum
+
+#### **Zeitraum**
 
 5.5. - 9.5.25
 
-## Sprintziel
+---
+
+#### **Sprintziel**
 
 1. Github – Obsidian setup
 2. Architekturplanung
 3. Aufbau KanBan Board
 
-## User Stories mit Akzeptanzkriterien
+---
 
-## User Story 1:
+
+#### **User Stories mit Akzeptanzkriterien**
+---
+
+📍​**User Story 1:**
 
 
 | Title:                   | Priority: | Estimate: |
 | -------------------------- | ----------- | ----------- |
 | Github zu Obsidian Setup | High      | 1h        |
 
-## Beschreibung:
+
 
 Als Entwickler
 Möchte ich **Meinen Text-Editor oder IDE zu meinem Github-Repo verknüpfen**
 damit ich **Meine Projektdokumentation festhalten kann**.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Ein verfügbares Repository für die Dokumentation der Semesterarbeit
 - Präferierter IDE / Text-Editor welcher aufs Repo zugreifen kann und aktiv änderungen vornimmt
 
 ---
 
-## User Story 2:
+📍​**User Story 2:**
 
 
 | Title:             | Priority: | Estimate: |
 | -------------------- | ----------- | ----------- |
 | Architekturplanung | High      | 2d        |
 
-## Beschreibung:
+
 
 Als Architekt
 Möchte ich **Einen ersten Entwurf meiner Grundarchitektur erstellen**
 damit ich **einen ersten Anhaltspunkt zum Architekturdesign habe, an welches sich das Projekt richten kann**.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Ein Mermaid Diagramm mit der groben Vorstellung der Architektur
 - Verständliche Beschriftung, Aufbau entsprechend der definierten Sachmittel
 
 ---
 
-## User Story 3:
+📍​**User Story 3:**
 
 
 | Title:              | Priority: | Estimate: |
 | --------------------- | ----------- | ----------- |
 | Aufbau KanBan Board | Medium    | 1d        |
 
-## Beschreibung:
-
 Als Projektleiterin
 Möchte ich **Projektvortschritt übersichtlich dokumentieren**
 damit ich **meine Stakeholder den Fortschritt mitverfolgen können und ich Übersicht über die Aufgaben behalte**.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Ein verfügbares KanBan Board mit den einzelnen Sprints und deren Ziele
 - Die Funktionen Daten zu definieren und Cheklisten in den Zielen aufzubauen
 
-## Aufgabenübersicht Sprint 1
+---
+
+#### **Aufgabenübersicht Sprint 1**
 
 
 | Aufgabe                  | Status              |
@@ -297,11 +309,11 @@ damit ich **meine Stakeholder den Fortschritt mitverfolgen können und ich Über
 | Architekturplanung       | erledigt            |
 | Aufbau Kan-Ban Board     | erledigt            |
 
-PLANNER FOTO EINFÜGEN
+---
 
-## Sprint Review
+#### **Sprint Review**
 
-### Was wurde erreicht?
+📍​**Was wurde erreicht?**
 
 - GitHub repo wurde erstellt
 - IDE wurde mit GitHub verknüpft - Es wurde auf andere Lösung gewechselt - Da bessere Optionen zur Entwicklung
@@ -314,20 +326,30 @@ PLANNER FOTO EINFÜGEN
 ![alt text](image-3.png)
 *_KanBan Ende Sprint_
 
-### Herausforderungen
+#### **Herausforderungen**
 
 - Microsoft Lists bietet nicht alle benötigten Funktionen an. Es wurde am Anfang des 2. Sprints eine Ausweichmöglichkeit definiert
 - Sprint 1 Zeitraum sehr klein
 
-### Lessons Learned
+
+#### **Lessons Learned**
 
 - Mehr Austausch mit den Team-Kollegen und Collaboraters pflegen, um Lösungen zu vergleichen und voneinander zu profitieren. Durch einen Tipp von Teamkollegen, bin ich vollständig auf Visual-Studio gewechselt, da es wesentlich mehr Möglichkeiten anbietet, als Obsidian.
 
-## Ausblick auf Sprint 2
+---
 
-- Wechsel / Migration des KanBan-Board
+#### **Retrospektive**
+
+
+| **📈 More Of**                                                                                                                                                                                             | **📉 Less Of**                                                                                       | **✅ Keep Doing**                                                                                                                                                       | **🛑 Stop Doing**                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Mehr Austausch mit Team-Kollegen und Collaboraters pflegen**<br>• Lösungen vergleichen und voneinander profitieren <br>• Durch Teamkollegen-Tipp erfolgreich von Obsidian zu Visual Studio gewechselt | **Sprint-Zeitraum zu klein wählen**<br>• Sprint 1 Zeitraum war zu kurz für effektive Arbeitsweise | **Offenheit für Tool-Empfehlungen** <br>• Visual Studio bietet wesentlich mehr Möglichkeiten als Obsidian <br><br>** Proaktive Lösungssuche bei Tool-Limitationen** | ***Abhängigkeit von unvollständigen Tools ohne Backup-Plan***<br>• Microsoft Lists bietet nicht alle benötigten Funktionen <br>• Ausweichmöglichkeit wurde erst am Anfang des 2. Sprints definiert |
+
+#### **Ausblick auf Sprint 2**
+
+- Wechsel / Migration des KanBan-Board - **Tool-Migration abschließen** - Vollständiger Wechsel zu Visual Studio
 - Start Entwicklung der Grundarchitektur
-- GUI Planung und erste Umsetzun
+- GUI Planung und erste Umsetzung
 
 ### 1.6.2 Sprint 2
 
@@ -335,7 +357,7 @@ PLANNER FOTO EINFÜGEN
 
 ## Zeitraum
 
-9.5. - 2.6.25
+9.5. - 2.6.2
 
 ## Sprintziel
 
@@ -442,15 +464,164 @@ PLANNER FOTO EINFÜGEN
 
 ### Lessons Learned
 
+- Fitness-Begeisterte tester Finden
+- API-Funktionalitäten gewährleisten
+
+## Retrospektive
+
+
+| **📈 More Of**                                                                                                                                      | **📉 Less Of**                                                                          | **✅ Keep Doing**                                                                    | **🛑 Stop Doing**                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Frühzeitige Suche nach Fitness-Begeisterten für Tests<br /><br> <br />und Projekterweiterung in Erwägung setzen für Cloud-Native Ansatz<br><br> | **Zu späte Tester-Suche** <br>Tester-Rekrutierung nicht auf letzten Moment verschieben | ** Fokus auf Zielgruppe**<br>• Weiterhin gezielt für Fitnessbegeisterte Entwickeln | Evtl. Push-Benachrichtigungen on Hold setzen, um Cloud-Native Funktionalitäten zu priorisieren |
+
 ## Ausblick auf Sprint 3
 
 - Finale Version des GUI, Statistiken
-- API Push Messages sicherstellen
-- Übertrag auf AW
+- Übertrag auf AWS -> Cloud Native Ansatz
+- Beta-Testing-Programm starten - Strukturiertes Feedback für Fitness-Begeisterte einrichten
 
-### 1.6.3 Sprint 3
+## 1.6.3 Sprint 3
 
-Dritte Sprint-Iteration...
+# Sprint 3 – Planung & Review
+
+## Zeitraum
+
+2.6. - 9.7.25
+
+## Sprintziel
+
+1. Verbesserung der App Visualisierung
+2. Statistiken
+3. Abschluss Datenbankfunktionalität
+4. Dokumentation fertigstellen
+5. Präsentation vorbereiten
+6. Ende - Abgabe
+
+Projekterweiterungen:
+
+7. PostgreSQL / SQLAlchemy Database
+
+8. Weather API
+
+9. AWS EC2 / CI/CD
+
+## User Stories mit Akzeptanzkriterien
+
+## User Story 1:
+
+
+| Title:                  | Priority: | Estimate: |
+| ------------------------- | ----------- | ----------- |
+| Verbesserung der App Visualisierung | High      | 1.5h        |
+
+## Beschreibung:
+
+Beschreibung:
+Als Benutzer
+Möchte ich eine verbesserte und intuitive Benutzeroberfläche mit ansprechendem Design
+damit ich die App effizient und angenehm nutzen kann.
+
+## Akzeptanzkriterien:
+
+- Responsives Design für verschiedene Bildschirmgrößen
+- Benutzerfreundliche Navigation und Layout
+- Konsistente Farbgebung und Typografie
+- Positive Bewertung durch Usability-Tests
+
+---
+
+## User Story 2:
+
+
+| Title:                                                                           | Priority: | Estimate: |
+| ---------------------------------------------------------------------------------- | ----------- | ----------- |
+| Verknüpfung der Elemente, Testphase und allenfalls Evaluation von Erweiterungen | High      | 2d        |
+
+## Beschreibung:
+
+Als Architekt
+Möchte ich **sicherstellen, das die Container untereinander kommunizieren können und welche Erweiterungen an der Lösung vorgenommen werden können**
+damit ich **das Projekt in die Testphase übergeben kann**.
+
+## Akzeptanzkriterien:
+
+- Erreichbarkeit der Container untereinander
+- Funktionales Frontend
+
+---
+
+## User Story 3:
+
+
+| Title:                                                            | Priority: | Estimate: |
+| ------------------------------------------------------------------- | ----------- | ----------- |
+| Verbesserung der App-Visualisierung und Datenbank-Funktionalität | Medium    | 1d        |
+
+## Beschreibung:
+
+Als Engineer
+Möchte ich ***Die Visualisierung der App verbessern um eine angenehmeres Benutzererlebnis zu gestalten.***
+damit ich ***meine User die App nutzen können und persistente Daten auch abrufen können.***
+
+## Akzeptanzkriterien:
+
+- Positives Feedback seitens Tester
+- Persistenter Datenabruf
+
+## Aufgabenübersicht Sprint 3
+
+
+| Aufgabe                                                                                           | Status   |
+| --------------------------------------------------------------------------------------------------- | ---------- |
+| Erste Umsetzung und GUI                                                                           | erledigt |
+| Verknüpfung der Elemente, Testphase und allenfalls Evaluation von ErweiterungenArchitekturplanun | erledigt |
+| Verbesserung der App-Visualisierung und Datenbank-Funktionalität                                 | erledigt |
+
+PLANNER FOTO EINFÜGEN
+
+## Sprint Review
+
+### Was wurde erreicht?
+
+- Die Tracker-App erreichbarkeit sicherstellen
+- Container Verknüpfen und erfolgreich herauffahren
+- Erster Entwurf einer groben Architekturplanung
+- App GUI attraktiver gestalten mit positivem User-Feedback
+
+![alt text](image-4.png)
+*_KanBan Angfangs Sprint_
+
+![alt text](image-5.png)
+*_KanBan Ende Sprint_
+
+![alt text](image-1.png)
+*_Vorgänger der aktuellen Version_
+
+![alt text](image.png)
+*_Verbessertes Design der Benutzeroberfläche_
+
+### Herausforderungen
+
+- Fitness-Begeisterte tester Finden
+- API-Funktionalitäten gewährleisten
+
+### Lessons Learned
+
+- Fitness-Begeisterte tester Finden
+- API-Funktionalitäten gewährleisten
+
+## Retrospektive
+
+
+| **📈 More Of**                                                                                                                                      | **📉 Less Of**                                                                          | **✅ Keep Doing**                                                                    | **🛑 Stop Doing**                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Frühzeitige Suche nach Fitness-Begeisterten für Tests<br /><br> <br />und Projekterweiterung in Erwägung setzen für Cloud-Native Ansatz<br><br> | **Zu späte Tester-Suche** <br>Tester-Rekrutierung nicht auf letzten Moment verschieben | ** Fokus auf Zielgruppe**<br>• Weiterhin gezielt für Fitnessbegeisterte Entwickeln | Evtl. Push-Benachrichtigungen on Hold setzen, um Cloud-Native Funktionalitäten zu priorisieren |
+
+## Ausblick auf Sprint 3
+
+- Finale Version des GUI, Statistiken
+- Übertrag auf AWS -> Cloud Native Ansatz
+- Beta-Testing-Programm starten - Strukturiertes Feedback für Fitness-Begeisterte einrichten
 
 ## 1.7 Projekterweiterung
 
