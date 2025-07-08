@@ -313,7 +313,7 @@ damit ich **meine Stakeholder den Fortschritt mitverfolgen können und ich Über
 
 #### **Sprint Review**
 
-📍​**Was wurde erreicht?**
+⭐​​**Was wurde erreicht?**
 
 - GitHub repo wurde erstellt
 - IDE wurde mit GitHub verknüpft - Es wurde auf andere Lösung gewechselt - Da bessere Optionen zur Entwicklung
@@ -326,13 +326,13 @@ damit ich **meine Stakeholder den Fortschritt mitverfolgen können und ich Über
 ![alt text](image-3.png)
 *_KanBan Ende Sprint_
 
-#### **Herausforderungen**
+#### 🏔️​ **Herausforderungen**
 
 - Microsoft Lists bietet nicht alle benötigten Funktionen an. Es wurde am Anfang des 2. Sprints eine Ausweichmöglichkeit definiert
 - Sprint 1 Zeitraum sehr klein
 
 
-#### **Lessons Learned**
+#### 📚​ **Lessons Learned**
 
 - Mehr Austausch mit den Team-Kollegen und Collaboraters pflegen, um Lösungen zu vergleichen und voneinander zu profitieren. Durch einen Tipp von Teamkollegen, bin ich vollständig auf Visual-Studio gewechselt, da es wesentlich mehr Möglichkeiten anbietet, als Obsidian.
 
@@ -353,79 +353,85 @@ damit ich **meine Stakeholder den Fortschritt mitverfolgen können und ich Über
 
 ### 1.6.2 Sprint 2
 
-# Sprint 2 – Planung & Review
 
-## Zeitraum
+
+#### **Zeitraum**
 
 9.5. - 2.6.2
 
-## Sprintziel
+---
+
+#### **Sprintziel**
 
 1. Erste Umsetzung und GUI
 2. Start Entwicklung der Grundarchitektur
 3. Verknüpfung der Elemente, API und Testphase
 
-## User Stories mit Akzeptanzkriterien
+---
 
-## User Story 1:
+
+#### **User Stories mit Akzeptanzkriterien**
+---
+
+📍​**User Story 1:**
 
 
 | Title:                  | Priority: | Estimate: |
 | ------------------------- | ----------- | ----------- |
 | Erste Umsetzung und GUI | High      | 1h        |
 
-## Beschreibung:
+
 
 Als Entwickler
 Möchte ich **Die Erste Umsetzung der Grundarchitektur Umsetzen**
 damit ich **Connectivität zum Fitness-Tracker sicherstellen kann**.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Fehlerfreies herauffahren der Docker-Container
 - Ereichbares Frontend mit GUI und dessen Grundfunktionen
 
 ---
 
-## User Story 2:
+📍​**User Story 2:**
 
 
 | Title:                                                                           | Priority: | Estimate: |
 | ---------------------------------------------------------------------------------- | ----------- | ----------- |
 | Verknüpfung der Elemente, Testphase und allenfalls Evaluation von Erweiterungen | High      | 2d        |
 
-## Beschreibung:
+
 
 Als Architekt
 Möchte ich **sicherstellen, das die Container untereinander kommunizieren können und welche Erweiterungen an der Lösung vorgenommen werden können**
 damit ich **das Projekt in die Testphase übergeben kann**.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Erreichbarkeit der Container untereinander
 - Funktionales Frontend
 
 ---
 
-## User Story 3:
+📍​**User Story 3:**
 
 
 | Title:                                                            | Priority: | Estimate: |
 | ------------------------------------------------------------------- | ----------- | ----------- |
 | Verbesserung der App-Visualisierung und Datenbank-Funktionalität | Medium    | 1d        |
 
-## Beschreibung:
-
 Als Engineer
 Möchte ich **Die Visualisierung der App verbessern um eine angenehmeres Benutzererlebnis zu gestalten. **
 damit ich **meine User die App nutzen können und persistente Daten auch abrufen können.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Positives Feedback seitens Tester
 - Persistenter Datenabruf
 
-## Aufgabenübersicht Sprint 1
+---
+
+#### **Aufgabenübersicht Sprint 2**
 
 
 | Aufgabe                                                                                           | Status   |
@@ -436,9 +442,11 @@ damit ich **meine User die App nutzen können und persistente Daten auch abrufen
 
 PLANNER FOTO EINFÜGEN
 
-## Sprint Review
+---
 
-### Was wurde erreicht?
+#### **Sprint Review**
+
+⭐​​**Was wurde erreicht?**
 
 - Die Tracker-App erreichbarkeit sicherstellen
 - Container Verknüpfen und erfolgreich herauffahren
@@ -457,38 +465,43 @@ PLANNER FOTO EINFÜGEN
 ![alt text](image.png)
 *_Verbessertes Design der Benutzeroberfläche_
 
-### Herausforderungen
+#### 🏔️​ **Herausforderungen**
 
 - Fitness-Begeisterte tester Finden
 - API-Funktionalitäten gewährleisten
 
-### Lessons Learned
+
+#### 📚​ **Lessons Learned**
 
 - Fitness-Begeisterte tester Finden
 - API-Funktionalitäten gewährleisten
 
-## Retrospektive
+---
+
+#### **Retrospektive**
 
 
 | **📈 More Of**                                                                                                                                      | **📉 Less Of**                                                                          | **✅ Keep Doing**                                                                    | **🛑 Stop Doing**                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | Frühzeitige Suche nach Fitness-Begeisterten für Tests<br /><br> <br />und Projekterweiterung in Erwägung setzen für Cloud-Native Ansatz<br><br> | **Zu späte Tester-Suche** <br>Tester-Rekrutierung nicht auf letzten Moment verschieben | ** Fokus auf Zielgruppe**<br>• Weiterhin gezielt für Fitnessbegeisterte Entwickeln | Evtl. Push-Benachrichtigungen on Hold setzen, um Cloud-Native Funktionalitäten zu priorisieren |
 
-## Ausblick auf Sprint 3
+#### **Ausblick auf Sprint 3**
 
 - Finale Version des GUI, Statistiken
 - Übertrag auf AWS -> Cloud Native Ansatz
 - Beta-Testing-Programm starten - Strukturiertes Feedback für Fitness-Begeisterte einrichten
 
-## 1.6.3 Sprint 3
+### 1.6.3 Sprint 3
 
-# Sprint 3 – Planung & Review
 
-## Zeitraum
+
+#### **Zeitraum**
 
 2.6. - 9.7.25
 
-## Sprintziel
+---
+
+#### **Sprintziel**
 
 1. Verbesserung der App Visualisierung
 2. Statistiken
@@ -500,28 +513,29 @@ PLANNER FOTO EINFÜGEN
 Projekterweiterungen:
 
 7. PostgreSQL / SQLAlchemy Database
-
 8. Weather API
-
 9. AWS EC2 / CI/CD
 
-## User Stories mit Akzeptanzkriterien
+---
 
-## User Story 1:
+
+#### **User Stories mit Akzeptanzkriterien**
+---
+
+📍​**User Story 1:**
 
 
 | Title:                  | Priority: | Estimate: |
 | ------------------------- | ----------- | ----------- |
 | Verbesserung der App Visualisierung | High      | 1.5h        |
 
-## Beschreibung:
 
-Beschreibung:
+
 Als Benutzer
 Möchte ich eine verbesserte und intuitive Benutzeroberfläche mit ansprechendem Design
 damit ich die App effizient und angenehm nutzen kann.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Responsives Design für verschiedene Bildschirmgrößen
 - Benutzerfreundliche Navigation und Layout
@@ -530,45 +544,45 @@ damit ich die App effizient und angenehm nutzen kann.
 
 ---
 
-## User Story 2:
+📍​**User Story 2:**
 
 
 | Title:                                                                           | Priority: | Estimate: |
 | ---------------------------------------------------------------------------------- | ----------- | ----------- |
 | Verknüpfung der Elemente, Testphase und allenfalls Evaluation von Erweiterungen | High      | 2d        |
 
-## Beschreibung:
+
 
 Als Architekt
 Möchte ich **sicherstellen, das die Container untereinander kommunizieren können und welche Erweiterungen an der Lösung vorgenommen werden können**
 damit ich **das Projekt in die Testphase übergeben kann**.
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Erreichbarkeit der Container untereinander
 - Funktionales Frontend
 
 ---
 
-## User Story 3:
+📍​**User Story 3:**
 
 
 | Title:                                                            | Priority: | Estimate: |
 | ------------------------------------------------------------------- | ----------- | ----------- |
 | Verbesserung der App-Visualisierung und Datenbank-Funktionalität | Medium    | 1d        |
 
-## Beschreibung:
-
 Als Engineer
 Möchte ich ***Die Visualisierung der App verbessern um eine angenehmeres Benutzererlebnis zu gestalten.***
 damit ich ***meine User die App nutzen können und persistente Daten auch abrufen können.***
 
-## Akzeptanzkriterien:
+**Akzeptanzkriterien:**
 
 - Positives Feedback seitens Tester
 - Persistenter Datenabruf
 
-## Aufgabenübersicht Sprint 3
+---
+
+#### **Aufgabenübersicht Sprint 3**
 
 
 | Aufgabe                                                                                           | Status   |
@@ -579,9 +593,11 @@ damit ich ***meine User die App nutzen können und persistente Daten auch abrufe
 
 PLANNER FOTO EINFÜGEN
 
-## Sprint Review
+---
 
-### Was wurde erreicht?
+#### **Sprint Review**
+
+⭐​​**Was wurde erreicht?**
 
 - Die Tracker-App erreichbarkeit sicherstellen
 - Container Verknüpfen und erfolgreich herauffahren
@@ -600,24 +616,27 @@ PLANNER FOTO EINFÜGEN
 ![alt text](image.png)
 *_Verbessertes Design der Benutzeroberfläche_
 
-### Herausforderungen
+#### 🏔️​ **Herausforderungen**
 
 - Fitness-Begeisterte tester Finden
 - API-Funktionalitäten gewährleisten
 
-### Lessons Learned
+
+#### 📚​ **Lessons Learned**
 
 - Fitness-Begeisterte tester Finden
 - API-Funktionalitäten gewährleisten
 
-## Retrospektive
+---
+
+#### **Retrospektive**
 
 
 | **📈 More Of**                                                                                                                                      | **📉 Less Of**                                                                          | **✅ Keep Doing**                                                                    | **🛑 Stop Doing**                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | Frühzeitige Suche nach Fitness-Begeisterten für Tests<br /><br> <br />und Projekterweiterung in Erwägung setzen für Cloud-Native Ansatz<br><br> | **Zu späte Tester-Suche** <br>Tester-Rekrutierung nicht auf letzten Moment verschieben | ** Fokus auf Zielgruppe**<br>• Weiterhin gezielt für Fitnessbegeisterte Entwickeln | Evtl. Push-Benachrichtigungen on Hold setzen, um Cloud-Native Funktionalitäten zu priorisieren |
 
-## Ausblick auf Sprint 3
+#### **Ausblick auf Sprint 4**
 
 - Finale Version des GUI, Statistiken
 - Übertrag auf AWS -> Cloud Native Ansatz
