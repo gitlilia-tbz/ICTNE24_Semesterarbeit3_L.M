@@ -49,7 +49,7 @@
   * [2.2.2 User Service](#222-user-service)
   * [2.2.3 Workout Service](#223-workout-service)
   * [2.2.4 Stats Service](#224-stats-service)
-  * [2.2.5 Weather Service](#224-weather-service)
+  * [2.2.5 Weather Service](#225-weather-service)
 
 ### [3. ☁️ Deployment & DevOps](#3-️-deployment--devops)
 
