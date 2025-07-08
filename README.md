@@ -1,20 +1,25 @@
 # README
 
-## :page_with_curl: Semesterarbeit 3 - test-push-3
+# 🏋️‍♀️ TrackMyGym: Tracke. Wachse. Gewinne.
 
+### Fitness Tracking Platform mit Microservices Architektur
 
-| :ticket: Titel:                   | TrackMyGym: Tracke. Wachse. Gewinne.     |
-| ----------------------------------- | ------------------------------------------ |
-| :bust_in_silhouette: Studierende: | Lilia Mechani                            |
-| :busts_in_silhouette: Dozenten:   | (PRJ) Corrado Parisi (MSVC) Boris Langer |
+![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)![Version](https://img.shields.io/badge/Version-v1.0-blue)
+![Python](https://img.shields.io/badge/Python-3.9-blue?logo=python&logoColor=white)![Top Language](https://img.shields.io/github/languages/top/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M)
+![Flask](https://img.shields.io/badge/Flask-2.3.3-black?logo=flask&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker&logoColor=white)
 
+![Microservices](https://img.shields.io/badge/Architecture-Microservices-orange)
+![AWS EC2](https://img.shields.io/badge/Deployed%20on-AWS%20EC2-orange?logo=amazon-aws&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-green?logo=github&logoColor=white)
+![Weather API](https://img.shields.io/badge/Weather-OpenWeatherMap-blue?logo=openweathermap&logoColor=white)
 
-| :round_pushpin: Topics:             |
-| ------------------------------------- |
-| :computer: Microservices            |
-| :paperclip: PRJ (Projektmanagement) |
+---
 
-# TrackMyGym: Tracke. Wachse. Gewinne.
+**Studierende:** Lilia Mechani | **Semester:** 3 | **Dozenten:** (PRJ) Corrado Parisi (MSVC) Boris Langer
+
+[🚀 Live Demo](http://your-ec2-ip) • [📖 Documentation](#documentation) • [🏗️ Architecture](#architecture)
 
 ## Inhaltsverzeichnis
 
@@ -154,15 +159,15 @@ Weitere optionale Ziele für die App:
 Projektzeitleiste und Meilensteine
 
 
-| Sprint | Arbeitsschritte                                                                          |
-| -------- | ------------------------------------------------------------------------------------------ |
-| 1      | GitHub–Obsidian Setup, Architekturplanung                                               |
-| 3–4   | Start Entwicklung der Grundarchitektur                                                   |
-| 2      | GUI-Planung, Erste Umsetzung der GUI                                                     |
-| 2      | Verknüpfung der Elemente, API Push-Notifications, Erste Testphase                       |
-| 3      | Verbesserung der App-Visualisierung, Statistiken, Abschluss der Datenbankfunktionalität |
-| 3      | Vollendung der Dokumentation                                                             |
-| 3      | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
+| Sprint | Zeitpunkt     | Arbeitsschritte                                                                          |
+| -------- | --------------- | ------------------------------------------------------------------------------------------ |
+| 1      | 5.5. - 9.5.25 | GitHub–Obsidian Setup, Architekturplanung                                               |
+| 2      | 9.5. - 2.6.25 | Start Entwicklung der Grundarchitektur                                                   |
+| 2      | 9.5. - 2.6.25 | GUI-Planung, Erste Umsetzung der GUI                                                     |
+| 2      | 9.5. - 2.6.25 | Verknüpfung der Elemente, API Push-Notifications, Erste Testphase                       |
+| 3      | 2.6. - 9.7.25 | Verbesserung der App-Visualisierung, Statistiken, Abschluss der Datenbankfunktionalität |
+| 3      | 2.6. - 9.7.25 | Vollendung der Dokumentation                                                             |
+| 3      | 2.6. - 9.7.25 | Vorbereitung der Präsentation, Vollendung des Projekts, Abgabe                          |
 
 ## 1.3 Risiko-Evaluation
 
@@ -538,21 +543,17 @@ Der User greift wie gewohnt via Nginx auf die Applikation zu
 
 ![](assets/20250707_190323_image.png)
 
-Für bessere/stabilere persistenz innerhalb der Umgebung habe ich mich dazu entschieden, von einem simplen JSON-File als storage-solution für die Daten, zu einer Datenbank zu wechseln.
++++ Für bessere/stabilere persistenz innerhalb der Umgebung habe ich mich dazu entschieden, von einem simplen JSON-File als storage-solution für die Daten, zu einer Datenbank zu wechseln.
 
-Dies sind die risiken des JSON-Files:
+Risiken des JSON-Files:
 
 ⚠️ **Weniger robust als echte DBs**
-
-**Risiken deiner File-Lösung:**
 
 * **Corruption** : JSON-File kann bei unvollständigem Write corrumpiert werden
 * **No Transactions** : Kein Rollback bei Fehlern
 * **Race Conditions** : Gleichzeitige Writes können Daten zerstören
 
-Dies sind die Vorteile der SQL-Migration:
-
-**🐘 PostgreSQL Integration:**
+**🐘 PostgreSQL Integration: Vorteile**
 
 * **Von JSON-Files zu echter Datenbank** - Data Persistence
 * **SQLAlchemy ORM** - Objekt-relationale Mappings für Python
@@ -560,7 +561,7 @@ Dies sind die Vorteile der SQL-Migration:
 * **Foreign Key Relationships** - Users ↔ Workouts Verknüpfungen
 * **Performance Optimierung** - SQL-Indexes und Aggregationen
 
-Zudem, wurde für eine vollständige Demonstration für die Kommunikation meiner Microservices in die Aussenwelt, ein ***Weather Microservice*** hinzugefügt:
++++ Zudem, wurde für eine vollständige Demonstration für die Kommunikation meiner Microservices in die Aussenwelt, ein ***Weather Microservice*** hinzugefügt:
 
 **🌤️ Weather Service Integration:**
 
@@ -951,7 +952,6 @@ Weather Service Integration:
 
 +++ Bonus: Weather App Setup: +++
 
-
 📋 API Account & Key Setup
 
 1. OpenWeatherMap Account erstellen:
@@ -1051,9 +1051,9 @@ def get_current_weather():
             'appid': WEATHER_API_KEY,
             'units': 'metric'
         }
-    
+  
         response = requests.get(WEATHER_URL, params=params, timeout=10)
-    
+  
         # API Key invalid/not configured
         if response.status_code == 401:
             return jsonify({
@@ -1061,13 +1061,13 @@ def get_current_weather():
                 "demo_mode": True,
                 "weather_data": get_demo_weather()
             }), 200
-    
+  
         if response.status_code == 200:
             weather_data = response.json()
             return jsonify(process_weather_data(weather_data))
         else:
             return jsonify({"error": "Weather service unavailable"}), 503
-        
+  
     except Exception as e:
         return jsonify({
             "error": "Weather service error",
@@ -1110,15 +1110,15 @@ def get_workout_advice():
         # Get current weather
         weather_response = requests.get("http://localhost:5004/weather/current")
         weather_data = weather_response.json()
-    
+  
         if weather_data.get('demo_mode'):
             weather_info = weather_data['weather_data']
         else:
             weather_info = weather_data
-    
+  
         advice = generate_workout_advice(weather_info)
         return jsonify({"weather": weather_info, "advice": advice})
-    
+  
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -1281,19 +1281,19 @@ Dashboard Template erweitern:
             <div class="weather-temp">{{ weather.temperature }}°C</div>
             <div>{{ weather.weather_description }}</div>
         </div>
-    
+  
         {% if weather.outdoor_suitable %}
             <div class="alert alert-success">Great for outdoor workouts!</div>
         {% else %}
             <div class="alert alert-warning">Better to exercise indoors</div>
         {% endif %}
-    
+  
         <button class="btn btn-outline-primary btn-sm w-100" onclick="loadWorkoutAdvice()">
             <i class="fas fa-lightbulb me-2"></i>Get Workout Advice
         </button>
-    
+  
         <div id="workout-advice" class="mt-3"></div>
-    
+  
         {% if weather.demo_mode %}
         <small class="text-muted">Demo weather data (API key not configured)</small>
         {% endif %}
@@ -1314,7 +1314,7 @@ function loadWorkoutAdvice() {
                     `<div class="alert alert-danger">Error: ${data.error}</div>`;
                 return;
             }
-        
+  
             const advice = data.advice;
             let html = `
                 <div class="alert alert-info">
@@ -1468,7 +1468,6 @@ graph TD
     StatsService --> PostgreSQL
 ````
 
-
 📊 File Count Summary
 
 <pre class="font-styrene border-border-100/50 overflow-x-scroll w-full rounded border-[0.5px] shadow-[0_2px_12px_hsl(var(--always-black)/5%)]"><table class="bg-bg-100 min-w-full border-separate border-spacing-0 text-sm leading-[1.88888] whitespace-normal"><thead class="border-b-border-100/50 border-b-[0.5px] text-left"><tr class="[tbody>&]:odd:bg-bg-500/10"><th class="text-text-000 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] font-400 px-2 [&:not(:first-child)]:border-l-[0.5px]">Kategorie</th><th class="text-text-000 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] font-400 px-2 [&:not(:first-child)]:border-l-[0.5px]">Anzahl Dateien</th></tr></thead><tbody><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Python Apps</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (1 Frontend + 4 Microservices)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Dockerfiles</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (alle Services + nginx)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Requirements</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">5 (Python Dependencies)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Templates</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">3 (HTML Jinja2 Templates)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Static Files</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">2 (CSS + JavaScript)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Config Files</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">4 (docker-compose, nginx, init.sql, .env)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>CI/CD</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">2 (GitHub Actions Workflows)</td></tr><tr class="[tbody>&]:odd:bg-bg-500/10"><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]"><strong>Documentation</strong></td><td class="border-t-border-100/50 [&:not(:first-child)]:-x-[hsla(var(--border-100) / 0.5)] border-t-[0.5px] px-2 [&:not(:first-child)]:border-l-[0.5px]">1 (README.md)</td></tr></tbody></table></pre>
@@ -1562,3 +1561,5 @@ Lilia Mechani
 lilia.mechani@edu.tbz.ch
 
 Technische Berufsschule Zürich
+
+![Language Count](https://img.shields.io/github/languages/count/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M)
