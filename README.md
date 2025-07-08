@@ -441,7 +441,6 @@ damit ich **meine User die App nutzen können und persistente Daten auch abrufen
 | Verknüpfung der Elemente, Testphase und allenfalls Evaluation von ErweiterungenArchitekturplanun | erledigt |
 | Verbesserung der App-Visualisierung und Datenbank-Funktionalität                                 | erledigt |
 
-PLANNER FOTO EINFÜGEN
 
 ---
 
@@ -642,7 +641,11 @@ damit ich **meine Outdoor-Trainings besser planen kann.**
 - Statistiken wurden eingebaut
 - Weather API eingebaut, zeigt aktuelles Wetter von Zürich an
 ![alt text](image-9.png)
-![alt text](image-10.png)
+Sprint 3 Spalte
+
+
+![alt text](image-11.png)
+Alle Einträge mit Userstories 
 
 #### 🏔️​ **Herausforderungen**
 
