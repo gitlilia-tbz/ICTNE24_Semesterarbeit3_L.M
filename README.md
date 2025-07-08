@@ -1743,6 +1743,10 @@ graph TD
 
 **Designkonzept und visuelle Gestaltung**
 ![alt text](image-6.png)
+GUI auf Desktop Oberfläche
+
+![alt text](mobile.gif)
+GUI auf Mobiler Oberfläche
 
 ## 4.2 User Experience
 
