@@ -1769,8 +1769,11 @@ Es können weitere Workouts im Dashboard hinterlegt werden. Für eine übersicht
 # 5. 🧪 Testing & Qualitätssicherung
 
 ## 5.1 Pipeline-Testing
+![alt text](image-8.png)
+Der erste Test-Push vom Repo aus war erfolgreich, nachdem alle Secrets korrekt hinterlegt wurden
+![alt text](image-7.png)
+Der erste Test-Push war eine Anpassung des Übertitels in "Test fuer pipeline!" innerhalb des **dashboard.html** file.
 
-Automatisierte Tests in der CI/CD-Pipeline...
 
 ## 5.2 User-Testing
 
@@ -1939,27 +1942,178 @@ Error Handling: Demo Daten einsetzten
 
 ## 7.1 Code-Repository
 
-Links zum Quellcode und Repository...
+https://github.com/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M
 
 ## 7.2 Verwendete Technologien
 
-Übersicht aller eingesetzten Tools und Frameworks...
+![Anthropic Claude](https://img.shields.io/badge/Anthropic-Claude-orange) - ![Claude Sonnet 4](https://img.shields.io/badge/Claude-Sonnet%204-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.9-blue?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-2.3.3-black?logo=flask&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/Deployed%20on-AWS%20EC2-orange?logo=amazon-aws&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-green?logo=github&logoColor=white)
+![Weather API](https://img.shields.io/badge/Weather-OpenWeatherMap-blue?logo=openweathermap&logoColor=white)
+
+
+Dieses Projekt wurde in Zusammenarbeit mit Anthropic Claude (Sonnet 4) erstellt.
 
 ## 7.3 Quellen
 
-Referenzen und verwendete Literatur...
+
+[![Claude](https://img.shields.io/badge/AI-Claude-orange?style=for-the-badge)](https://claude.ai)
+[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org)
+[![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![PostgreSQL](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![AWS EC2](https://img.shields.io/badge/AWS%20EC2-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/ec2/).
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+[![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-%23FF6B35.svg?style=for-the-badge&logo=openweathermap&logoColor=white)](https://openweathermap.org)
+[![Scrum](https://img.shields.io/badge/Methodology-Scrum-blue?style=for-the-badge)](https://scrum.org)
+[![Agile](https://img.shields.io/badge/Development-Agile-brightgreen?style=for-the-badge)](https://agilemanifesto.org)
+[![SWOT Analysis](https://img.shields.io/badge/Analysis-SWOT-purple?style=for-the-badge)](https://en.wikipedia.org/wiki/SWOT_analysis)
+[![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)](https://www.atlassian.com/software/jira)
 
 ## 7.4 Glossar
 
-Definitionen wichtiger Begriffe...
+Definitionen wichtiger Begriffe:
+
+
+## A
+
+**ACID-Transactions** - Datenbank-Eigenschaften für Datenintegrität (Atomicity, Consistency, Isolation, Durability)
+
+**Agile** - Iterative Entwicklungsmethodik mit kurzen Zyklen
+
+**API** - Schnittstelle zwischen Software-Komponenten
+
+**AWS EC2** - Amazon Cloud-Service für virtuelle Server
+
+## B
+
+**Bootstrap** - CSS-Framework für responsive Web-Design
+
+## C
+
+**CI/CD** - Automatisierte Pipeline für Code-Integration und Deployment
+
+**Container** - Portable Softwarepaketierung mit allen Abhängigkeiten
+
+**CRUD** - Grundoperationen: Create, Read, Update, Delete
+
+## D
+
+**Docker** - Containerisierungs-Plattform
+
+**Docker Compose** - Tool für Multi-Container-Anwendungen
+
+## E
+
+**Environment Variables** - Externe Konfigurationswerte (API-Keys, etc.)
+
+## F
+
+**Flask** - Python-Web-Framework
+
+**Foreign Key** - Datenbankfeld für Tabellen-Beziehungen
+
+## G
+
+**GitHub Actions** - CI/CD-Service von GitHub
+
+**Graceful Degradation** - Weiterbetrieb bei Komponentenausfall
+
+## H
+
+**Health Check** - Automatische Service-Statusüberwachung
+
+## J
+
+**JSON** - Datenformat für strukturierten Datenaustausch
+
+## K
+
+**KanBan** - Visuelle Projektmanagement-Methode
+
+## M
+
+**Microservices** - Architektur mit unabhängigen, kleinen Services
+
+**Migration** - Datenübertragung zwischen Systemen
+
+## N
+
+**Nginx** - Webserver und Reverse Proxy
+
+## O
+
+**OpenWeatherMap** - API-Service für Wetterdaten
+
+**ORM** - Verknüpfung objektorientierter Programmierung mit Datenbanken
+
+## P
+
+**PostgreSQL** - Open-Source relationale Datenbank
+
+**PWA** - Webanwendung mit nativen App-Funktionen
+
+## R
+
+**Rate Limiting** - Begrenzung von API-Anfragen pro Zeitraum
+
+**REST** - Architekturstil für Web-APIs mit HTTP-Methoden
+
+**Responsive Design** - Layout-Anpassung an verschiedene Bildschirmgrössen
+
+## S
+
+**Scrum** - Agiles Framework mit Sprints und festen Rollen
+
+**SQLAlchemy** - Python-ORM-Library für Datenbankzugriff
+
+**Sprint** - Zeitlich begrenzte Entwicklungsperiode (1-4 Wochen)
+
+**SWOT** - Analyse von Stärken, Schwächen, Chancen, Risiken
+
+## T
+
+**Template** - HTML-Vorlage mit dynamischen Platzhaltern
+
+**Toast-Notification** - Kurze Benutzerbenachrichtigung
+
+## U
+
+**UI/UX** - Benutzeroberfläche und Benutzererlebnis
+
+**Usability** - Mass für Benutzerfreundlichkeit
+
+## V
+
+**Validation** - Überprüfung von Eingabedaten auf Korrektheit
+
+## W
+
+**Workflow** - Automatisierte Arbeitsschrittabfolge
+
+## Y
+
+**YAML** - Menschenlesbare Datenformat für Konfigurationsdateien
 
 ## 7.5 Kontaktangaben
 
-Projektteam und Ansprechpartner:
+Projektteam und Ansprechpartner zum Projekt:
 
-Lilia Mechani
-lilia.mechani@edu.tbz.ch
+***Lilia Mechani*** - 
+Studierende
 
-Technische Berufsschule Zürich
+- Email: lilia.mechani@edu.tbz.ch
+
+- Technische Berufsschule Zürich TBZ HF
+
+- Aktuelle Verfügbarkeit des Repository: **Public**
+
+---
+
+Ich bedanke mich bei meinen Sport-begeisterten Test-Probanten, bei meiner Lerngemeinschaft und meinen Dozenten.
 
 ![Language Count](https://img.shields.io/github/languages/count/gitlilia-tbz/ICTNE24_Semesterarbeit3_L.M)
