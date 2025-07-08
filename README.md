@@ -549,18 +549,19 @@ damit ich die App effizient und angenehm nutzen kann.
 
 | Title:                                                                           | Priority: | Estimate: |
 | ---------------------------------------------------------------------------------- | ----------- | ----------- |
-| Verknüpfung der Elemente, Testphase und allenfalls Evaluation von Erweiterungen | High      | 2d        |
+|  Statistiken-Dashboard implementieren | High      | 2d        |
 
 
 
-Als Architekt
-Möchte ich **sicherstellen, das die Container untereinander kommunizieren können und welche Erweiterungen an der Lösung vorgenommen werden können**
-damit ich **das Projekt in die Testphase übergeben kann**.
+Als Benutzer
+Möchte ich **umfassende Statistiken und Datenvisualisierungen meiner Fitness-Daten** einsehen
+damit ich meine Fortschritte **verfolgen und analysieren kann.**
 
 **Akzeptanzkriterien:**
 
-- Erreichbarkeit der Container untereinander
-- Funktionales Frontend
+- Darstellung von Trainingsstatistiken in Charts/Grafiken
+- Zeitraum-Filter für Datenanalyse (Tag, Woche, Monat)
+
 
 ---
 
@@ -569,29 +570,65 @@ damit ich **das Projekt in die Testphase übergeben kann**.
 
 | Title:                                                            | Priority: | Estimate: |
 | ------------------------------------------------------------------- | ----------- | ----------- |
-| Verbesserung der App-Visualisierung und Datenbank-Funktionalität | Medium    | 1d        |
+| AWS EC2 Deployment und CI/CD Pipeline | High    | 1.5d        |
 
-Als Engineer
-Möchte ich ***Die Visualisierung der App verbessern um eine angenehmeres Benutzererlebnis zu gestalten.***
-damit ich ***meine User die App nutzen können und persistente Daten auch abrufen können.***
+Als DevOps Engineer
+Möchte ich eine **automatisierte Deployment-Pipeline auf AWS EC2 einrichten**
+damit ich **kontinuierliche Integration und Deployment gewährleisten kann.**
 
 **Akzeptanzkriterien:**
+- Erfolgreiche Deployment auf AWS EC2
+- Automatisierte CI/CD Pipeline konfiguriert
+---
 
-- Positives Feedback seitens Tester
-- Persistenter Datenabruf
+📍**User Story 4:**
 
+| Title:                                                            | Priority: | Estimate: |
+| ------------------------------------------------------------------- | ----------- | ----------- |
+| Datenbankfunktionalität abschliessen | High    | 1d        |
+
+Als Entwickler
+Möchte ich **die vollständige PostgreSQL/SQLAlchemy Integration finalisieren**
+damit ich **zuverlässige Datenpersistierung und -abfrage gewährleisten kann.**
+
+**Akzeptanzkriterien:**
+- Datenbankmigrationen funktionsfähig
+- Optimierte Datenbankabfragen implementiert
+
+
+---
+
+📍**User Story 5:**
+
+| Title:                                                            | Priority: | Estimate: |
+| ------------------------------------------------------------------- | ----------- | ----------- |
+| Weather API Integration | Medium    | 0.5d        |
+
+Als Benutzer
+Möchte ich **aktuelle Wetterdaten in der App angezeigt bekommen**
+damit ich **meine Outdoor-Trainings besser planen kann.**
+
+**Akzeptanzkriterien:**
+- Integration einer zuverlässigen Weather API
+- Anzeige von aktuellen Wetterdaten und Vorhersage
+- Standortbasierte Wetterinformationen
+- Fehlerbehandlung bei API-Ausfällen
 ---
 
 #### **Aufgabenübersicht Sprint 3**
 
 
-| Aufgabe                                                                                           | Status   |
-| --------------------------------------------------------------------------------------------------- | ---------- |
-| Erste Umsetzung und GUI                                                                           | erledigt |
-| Verknüpfung der Elemente, Testphase und allenfalls Evaluation von ErweiterungenArchitekturplanun | erledigt |
-| Verbesserung der App-Visualisierung und Datenbank-Funktionalität                                 | erledigt |
 
-PLANNER FOTO EINFÜGEN
+
+| Aufgabe | Status |
+|---------|--------|
+| Verbesserung der App Visualisierung | Done |
+| Statistiken-Dashboard implementieren | Done |
+| Datenbankfunktionalität abschliessen | Done|
+| Weather API Integration | Done |
+| Dokumentation fertigstellen | Done |
+| AWS EC2 Deployment und CI/CD Pipeline | Done |
+| Präsentation vorbereiten | Done |
 
 ---
 
@@ -599,48 +636,33 @@ PLANNER FOTO EINFÜGEN
 
 ⭐​​**Was wurde erreicht?**
 
-- Die Tracker-App erreichbarkeit sicherstellen
-- Container Verknüpfen und erfolgreich herauffahren
-- Erster Entwurf einer groben Architekturplanung
-- App GUI attraktiver gestalten mit positivem User-Feedback
+- EC2 Instanz erreichbar, alle Container gesund
+- Datenbank wurde von JSON zu richtiger Datenbank migriert
+- Statistiken wurden eingebaut
+- Weather API eingebaut, zeigt aktuelles Wetter von Zürich an
 
-![alt text](image-4.png)
-*_KanBan Angfangs Sprint_
-
-![alt text](image-5.png)
-*_KanBan Ende Sprint_
-
-![alt text](image-1.png)
-*_Vorgänger der aktuellen Version_
-
-![alt text](image.png)
-*_Verbessertes Design der Benutzeroberfläche_
 
 #### 🏔️​ **Herausforderungen**
 
-- Fitness-Begeisterte tester Finden
-- API-Funktionalitäten gewährleisten
+- Übertrag der alten "Datenbank"
+- Lange Wartezeiten seitens API-Funktionalität
 
 
 #### 📚​ **Lessons Learned**
 
-- Fitness-Begeisterte tester Finden
-- API-Funktionalitäten gewährleisten
+- Gelernt, externe API einzusetzen
+- Eine richtige Datenbank bietet bessere persistenz und schützt vor Daten-Korrumpierung
+- Usability / Friendly User interfaces gestalten
 
 ---
 
 #### **Retrospektive**
 
-
 | **📈 More Of**                                                                                                                                      | **📉 Less Of**                                                                          | **✅ Keep Doing**                                                                    | **🛑 Stop Doing**                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Frühzeitige Suche nach Fitness-Begeisterten für Tests<br /><br> <br />und Projekterweiterung in Erwägung setzen für Cloud-Native Ansatz<br><br> | **Zu späte Tester-Suche** <br>Tester-Rekrutierung nicht auf letzten Moment verschieben | ** Fokus auf Zielgruppe**<br>• Weiterhin gezielt für Fitnessbegeisterte Entwickeln | Evtl. Push-Benachrichtigungen on Hold setzen, um Cloud-Native Funktionalitäten zu priorisieren |
+| Frühzeitige API-Integration planen<br /><br>Mehr Zeit für Datenmigration einplanen<br><br>Cloud-Native Ansatz konsequent verfolgen | **Zu späte Performance-Optimierung** <br>API-Wartezeiten nicht erst am Ende addressieren | **Fokus auf Datenpersistenz**<br>• Weiterhin auf robuste Datenbankintegration setzen | JSON-basierte Datenstrukturen für kritische Daten vermeiden, da sie anfällig für Korruption sind |
 
-#### **Ausblick auf Sprint 4**
 
-- Finale Version des GUI, Statistiken
-- Übertrag auf AWS -> Cloud Native Ansatz
-- Beta-Testing-Programm starten - Strukturiertes Feedback für Fitness-Begeisterte einrichten
 
 ## 1.7 Projekterweiterung
 
