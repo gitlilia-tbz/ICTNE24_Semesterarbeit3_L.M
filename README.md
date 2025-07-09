@@ -639,7 +639,7 @@ damit ich **meine Outdoor-Trainings besser planen kann.**
 - EC2 Instanz erreichbar, alle Container gesund
 - Datenbank wurde von JSON zu richtiger Datenbank migriert
 - Statistiken wurden eingebaut
-- Weather API eingebaut, zeigt aktuelles Wetter von Zürich an
+- Weather API eingebaut, zeigt aktuelles Wetter von Zürich an.
 
 
 ![alt text](image-9.png)
