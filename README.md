@@ -1,6 +1,7 @@
 # README
 
 # 🏋️‍♀️ FitTracker Pro: Tracke. Wachse. Gewinne.
+![alt text](top_bar.gif)
 
 ### Fitness Tracking Platform mit Microservices Architektur
 
